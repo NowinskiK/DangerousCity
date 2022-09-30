@@ -29,7 +29,7 @@ rys      = $1000
 
 
 
-!To "bin\DC.xex", plain 
+!To "Release\DC.xex", plain 
  
  * = $a000 ; Adres, pod ktory program bedzie zaladowany do pamieci Atari
 
