@@ -13,50 +13,73 @@ konsol   = $d01f
 
 ; zmienne dane
 
-gra_fnt  = $7800
-plansze  = $4000
-des      = $0a00
 admap    = $0700
-gra_cmc  = $2887
-rep      = $1a40
-cz_fnt   = $7c00
+des      = $0a00
 zst_fnt  = $0c00
-cz_cmc   = $2202
-win_cmc  = $37bd
-over_cmc = $31fd
-mi_fnt   = $7400
-rys      = $1000
-
 
 
 !To "Release\DC.xex", plain 
- 
- * = $a000 ; Adres, pod ktory program bedzie zaladowany do pamieci Atari
 
- ; Naglowek pliku xex
+
+* = $0f00
+; Naglowek pliku xex
 !BYTE 0xFF, 0xFF     ; 00 - 01 $FFFF - Stala Wartosc oznaczajaca, ze to jest program
-
-!source "rys.asm"
-
 !BYTE <Start, >Start ; 02 - 03 Adres Startu Programu (dolny potem gorny bajt)
 !BYTE <End, >End     ; 04 - 05 Adres Konca Programu  (dolny potem gorny bajt)
 
 Start  ; Poczatek programu -
-begin  
-         jsr _ustres
-         ldx <run
-         ldy >run
-         stx $02
-         sty $03
-         lda #0
-         sta $0244
-         jmp $e474
+         ldx #<begin
+         ldy #>begin
+         stx $02e0
+         sty $02e1
+         jmp begin
+         
+* = $1000
+rys      = * ;$1000
+!bin "plansze\rys",,6
+rep      = * ;$1a40
+!bin "plansze\music.rep",,6
+cz_cmc   = * ;$2202
+!bin "muzyka\czolo.cmc",,6
+gra_cmc  = * ;$2887
+!bin "muzyka\gra.cmc",,6
+over_cmc = * ;$31fd
+!bin "muzyka\gameover.cmc",,6
+win_cmc  = * ;$37bd
+!bin "muzyka\win.cmc",,6
+
+* = $4000
+plansze  = * ;$4000
+!bin "plansze\pl",,6
+mi_fnt   = * ;$7400
+!bin "fonty\mirage.fnt",,6
+gra_fnt  = * ;$7800
+!bin "fonty\a.fnt",,6
+cz_fnt   = * ;$7c00
+!bin "fonty\b.fnt",,6
+
+* = $8000
+!source "DATA.asm"    ;     icl 'D8 DATA.ASM'
+
+ 
+* = $a000 ; Adres, pod ktory program bedzie zaladowany do pamieci Atari
+
+
+begin    
+         ;jsr _ustres
+         ;ldx #<run
+         ;ldy #>run
+         ;stx $02
+         ;sty $03
+         ;lda #0
+         ;sta $0244
+         ;jmp $e474  ;WARMSV
 
 run      jsr run_cz
          jsr _movrzc
          lda #$70
-         ldx <gra_cmc
-         ldy >gra_cmc
+         ldx #<gra_cmc
+         ldy #>gra_cmc
          jsr rep+3
          lda #0
          tax
@@ -64,22 +87,22 @@ run      jsr run_cz
 
          lda #0
          sta $022f
-         ldx <dl
-         ldy >dl
+         ldx #<dl
+         ldy #>dl
          stx $0230
          sty $0231
-         ldx <ekr
-         ldy >ekr
+         ldx #<ekr
+         ldy #>ekr
          stx $58
          sty $59
 
          lda #7
-         ldx >v
-         ldy <v
+         ldx #>v
+         ldy #<v
          jsr set_v
 
-         ldx <dli
-         ldy >dli
+         ldx #<dli
+         ldy #>dli
          stx $0200
          sty $0201
          ldx #2
@@ -94,7 +117,7 @@ run      jsr run_cz
          sta $02c8
          lda #1
          sta $02f0
-         lda >gra_fnt
+         lda #>gra_fnt
          sta $02f4
 
          jsr _initmap
@@ -357,8 +380,8 @@ ad2      ldy #0
          lda #27
          sta ($c0),y
 
-         ldx <lewf
-         ldy >lewf
+         ldx #<lewf
+         ldy #>lewf
          stx $d0
          sty $d1
 
@@ -380,8 +403,8 @@ _prawo   jsr _ust
          lda #27
          sta ($c0),y
 
-         ldx <prawf
-         ldy >prawf
+         ldx #<prawf
+         ldy #>prawf
          stx $d0
          sty $d1
 
@@ -423,8 +446,8 @@ ad5      jmp ad6
 ad4      rts
 
 _prkiesz  ; equ *
-         ldx <rzeczy_w+4
-         ldy >rzeczy_w+4
+         ldx #<rzeczy_w+4
+         ldy #>rzeczy_w+4
          stx $c2
          sty $c3
          lda #0
@@ -435,8 +458,8 @@ am9      lda #$80
 am7      sta ($c2),y
          dey
          bpl am7
-         ldx <rzc_nam
-         ldy >rzc_nam
+         ldx #<rzc_nam
+         ldy #>rzc_nam
          stx $c0
          sty $c1
          ldy $c4
@@ -526,8 +549,8 @@ al2      sta rzc_wid,y
          lda rzc,y
          sta $cf
 
-         ldx <ekr+4
-         ldy >ekr+4
+         ldx #<ekr+4
+         ldy #>ekr+4
          stx _rsl
          sty _rsl+1
          lda #32
@@ -547,8 +570,8 @@ al1      lda #84
          ldy #0
          sta ($c0),y
 
-         ldx <rzc_nam
-         ldy >rzc_nam
+         ldx #<rzc_nam
+         ldy #>rzc_nam
          stx $c0
          sty $c1
          ldx #0
@@ -639,8 +662,8 @@ aj5      sta plname,y
          dex
          bne aj5
 
-         ldx <namepl_t
-         ldy >namepl_t
+         ldx #<namepl_t
+         ldy #>namepl_t
          stx $c0
          sty $c1
          ldx #0
@@ -683,13 +706,13 @@ _initgra lda #1
          ldy #7
          stx x
          sty y
-         ldx <map+106
-         ldy >map+106
+         ldx #<map+106
+         ldy #>map+106
          stx pozmap
          sty pozmap+1
 
-         ldx <pasek+30
-         ldy >pasek+30
+         ldx #<pasek+30
+         ldy #>pasek+30
          stx $c0
          sty $c1
          ldx #16
@@ -713,15 +736,15 @@ aj4      lda #0
 
 _initmap   ; equ *
 
-         ldx <admap+2
-         ldy >admap+2
+         ldx #<admap+2
+         ldy #>admap+2
          stx $cd
          sty $ce
          lda #2
          sta $cc
 
-         ldx <plansze
-         ldy >plansze
+         ldx #<plansze
+         ldy #>plansze
          stx $c0
          sty $c1
          stx admap
@@ -751,8 +774,8 @@ ah8      ldx $cc
          bcc ah9
          rts
 
-_dekomp  ldx <des
-         ldy >des
+_dekomp  ldx #<des
+         ldy #>des
          stx $c2
          sty $c3
 ah5      ldy #0
@@ -971,13 +994,13 @@ aw5      sec
 
          jsr _dekomp
 
-         ldx <des
-         ldy >des
+         ldx #<des
+         ldy #>des
          stx $c0
          sty $c1
 
-         ldx <ekr+4
-         ldy >ekr+4
+         ldx #<ekr+4
+         ldy #>ekr+4
          stx $c2
          sty $c3
 
@@ -1054,10 +1077,10 @@ dli       ;equ *
          pha
          tya
          pha
-         lda >cz_fnt
+         lda #>cz_fnt
          sta $d409
-         ldx <dli_2
-         ldy >dli_2
+         ldx #<dli_2
+         ldy #>dli_2
          stx $0200
          sty $0201
          jmp end_v
@@ -1070,8 +1093,8 @@ dli_2    pha
 
          lda #$22
          sta $d400
-         ldx <dli
-         ldy >dli
+         ldx #<dli
+         ldy #>dli
          stx $0200
          sty $0201
          jmp end_v
@@ -1112,8 +1135,8 @@ v        ;equ *
          lda #0
          sta $4d
          lda #'~'
-         ldx <gra_fnt+$03f0
-         ldy >gra_fnt+$03f0
+         ldx #<(gra_fnt+$03f0)
+         ldy #>(gra_fnt+$03f0)
          sta $f5
          stx $f6
          sty $f7
@@ -1122,13 +1145,13 @@ v        ;equ *
          bcc ag7
          lda #112
          sta fuel
-ag7      ldx <ekr+417
-         ldy >ekr+417
+ag7      ldx #<(ekr+417)
+         ldy #>(ekr+417)
          jsr _rysslup
 
          lda #''
-         ldx <gra_fnt+$03f8
-         ldy >gra_fnt+$03f8
+         ldx #<(gra_fnt+$03f8)
+         ldy #>(gra_fnt+$03f8)
          sta $f5
          stx $f6
          sty $f7
@@ -1137,8 +1160,8 @@ ag7      ldx <ekr+417
          bcc ag9
          lda #112
          sta damage
-ag9      ldx <ekr+446
-         ldy >ekr+446
+ag9      ldx #<(ekr+446)
+         ldy #>(ekr+446)
          jsr _rysslup
 
          jmp end_v
@@ -1265,8 +1288,8 @@ _keyoff  lda #$ff
          sta $02fc
          rts
 
-_msr     ldx <gra_fnt+208
-         ldy >gra_fnt+208
+_msr     ldx #<(gra_fnt+208)
+         ldy #>(gra_fnt+208)
          stx $d2
          sty $d3
          ldy #15
@@ -1288,8 +1311,8 @@ _joy     lda $0278
 _joyf2   rts
 
 
-_ust     ldx <ekr
-         ldy >ekr
+_ust     ldx #<ekr
+         ldy #>ekr
          stx $c0
          sty $c1
 
@@ -1346,9 +1369,14 @@ aa8      clc
 aa7      rts
 
 
+!source "PROC.ASM"   ;      icl 'D8 PROC.ASM'
+
+End  ; Koniec Programu
+
+
 
          
-*=$0500  ;org $0500
+;*=$0500  ;org $0500
 
 x        !byte (10)
 y        !byte (7)
@@ -1372,14 +1400,9 @@ pms      !byte (0)
 fr       !byte (0)
 
 
-!source "PROC.ASM"   ;      icl 'D8 PROC.ASM'
 
 
-End  ; Koniec Programu
 
 
-!source "DATA.asm"    ;     icl 'D8 DATA.ASM'
-
-
-* = $02e0
-!word (begin)
+;* = $02e0
+;!word (begin)

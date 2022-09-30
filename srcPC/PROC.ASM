@@ -22,8 +22,8 @@ az8      sta kieszen,y
 
 
 _ustres  lda #2
-         ldx <reset
-         ldy >reset
+         ldx #<reset
+         ldy #>reset
          sta $09
          stx $02
          sty $03
@@ -34,8 +34,8 @@ _ustres  lda #2
          rts
 
 reset   ;    equ *
-;*         lda #0
-;*         sta konsol
+         lda #0
+         sta konsol
          lda konsol
          and #7
          cmp #7
@@ -55,21 +55,21 @@ leg   ;      equ *
          ldx #$c2
          ldy #$8a
          jsr set_v
-         ldx <dl_leg
-         ldy >dl_leg
+         ldx #<dl_leg
+         ldy #>dl_leg
          stx $0230
          sty $0231
          lda #0
          sta $02c6
          sta $02c8
-         lda >cz_fnt
+         lda #>cz_fnt
          sta $02f4
-         ldx <leg_t
-         ldy >leg_t
+         ldx #<leg_t
+         ldy #>leg_t
          stx ax9+1
          sty ax9+2
-         ldx <dli_leg
-         ldy >dli_leg
+         ldx #<dli_leg
+         ldy #>dli_leg
          stx $0200
          sty $0201
          ldx #2
@@ -179,8 +179,8 @@ ax7      sta $d40a
 _win     lda #$40
          sta $d40e
          lda #$70
-         ldx <win_cmc
-         ldy >win_cmc
+         ldx #<win_cmc
+         ldy #>win_cmc
          jsr rep+3
          lda #0
          tax
@@ -191,12 +191,12 @@ _win     lda #$40
          ldx #$c2
          ldy #$8a
          jsr set_v
-         ldx <dli_ov
-         ldy >dli_ov
+         ldx #<dli_ov
+         ldy #>dli_ov
          stx $0200
          sty $0201
-         ldx <dl_win
-         ldy >dl_win
+         ldx #<dl_win
+         ldy #>dl_win
          stx $0230
          sty $0231
          ldx #2
@@ -208,7 +208,7 @@ _win     lda #$40
          lda #0
          sta $02c6
          sta $02c8
-         lda >cz_fnt
+         lda #>cz_fnt
          sta $02f4
          lda #$c0
          sta $d40e
@@ -243,8 +243,8 @@ run_cz    ;   equ *
          sta $e8
 
          lda #$70
-         ldx <cz_cmc
-         ldy >cz_cmc
+         ldx #<cz_cmc
+         ldy #>cz_cmc
          jsr rep+3
          lda #0
          tax
@@ -255,21 +255,21 @@ run2_cz  lda #$40
          lda #$21
          sta $022f
          lda #6
-         ldx >vmus
-         ldy <vmus
+         ldx #>vmus
+         ldy #<vmus
          jsr set_v
          lda #7
-         ldx >v_cz
-         ldy <v_cz
+         ldx #>v_cz
+         ldy #<v_cz
          jsr set_v
-         ldx <dl_cz
-         ldy >dl_cz
+         ldx #<dl_cz
+         ldy #>dl_cz
          stx $0230
          sty $0231
          lda #$e0
          sta $02f4
-         ldx <dli_cz
-         ldy >dli_cz
+         ldx #<dli_cz
+         ldy #>dli_cz
          stx $0200
          sty $0201
          ldx #2
@@ -358,12 +358,12 @@ aw2      lda #31
 
 av5      jmp end_v
 
-_usttc   ldx <tc1
-         ldy >tc1
+_usttc   ldx #<tc1
+         ldy #>tc1
          stx $e0
          sty $e1
-         ldx <tc2
-         ldy >tc2
+         ldx #<tc2
+         ldy #>tc2
          stx $e2
          sty $e3
          rts
@@ -427,8 +427,8 @@ au1      lda tlo_t,y
          sta $d019
          sta $d01a
 
-         ldx <dli2_cz
-         ldy >dli2_cz
+         ldx #<dli2_cz
+         ldy #>dli2_cz
          stx $0200
          sty $0201
          jmp end_v
@@ -444,11 +444,11 @@ dli2_cz  pha
          sta $d01a
          lda #15
          sta $d017
-         lda >cz_fnt
+         lda #>cz_fnt
          sta $d409
 
-         ldx <dli3_cz
-         ldy >dli3_cz
+         ldx #<dli3_cz
+         ldy #>dli3_cz
          stx $0200
          sty $0201
          jmp end_v
@@ -459,7 +459,7 @@ dli3_cz  pha
          tya
          pha
 
-         lda >mi_fnt
+         lda #>mi_fnt
          sta $d409
          lda #$e6
          ldx #$ea
@@ -470,8 +470,8 @@ dli3_cz  pha
          lda #$22
          sta $d400
 
-         ldx <dli_cz
-         ldy >dli_cz
+         ldx #<dli_cz
+         ldy #>dli_cz
          stx $0200
          sty $0201
          jmp end_v
@@ -482,8 +482,8 @@ dli3_cz  pha
 gameover   ; equ *
 
          lda #$70
-         ldx <over_cmc
-         ldy >over_cmc
+         ldx #<over_cmc
+         ldy #>over_cmc
          jsr rep+3
          lda #0
          tax
@@ -507,14 +507,14 @@ at8      lda #0
          ldx #$c2
          lda #7
          jsr set_v
-         ldx <dl_over
-         ldy >dl_over
+         ldx #<dl_over
+         ldy #>dl_over
          stx $0230
          sty $0231
          stx $d402
          sty $d403
-         ldx <dli_ov
-         ldy >dli_ov
+         ldx #<dli_ov
+         ldy #>dli_ov
          stx $0200
          sty $0201
          lda #$c0
@@ -647,8 +647,8 @@ an4      tax
          bne an2
          lda #2
          sta kieszen,y
-         ldx <tt1
-         ldy >tt1
+         ldx #<tt1
+         ldy #>tt1
          jmp uzyl
 
 ;* klucz
@@ -661,8 +661,8 @@ an2   ;      equ *
          lda #4
          sta kieszen,y
          jsr _ok
-         ldx <tt2
-         ldy >tt2
+         ldx #<tt2
+         ldy #>tt2
          jmp uzyl
 
 ;* otwieracz
@@ -679,8 +679,8 @@ an6      lda #6
          lda #0
          ldy $cf
          sta kieszen,y
-         ldx <tt3
-         ldy >tt3
+         ldx #<tt3
+         ldy #>tt3
          jmp uzyl
 
 ;* cyjanek
@@ -697,8 +697,8 @@ an8      lda #7
          lda #0
          ldy $cf
          sta kieszen,y
-         ldx <tt4
-         ldy >tt4
+         ldx #<tt4
+         ldy #>tt4
          jmp uzyl
 
 ;* zatrute piwo
@@ -710,8 +710,8 @@ as1      cpx #7
          lda #0
          sta kieszen,y
          jsr _ok
-         ldx <tt16
-         ldy >tt16
+         ldx #<tt16
+         ldy #>tt16
          jmp uzyl
 
 ;* bateria do latarki
@@ -730,8 +730,8 @@ ao2      lda #31
          lda #0
          ldy $cf
          sta kieszen,y
-         ldx <tt5
-         ldy >tt5
+         ldx #<tt5
+         ldy #>tt5
          jmp uzyl
 
 ;* bateria do latarki+zarowki
@@ -750,8 +750,8 @@ ao4      lda #11
          ldy $cf
          lda #0
          sta kieszen,y
-         ldx <tt5
-         ldy >tt5
+         ldx #<tt5
+         ldy #>tt5
          jmp uzyl
 
 ;* zarowka do latarki
@@ -770,8 +770,8 @@ ao8      lda #30
          ldy $cf
          lda #0
          sta kieszen,y
-         ldx <tt6
-         ldy >tt6
+         ldx #<tt6
+         ldy #>tt6
          jmp uzyl
 
 ;* zarowka do latarki+baterii
@@ -788,8 +788,8 @@ ao9      lda #11
          ldy $cf
          lda #0
          sta kieszen,y
-         ldx <tt6
-         ldy >tt6
+         ldx #<tt6
+         ldy #>tt6
          jmp uzyl
 
 ;* smar (olej)
@@ -801,8 +801,8 @@ ao7      cpx #12
          lda #0
          sta kieszen,y
          jsr _ok
-         ldx <tt7
-         ldy >tt7
+         ldx #<tt7
+         ldy #>tt7
          jmp uzyl
 
 ;* sluchawki l.
@@ -814,8 +814,8 @@ ap9      cpx #13
          lda #14
          sta kieszen,y
          jsr _ok
-         ldx <tt8
-         ldy >tt8
+         ldx #<tt8
+         ldy #>tt8
          jmp uzyl
 
 ;* sekator
@@ -827,8 +827,8 @@ aq1      cpx #15
          lda #0
          sta kieszen,y
          jsr _ok
-         ldx <tt9
-         ldy >tt9
+         ldx #<tt9
+         ldy #>tt9
          jmp uzyl
 
 ;* lopata
@@ -840,8 +840,8 @@ ar1      cpx #16
          lda #17
          sta kieszen,y
          jsr _ok
-         ldx <tt10
-         ldy >tt10
+         ldx #<tt10
+         ldy #>tt10
          jmp uzyl
 
 ;* deski
@@ -853,8 +853,8 @@ ar2      cpx #17
          lda #0
          sta kieszen,y
          jsr _ok
-         ldx <tt11
-         ldy >tt11
+         ldx #<tt11
+         ldy #>tt11
          jmp uzyl
 
 ;* gaz
@@ -866,8 +866,8 @@ ar3      cpx #18
          lda #19
          sta kieszen,y
          jsr _ok
-         ldx <tt12
-         ldy >tt12
+         ldx #<tt12
+         ldy #>tt12
          jmp uzyl
 
 ;* detonator + dynamit
@@ -886,8 +886,8 @@ ar6      lda #0
          ldy $cf
          sta kieszen,y
          jsr _ok
-         ldx <tt13
-         ldy >tt13
+         ldx #<tt13
+         ldy #>tt13
          jmp uzyl
 
 ;* wiadro wody
@@ -899,8 +899,8 @@ ar5      cpx #20
          lda #0
          sta kieszen,y
          jsr _ok
-         ldx <tt14
-         ldy >tt14
+         ldx #<tt14
+         ldy #>tt14
          jmp uzyl
 
 ;* kij
@@ -912,8 +912,8 @@ ar7      cpx #21
          lda #0
          sta kieszen,y
          jsr _ok
-         ldx <tt15
-         ldy >tt15
+         ldx #<tt15
+         ldy #>tt15
          jmp uzyl
 
 ar8       jmp zz1
