@@ -1,9 +1,9 @@
 
-*rep       nop
-*          nop
-*          rts
-*          jmp rep
-*          jmp rep
+;*rep       nop
+;*          nop
+;*          rts
+;*          jmp rep
+;*          jmp rep
 
 _movrzc  ldy #70
 az6      lda plrzc_z,y
@@ -33,20 +33,20 @@ _ustres  lda #2
          sta $6a
          rts
 
-reset    equ *
-*         lda #0
-*         sta konsol
+reset   ;    equ *
+;*         lda #0
+;*         sta konsol
          lda konsol
          and #7
          cmp #7
          beq az3
-         lda #$ff    * zimny start
+         lda #$ff    ;* zimny start
          sta $0244
          jmp $e474
 az3      jmp run
 
 
-leg      equ *
+leg   ;      equ *
          lda #$22
          sta $022f
          lda #$40
@@ -216,8 +216,8 @@ _win     lda #$40
          jsr _zegar
 
 aw6      jsr _joy
-*         lda #0
-*         sta konsol
+;*         lda #0
+;*         sta konsol
          lda konsol
          and #7
          cmp #7
@@ -228,7 +228,7 @@ aw7      jmp run
 
 
 
-run_cz   equ *
+run_cz    ;   equ *
 
          jsr _ustres
          jsr _usttc
@@ -282,9 +282,9 @@ run2_cz  lda #$40
 
          ldx #16
          jsr _zegar
-aw3      jsr _joy
-*         lda #0
-*         sta konsol
+aw3       jsr _joy
+;*         lda #0
+;*         sta konsol
          lda konsol
          and #1
          beq aw8
@@ -304,7 +304,7 @@ aw8      lda #7
          rts
 
 
-v_cz     equ *
+v_cz     ;equ *
          lda $e7
          beq av7
          dec $e7
@@ -394,7 +394,7 @@ av2      lda ($e2),y
          rts
 
 
-dli_cz   equ *
+dli_cz   ; equ *
          pha
          txa
          pha
@@ -479,7 +479,7 @@ dli3_cz  pha
 
 
 
-gameover equ *
+gameover   ; equ *
 
          lda #$70
          ldx <over_cmc
@@ -529,8 +529,8 @@ at9      jsr _joy
          lda $02fc
          cmp #$ff
          bne az4
-*         lda #0
-*         sta konsol
+;*         lda #0
+;*         sta konsol
          lda konsol
          and #7
          cmp #7
@@ -565,11 +565,11 @@ at1      lda $0480,y
 
          jmp end_v
 
-_save    equ *
+_save    ;    equ *
 
          stx $f2
-         asl @
-         lsr @
+         asl 
+         lsr 
          sta $f3
          lda #$00
          ldy #$0f
@@ -639,7 +639,7 @@ an1      txa
 an4      tax
          lda pl
 
-* szmal
+;* szmal
 
          cpx #1
          bne an2
@@ -651,9 +651,9 @@ an4      tax
          ldy >tt1
          jmp uzyl
 
-* klucz
+;* klucz
 
-an2      equ *
+an2   ;      equ *
          cpx #3
          bne an3
          cmp #40
@@ -665,7 +665,7 @@ an2      equ *
          ldy >tt2
          jmp uzyl
 
-* otwieracz
+;* otwieracz
 
 an3      cpx #5
          bne an5
@@ -683,7 +683,7 @@ an6      lda #6
          ldy >tt3
          jmp uzyl
 
-* cyjanek
+;* cyjanek
 
 an5      cpx #4
          bne as1
@@ -701,7 +701,7 @@ an8      lda #7
          ldy >tt4
          jmp uzyl
 
-* zatrute piwo
+;* zatrute piwo
 
 as1      cpx #7
          bne an7
@@ -714,7 +714,7 @@ as1      cpx #7
          ldy >tt16
          jmp uzyl
 
-* bateria do latarki
+;* bateria do latarki
 
 an7      cpx #8
          bne ao1
@@ -734,7 +734,7 @@ ao2      lda #31
          ldy >tt5
          jmp uzyl
 
-* bateria do latarki+zarowki
+;* bateria do latarki+zarowki
 
 ao1      cpx #8
          bne ao5
@@ -754,7 +754,7 @@ ao4      lda #11
          ldy >tt5
          jmp uzyl
 
-* zarowka do latarki
+;* zarowka do latarki
 
 ao5      cpx #9
          bne ao6
@@ -774,7 +774,7 @@ ao8      lda #30
          ldy >tt6
          jmp uzyl
 
-* zarowka do latarki+baterii
+;* zarowka do latarki+baterii
 
 ao6      cpx #9
          bne ao7
@@ -792,7 +792,7 @@ ao9      lda #11
          ldy >tt6
          jmp uzyl
 
-* smar (olej)
+;* smar (olej)
 
 ao7      cpx #12
          bne ap9
@@ -805,7 +805,7 @@ ao7      cpx #12
          ldy >tt7
          jmp uzyl
 
-* sluchawki l.
+;* sluchawki l.
 
 ap9      cpx #13
          bne aq1
@@ -818,7 +818,7 @@ ap9      cpx #13
          ldy >tt8
          jmp uzyl
 
-* sekator
+;* sekator
 
 aq1      cpx #15
          bne ar1
@@ -831,7 +831,7 @@ aq1      cpx #15
          ldy >tt9
          jmp uzyl
 
-* lopata
+;* lopata
 
 ar1      cpx #16
          bne ar2
@@ -844,7 +844,7 @@ ar1      cpx #16
          ldy >tt10
          jmp uzyl
 
-* deski
+;* deski
 
 ar2      cpx #17
          bne ar3
@@ -857,7 +857,7 @@ ar2      cpx #17
          ldy >tt11
          jmp uzyl
 
-* gaz
+;* gaz
 
 ar3      cpx #18
          bne ar4
@@ -870,7 +870,7 @@ ar3      cpx #18
          ldy >tt12
          jmp uzyl
 
-* detonator + dynamit
+;* detonator + dynamit
 
 ar4      cpx #14
          bne ar5
@@ -890,7 +890,7 @@ ar6      lda #0
          ldy >tt13
          jmp uzyl
 
-* wiadro wody
+;* wiadro wody
 
 ar5      cpx #20
          bne ar7
@@ -903,7 +903,7 @@ ar5      cpx #20
          ldy >tt14
          jmp uzyl
 
-* kij
+;* kij
 
 ar7      cpx #21
          bne ar8
@@ -916,7 +916,7 @@ ar7      cpx #21
          ldy >tt15
          jmp uzyl
 
-ar8      jmp zz1
+ar8       jmp zz1
 
 
 
@@ -927,7 +927,7 @@ uzyl     jsr _prkom
          bmi zz1
          lda #0
          sta t
-zz1      jmp _czruch
+zz1       jmp _czruch
 
 
 _szk     ldy #0
@@ -948,7 +948,7 @@ _ok      ldy pl
          rts
 
 
-_ciemno  equ *
+_ciemno   ;  equ *
          lda pl
          cmp #27
          bne ap2
@@ -961,7 +961,7 @@ ap3      cmp #26
          jmp _jasno
 ap4      rts
 
-_jasno   equ *
+_jasno   ;   equ *
          ldy #0
 ap8      lda zst_fnt,y
          sta gra_fnt,y
@@ -994,7 +994,7 @@ ap6      lda zst_fnt+$0200,y
          bne ap6
          rts
 
-_movafnt equ *
+_movafnt   ; equ *
          ldy #0
 ap1      lda gra_fnt,y
          sta zst_fnt,y
@@ -1009,7 +1009,7 @@ ap1      lda gra_fnt,y
          rts
 
 
-_mazanie equ *
+_mazanie  ;; equ *
          ldy pl
          dey
          lda zrob,y

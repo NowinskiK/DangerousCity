@@ -1,34 +1,49 @@
-         opt %100101
-         org $a000
+;         opt %100101
+;         org $a000
 
-* stale procedury komputera
+; stale procedury komputera
 
-key      equ $f2f8
-pr_a     equ $f2b0
-pr_t     equ $c642
-set_v    equ $e45c
-end_v    equ $e462
-end_v2   equ $e45f
-konsol   equ $d01f
+key      = $f2f8
+pr_a     = $f2b0
+pr_t     = $c642
+set_v    = $e45c
+end_v    = $e462
+end_v2   = $e45f
+konsol   = $d01f
 
-* zmienne dane
+; zmienne dane
 
-gra_fnt  equ $7800
-plansze  equ $4000
-des      equ $0a00
-admap    equ $0700
-gra_cmc  equ $2887
-rep      equ $1a40
-cz_fnt   equ $7c00
-zst_fnt  equ $0c00
-cz_cmc   equ $2202
-win_cmc  equ $37bd
-over_cmc equ $31fd
-mi_fnt   equ $7400
-rys      equ $1000
+gra_fnt  = $7800
+plansze  = $4000
+des      = $0a00
+admap    = $0700
+gra_cmc  = $2887
+rep      = $1a40
+cz_fnt   = $7c00
+zst_fnt  = $0c00
+cz_cmc   = $2202
+win_cmc  = $37bd
+over_cmc = $31fd
+mi_fnt   = $7400
+rys      = $1000
 
 
-begin    jsr _ustres
+
+!To "bin\DC.xex", plain 
+ 
+ * = $a000 ; Adres, pod ktory program bedzie zaladowany do pamieci Atari
+
+ ; Naglowek pliku xex
+!BYTE 0xFF, 0xFF     ; 00 - 01 $FFFF - Stala Wartosc oznaczajaca, ze to jest program
+
+!source "rys.asm"
+
+!BYTE <Start, >Start ; 02 - 03 Adres Startu Programu (dolny potem gorny bajt)
+!BYTE <End, >End     ; 04 - 05 Adres Konca Programu  (dolny potem gorny bajt)
+
+Start  ; Poczatek programu -
+begin  
+         jsr _ustres
          ldx <run
          ldy >run
          stx $02
@@ -84,7 +99,7 @@ run      jsr run_cz
 
          jsr _initmap
          jsr _initgra
-         jsr _prmap  * rysuj mape
+         jsr _prmap  ;* rysuj mape
          jsr _prkiesz
 
          lda #$21
@@ -92,16 +107,16 @@ run      jsr run_cz
          lda #1
          sta fr
 
-* narysowanie samochodu w miejscu
+; narysowanie samochodu w miejscu
 
 newruch  lda z
          cmp #5
          bcs newruch
 
-aa1      ldy #0         * przygotowanie
-aa2      lda tabzw,y    * znaku
-         beq aa1        * do
-         cmp z          * wyswietlenia
+aa1      ldy #0         ;* przygotowanie
+aa2      lda tabzw,y    ;* znaku
+         beq aa1        ;* do
+         cmp z          ;* wyswietlenia
          beq aa3
          iny
          jmp aa2
@@ -116,7 +131,7 @@ aa3      iny
          ldy #0
          sta ($c0),y
 
-* zapamietanie znaku przed toba !
+;* zapamietanie znaku przed toba !
 
          ldx z
          cpx #1
@@ -155,7 +170,7 @@ ab6      ldy #0
          lda ($c0),y
          sta t
 
-* czekanie na ruch
+;* czekanie na ruch
 
 _czruch  jsr _joy
 
@@ -176,11 +191,11 @@ am10     lda s
 ab7      lda f
          beq _czruch
 
-* jazda w przod !
+;* jazda w przod !
 
          jmp _ruch
 
-* zmiana zwrotu
+;* zmiana zwrotu
 
 _zmz     jsr _keyoff
          jsr _ust
@@ -230,7 +245,7 @@ ae8      jsr _keyoff
 ad1      jsr _pdmg
          jmp ae8
 
-_gora    equ *
+_gora    ;equ *
 
          jsr _ust
          lda $c0
@@ -268,7 +283,8 @@ ac5      lda gra_fnt+736,x
          dec $c2
          bne ac6
 
-ac7      ldy #32
+;ac7       
+         ldy #32
          lda p
          sta ($c0),y
          dec y
@@ -277,7 +293,7 @@ ac7      ldy #32
 
          jmp newruch
 
-_dol     equ *
+_dol     ; equ *
 
          jsr _ust
          ldy #0
@@ -326,7 +342,7 @@ ac10     ldx #1
 
          jmp newruch
 
-_lewo    equ *
+_lewo    ; equ *
 
          jsr _ust
          dec $c0
@@ -378,7 +394,7 @@ _prawo   jsr _ust
          jsr _keyoff
          jmp newruch
 
-_plmov   equ *
+_plmov    ;equ *
 
          lda #0
          sta $c2
@@ -406,7 +422,7 @@ ad3      lda ($d0),y
 ad5      jmp ad6
 ad4      rts
 
-_prkiesz equ *
+_prkiesz  ; equ *
          ldx <rzeczy_w+4
          ldy >rzeczy_w+4
          stx $c2
@@ -435,7 +451,7 @@ am7      sta ($c2),y
          lda #24
          sec
          sbc $cf
-         lsr @
+         lsr 
          sta $ca
          lda #0
          sta $cb
@@ -464,7 +480,7 @@ am8      inc $c4
 
 
 
-_wezrzc  equ *
+_wezrzc   ;  equ *
          jsr _wolne
          beq am4
          lda rzecz
@@ -502,7 +518,7 @@ al2      sta rzc_wid,y
          rts
          sec
          sbc #1
-         asl @
+         asl 
          tay
          lda rzc,y
          sta $ce
@@ -546,7 +562,7 @@ al1      lda #84
          lda #40
          sec
          sbc $cf
-         lsr @
+         lsr 
          tax
          ldy #0
 al4      lda ($c0),y
@@ -583,7 +599,7 @@ ak8      iny
 ak2      lda tu_tab,y
 ak7      sec
          sbc #1
-         asl @
+         asl 
          tay
          lda adt_tab,y
          sta $c0
@@ -592,7 +608,7 @@ ak7      sec
          ldx $c0
          ldy $c1
          jsr _prkom
-ak6      rts
+         rts
 
 _prkom   stx $c0
          sty $c1
@@ -613,7 +629,7 @@ ak4      rts
 
 
 
-_prplnam equ *
+_prplnam   ; equ *
 
          lda #$80
          ldx #24
@@ -637,7 +653,7 @@ aj5      sta plname,y
          lda #32
          sec
          sbc $cf
-         lsr @
+         lsr 
          sta $cf
          tax
          ldy #0
@@ -695,7 +711,7 @@ aj4      lda #0
 
 
 
-_initmap equ *
+_initmap   ; equ *
 
          ldx <admap+2
          ldy >admap+2
@@ -744,7 +760,7 @@ ah5      ldy #0
          cmp #$9b
          bne ah6
          jmp ending
-ah6      cmp #$80     * rozpakuj !
+ah6      cmp #$80     ;* rozpakuj !
          bcs depack
          ldy #0
          sta ($c2),y
@@ -775,7 +791,7 @@ _des     inc $c2
 ending   rts
 
 
-_szuk    equ *
+_szuk   ;    equ *
 
          cmp #1
          bne aj1
@@ -804,7 +820,7 @@ al3      lda ($c0),y
          bne al3
 al8      rts
 
-_kode    equ *
+_kode    ;    equ *
 
          lda $02fc
          cmp #$ff
@@ -832,7 +848,7 @@ tankuj   lda fuel
          jmp tankuj
 ag8      jmp newruch
 
-kolizja  equ *
+kolizja    ;  equ *
 
          bpl af6
          jmp nextpl
@@ -845,7 +861,7 @@ ag6      lda cpn,y
 ag5      dey
          bpl ag6
 
-af12     lda t
+         lda t
          cmp #84
          bne am1
          jmp _wezrzc
@@ -857,7 +873,7 @@ am1      jmp ad1
 
 
 
-nextpl   equ *
+nextpl    ;   equ *
          ldx pozmap
          ldy pozmap+1
          stx $c0
@@ -895,7 +911,7 @@ nm       sta $c2
          sta $c0
          bcs af11
          dec $c1
-af11     equ *
+af11     ;equ *
          ldy #0
          lda ($c0),y
          bne af13
@@ -930,7 +946,7 @@ ag4      stx x
          jmp newruch
 
 
-_prmap   equ *
+_prmap    ;equ *
 
          ldx pozmap
          ldy pozmap+1
@@ -946,7 +962,7 @@ _prmap   equ *
 
 aw5      sec
          sbc #1
-         asl @
+         asl 
          tay
          lda admap,y
          sta $c0
@@ -1025,13 +1041,13 @@ _nxt asl _btb
      bne _lop
      rts
 
-_bta dta b(0)
-_btb dta a(0)
-_rsl dta a(0)
+_bta !byte (0)
+_btb !word (0)
+_rsl !word (0)
 
-st       jmp st
+st        jmp st
 
-dli      equ *
+dli       ;equ *
 
          pha
          txa
@@ -1090,7 +1106,7 @@ _zapisz  ldx #$80
          jmp _save
 
 
-v        equ *
+v        ;equ *
 
          jsr _kode
          lda #0
@@ -1169,7 +1185,7 @@ _ove     pla
          jmp gameover
 
 
-_mfuel   ldy k
+_mfuel   ldy k 
          lda kod,y
          cmp #$9b
          bne ah4
@@ -1182,13 +1198,13 @@ ah4      dec pf
          beq _ove
 ae7      rts
 
-_rysslup equ *
+_rysslup   ; equ *
          stx $f0
          sty $f1
          sta $f2
-         lsr @
-         lsr @
-         lsr @
+         lsr 
+         lsr 
+         lsr 
          sta $f3
 
          tax
@@ -1200,9 +1216,9 @@ ae2      lda #$80
          dex
          bne ae2
 ae3      lda $f3
-         asl @
-         asl @
-         asl @
+         asl 
+         asl 
+         asl 
          sta $f3
          lda $f2
          sec
@@ -1263,11 +1279,11 @@ ac3      sta ($d2),y
 _joy     lda $0278
          sta s
          cmp #15
-_joyf1   lda #0
+         lda #0   ;_joyf1
          sta f
          lda $0284
          bne _joyf2
-_joyf3   lda #1
+         lda #1   ;_joyf3
          sta f
 _joyf2   rts
 
@@ -1300,7 +1316,7 @@ _zegar   lda $14
          bne _zegar
          rts
 
-_mnc     sta $c2
+         sta $c2    ;_mnc
          lda #0
          sta $c0
          sta $c1
@@ -1331,35 +1347,39 @@ aa7      rts
 
 
 
+         
+*=$0500  ;org $0500
 
-         icl 'D8:PROC.ASM'
-         org $8000
-         icl 'D8:DATA.ASM'
-
-         org $0500
-
-x        dta b(10)
-y        dta b(7)
-z        dta b(1)
-znak     dta b(0)
-p        dta b(0)
-t        dta b(0)
-s        dta b(0)
-f        dta b(0)
-fuel     dta b(112)
-pf       dta b(4)
-damage   dta b(0)
-pd       dta b(0)
-pozmap   dta a(map+106)
-pl       dta b(1)
-k        dta b(0)
-rzecz    dta b(0)
-kieszen  dta b(0),b(0),b(0),b(0)
-music    dta b(1)
-pms      dta b(0)
-fr       dta b(0)
+x        !byte (10)
+y        !byte (7)
+z        !byte (1)
+znak     !byte (0)
+p        !byte (0)
+t        !byte (0)
+s        !byte (0)
+f        !byte (0)
+fuel     !byte (112)
+pf       !byte (4)
+damage   !byte (0)
+pd       !byte (0)
+pozmap   !word map+106
+pl       !byte (1)
+k        !byte (0)
+rzecz    !byte (0)
+kieszen  !byte (0),(0),(0),(0)
+music    !byte (1)
+pms      !byte (0)
+fr       !byte (0)
 
 
-         org $02e0
-         dta a(begin)
+!source "PROC.ASM"   ;      icl 'D8 PROC.ASM'
 
+
+End  ; Koniec Programu
+
+
+!source "DATA.asm"    ;     icl 'D8 DATA.ASM'
+
+
+* = $02e0
+!word (begin)
