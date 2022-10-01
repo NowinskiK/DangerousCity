@@ -30,12 +30,11 @@ gra_fnt  = $7800
 cz_fnt   = $7c00
 
 
-* = $1000-6-3
+* = $1000-6
 !WORD $ffff
-!WORD begin1
+!WORD *+4
 !WORD End-1
-begin1
-      jmp run
+
 !bin "plansze\rys",,6
 !bin "plansze\music.rep",,6
 !bin "muzyka\czolo.cmc",,6
@@ -61,5 +60,6 @@ begin1
 
 End  ; Koniec Programu
 
-
-
+!WORD $02e0
+!WORD $02e1
+!WORD run

@@ -1,6 +1,5 @@
 $File = ".\srcQA\bin\DANGEROUS.xex"; $DiscoverGap = $false
-$File = "d:\GitHub\NowinskiK\DangerousCity\srcPC\Release\dc.bin"; $DiscoverGap = $true
-$File = "d:\GitHub\NowinskiK\DangerousCity\srcPC\Release\dc-code.xex"; $DiscoverGap = $true
+$File = "d:\GitHub\NowinskiK\DangerousCity\srcPC\Release\DC.xex"; $DiscoverGap = $true
 #$File = "d:\GitHub\NowinskiK\DangerousCity\srcPC\Release\DC.xex"
 #$File = "d:\ATARI\gry\Fred (1991)(L.K. Avalon)(PL)[a1].xex" 
 #$File = "d:\ATARI\gry\PJ[128k].xex"
