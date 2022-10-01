@@ -14,20 +14,20 @@ konsol   = $d01f
 
 ; zmienne dane
 
+admap    = $0700
+des      = $0a00
+zst_fnt  = $0c00
+
 rys      = $1000
 rep      = $1a40
 cz_cmc   = $2202
 gra_cmc  = $2887
 over_cmc = $31fd
 win_cmc  = $37bd
-
-gra_fnt  = $7800
 plansze  = $4000
-des      = $0a00
-admap    = $0700
-cz_fnt   = $7c00
-zst_fnt  = $0c00
 mi_fnt   = $7400
+gra_fnt  = $7800
+cz_fnt   = $7c00
 
 
 * = $1000-6-3
