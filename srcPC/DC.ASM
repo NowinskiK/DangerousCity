@@ -120,7 +120,7 @@ run      jsr run_cz
          sta $02c8
          lda #1
          sta $02f0
-         lda >gra_fnt
+         lda #>gra_fnt
          sta $02f4
 
          jsr _initmap
@@ -552,8 +552,8 @@ al2      sta rzc_wid,y
          lda rzc,y
          sta $cf
 
-         ldx #<ekr+4
-         ldy #>ekr+4
+         ldx #<(ekr+4)
+         ldy #>(ekr+4)
          stx _rsl
          sty _rsl+1
          lda #32
@@ -709,13 +709,13 @@ _initgra lda #1
          ldy #7
          stx x
          sty y
-         ldx #<map+106
-         ldy #>map+106
+         ldx #<(map+106)
+         ldy #>(map+106)
          stx pozmap
          sty pozmap+1
 
-         ldx #<pasek+30
-         ldy #>pasek+30
+         ldx #<(pasek+30)
+         ldy #>(pasek+30)
          stx $c0
          sty $c1
          ldx #16
@@ -1002,8 +1002,8 @@ aw5      sec
          stx $c0
          sty $c1
 
-         ldx #<ekr+4
-         ldy #>ekr+4
+         ldx #<(ekr+4)
+         ldy #>(ekr+4)
          stx $c2
          sty $c3
 

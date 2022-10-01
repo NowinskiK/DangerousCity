@@ -1,11 +1,4 @@
-;* = $8000   ;sekcja
 
-;!BYTE <Start_Data, >Start_Data
-;!BYTE <End_Data, >End_Data
-;!word Start_Data
-;!word End_Data
-
-;Start_Data
 dl_leg   !byte $70,$70,$70
          !byte $70,$70,$f0
 ax9      !byte $42,<leg_t,>leg_t
@@ -137,11 +130,19 @@ leg_t    ;equ *
 ;  WLACZENIE / WYLACZENIE MUZYKI '
      !text "                                        "
      !text "                                        "
+     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+     !byte 0,0,0,0,0,0,0,0,0,0,0,0
 
+ekr_over !text "   koniec gry   "    ;85ee
 
-ekr_over !text "   koniec gry   "
-
-pasek    !text " "
+pasek    !text "                                "
+;861e
 ekr      !text "                              "
          !text "                              "
          !text "                              "
@@ -157,14 +158,15 @@ ekr      !text "                              "
          !text "                              "
          !text "                              "
          !text "                              "
-linijka  !text "       "
-plname   !text "        "
-rzeczy_w !text "        "
-         !text "        "
-         !text "        "
-         !text "        "
-kom      !text "                                        "
-rzc_wid  !text "                                        "
+         !text "                              "
+linijka  !text "                                "     ;87fe
+plname   !text "                                "   ;881e
+rzeczy_w !text "                                "   ;883e
+         !text "                                "
+         !text "                                "
+         !text "                                "
+kom      !text "                                        "  ;88be
+rzc_wid  !text "                                        "  ;88e6
 
 
 ekr_cz   !text " dangerous city "
@@ -173,13 +175,13 @@ t1_cz    !text "                                "
 t2_cz    !text "                                "
          !text "                                "
 
-tc1  !text "         PROGRAMOWANIE          "
-     !text "             MUZYKA             "
-     !text "       GRAFIKA PRZED GR        "
-     !text "         GRAFIKA DO GRY         "
-     !text "       SCENARIUSZ I MAPA        "
-     !text "           PRODUKCJA            "
-     !text "          WROCLAW 1994          "
+tc1      !text "         PROGRAMOWANIE          "
+         !text "             MUZYKA             "
+         !text "       GRAFIKA PRZED GRA        "
+         !text "         GRAFIKA DO GRY         "
+         !text "       SCENARIUSZ I MAPA        "
+         !text "           PRODUKCJA            "
+         !text "          WROCLAW 1994          "
 
 tc2  !text "        KAMIL  NOWINSKI         "
      !text "         KONRAD  GMUREK         "
@@ -196,7 +198,7 @@ mi_t !text "           ABCDEFGHI   JK               "
      !text "           LMNOP QRSTUVWXYZ[            "
      !text "           \]^_`abcdefghijkl            "
 
-grat1 !text "---gratulacje---"
+grat1    !text "---gratulacje---"     ;8c16
 grat2    !text "    WYDOSTALES SIE Z MIASTA,    "
          !text "      W KTORYM ZABLADZILES      "
          !text "    I WYJEZDZAJAC Z BOCZNEJ     "
@@ -210,9 +212,9 @@ grat2    !text "    WYDOSTALES SIE Z MIASTA,    "
 
 
 
-tabzw    !text "                    "
+tabzw    !text "         "  ;8d66
 
-lewf    ; equ ;*
+lewf    ; equ ;*   8d6f
      !byte %00000000 ;*0
      !byte %00000000
      !byte %00000000
@@ -350,7 +352,7 @@ lewf    ; equ ;*
      !byte %00000000
 
 
-prawf    ;equ ;*
+prawf    ;equ ;*  8def
 
      !byte %00000000 ;*0
      !byte %11100110
@@ -488,22 +490,22 @@ prawf    ;equ ;*
      !byte %11001100
      !byte %00000000
 
-; mapa gry  ABCDEFGHIJKLMN
+; mapa gry  ABCDEFGHIJKLMN     ;8e6f
 
-map  !byte 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0
-     !byte 0,  0,$33,$32,  0,  0,$39,  0,  0,  0,$16,$17,$18,  0,$1c,  0 ;* 1
-     !byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00  ;* 2
-     !byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00  ;* 3
-     !byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00  ;* 4
-     !byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00  ;* 5
-     !byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00  ;* 6
-     !byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00  ;* 7
-     !byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00  ;* 8
-     !byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00  ;* 9
-     !byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+map  !hex  00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00
+     !hex  00 00 33 32 00 00 39 00 00 00 16 17 18 00 1C 00  ;1
+     !hex  00 00 00 31 30 00 38 00 25 24 15 00 19 1A 1B 00  ;2
+     !hex  00 00 00 2B 2A 29 28 27 26 00 14 00 00 1D 00 00  ;3
+     !hex  00 00 36 2C 2D 2E 00 00 00 00 13 37 00 1E 1F 00  ;4
+     !hex  00 00 35 34 00 2F 00 05 04 03 12 00 00 00 20 00  ;5
+     !hex  00 00 00 3A 00 00 00 00 0B 02 01 0C 0D 00 21 00  ;6 
+     !hex  00 3D 3C 3B 41 42 43 00 0A 00 06 00 0E 00 22 00  ;7 
+     !hex  00 3E 3F 00 00 44 00 00 09 08 07 00 0F 00 23 00  ;8
+     !hex  00 00 40 00 45 46 47 00 00 00 00 00 10 11 00 00  ;9
+     !hex  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 
-cpn  !text "KL  kl"
-kod  !byte 5,63,37,13,0,8,62,$9b
+cpn  !hex  2B 2C 4B 4C 6B 6C ;$8F1F
+kod  !hex  05 3f 25 0d 00 08 3e 9b 
 
 namepl_t ;equ *
 
@@ -528,9 +530,9 @@ namepl_t ;equ *
      !text "PARKING POGOTOWIA "
      !text " "      ;*20
      !text " "
-     !text "OGRDKI DZIALKOWE "
-     !text "OGRDKI DZIALKOWE "
-     !text "OGRDKI DZIALKOWE "
+     !text "OGRODKI DZIALKOWE "
+     !text "OGRODKI DZIALKOWE "
+     !text "OGRODKI DZIALKOWE "
      !text " "
      !text " "
      !text "CIEMNA ULICZKA "
@@ -553,7 +555,7 @@ namepl_t ;equ *
      !text "RONDO "
      !text "RONDO "
      !text "RONDO "
-     !text "LEPA ULICZKA "
+     !text "SLEPA ULICZKA "
      !text " "
      !text " "
      !text " "      ;*50
@@ -574,10 +576,10 @@ namepl_t ;equ *
      !text " "
      !text " "
      !text "STACJA PALIW "
-     !text "ELEKTROWNIA NIEJDROWA "
-     !text "ELEKTROWNIA NIEJDROWA "
-     !text "ELEKTROWNIA NIEJDROWA "      ;*70
-     !text "ELEKTROWNIA NIEJDROWA "
+     !text "ELEKTROWNIA NIEJADROWA "
+     !text "ELEKTROWNIA NIEJADROWA "
+     !text "ELEKTROWNIA NIEJADROWA "      ;*70
+     !text "ELEKTROWNIA NIEJADROWA "
 
 tu_tab   ;equ *
 
@@ -634,7 +636,7 @@ t10  !text "Dziura w murze "
 t11  !text "Wystajace gwodzie "
 t12  !text "Drzwi do domu "
 t13  !text "Otwarty dom "
-t14  !text "Obezw{adniony sprzedawca "
+t14  !text "Obezwladniony sprzedawca "
 t15  !text "Straznik "
 t16  !text "Dziura w plocie "
 t17  !text "Otruty straznik "
@@ -766,7 +768,7 @@ rzc_nam  ;equ *
      !text "OTWARTE PIWO "
      !text "ZATRUTE PIWO "
      !text "BATERIA "
-     !text "ARWECZKA "
+     !text "ZAROWECZKA "
      !text "LATARKA "
      !text "KOMPLETNA LATARKA "
      !text "SMAR "
@@ -845,8 +847,5 @@ tt13 !text "Wysadziles mur."
 tt14 !text "Ostudziles goracy asfalt."
 tt15 !text "Wcisnales ukryty w murze przycisk."
 tt16 !text "Otrules straznika."
-
-
-;End_Data
 
 
