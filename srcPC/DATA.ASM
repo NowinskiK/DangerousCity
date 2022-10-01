@@ -1,4 +1,8 @@
 
+; Ten plik jest w tej chwili bezuzyteczny
+; Czesc tekstow nie kompiluje sie na wlasciwe bajty ATASCII
+; co powoduje, ze wiekszosc rzeczy w grze nie wyswietla sie prawidlowo.
+
 dl_leg   !byte $70,$70,$70
          !byte $70,$70,$f0
 ax9      !byte $42,<leg_t,>leg_t
@@ -41,10 +45,17 @@ dl_cz    !byte $70,$70
          !byte $47,<ekr_cz,>ekr_cz
          !byte $70,$00
          !byte $4e,<rys,>rys
-         !text "                    "
-         !text "                    "
-         !text "                    "
-         !text "                     "
+         !hex  0e 0e 0e
+         !hex  0e 0e 0e 0e 0e 0e 0e 0e
+         !hex  0e 0e 0e 0e 0e 0e 0e 0e
+         !hex  0e 0e 0e 0e 0e 0e 0e 0e
+         !hex  0e 0e 0e 0e 0e 0e 0e 0e
+         !hex  0e 0e 0e 0e 0e 0e 0e 0e
+         !hex  0e 0e 0e 0e 0e 0e 0e 0e
+         !hex  0e 0e 0e 0e 0e 0e 0e 0e
+         !hex  0e 0e 0e 0e 0e 0e 0e 0e
+         !hex  0e 0e 0e 0e 0e 0e 0e 0e
+         !hex  0e 0e 0e 0e 0e 0e 
          !byte $70,$f0
          !byte $42,<t1_cz,>t1_cz
          !byte $70
@@ -59,7 +70,7 @@ dl_over  ;equ *
      !byte $70,$70
      !byte $70,$70
      !byte $70,$70
-     !byte $f0,$70
+     !byte $70,$f0
      !byte $70,$70
      !byte $47,<ekr_over,>ekr_over
      !byte $41,<dl_over,>dl_over
@@ -83,13 +94,13 @@ dl       ;equ *
 
 
 leg_t    ;equ *
-     !text "                                        "
-     !text "  NARESZCIE !  PO TAK DLUGIEJ PRACY NAD "
-     !text " ZDJECIAMI  DO  TWOJEGO  NOWEGO FILMU - "
+     !PET "                                        "
+     !PET "  NARESZCIE !  PO TAK DLUGIEJ PRACY NAD "
+     !PET " ZDJECIAMI  DO  TWOJEGO  NOWEGO FILMU - "
      !text " NALEZY  CI  SIE  PORZADNY  ODPOCZYNEK. "
      !text " DLATEGO  WRACASZ  TERAZ  SAMOCHODEM DO "
      !text " SWOJEGO DOMU,  GDZIE MIESZKASZ WRAZ ZE "
-     !text " SWOJA LICZNA RODZINE.                  "
+     !text " SWOJA LICZNA RODZINA.                  "
      !text "                                        "
 
      !text "  BYLA TO BARDZO DLUGA I MECZACA PODRZ "
@@ -170,7 +181,7 @@ rzc_wid  !text "                                        "  ;88e6
 
 
 ekr_cz   !text " dangerous city "
-t1_cz    !text "                                "
+t1_cz    !text "                                "  ;$891e
          !text "                                "
 t2_cz    !text "                                "
          !text "                                "
@@ -832,20 +843,36 @@ tlo_t    ;equ *
 
 
 tt1  !text "Kupiles piwo."
-tt2  !text "W domu znalazles cyjanek."
+     !hex  00
+tt2  !text "W domu znalazles cyjanek."   ;94d7
+     !hex  00
 tt3  !text "Otworzyles piwo."
+     !hex  00
 tt4  !text "Dosypales cyjanku do piwa."
+     !hex  00
 tt5  !text "Wlozyles baterie do latarki."
+     !hex  00
 tt6  !text "Wkreciles zarowke do latarki."
+     !hex  00
 tt7  !text "Nasmarowales brame."
+     !hex  00
 tt8  !text "Otworzyles sejf i znalazles detonator."
+     !hex  00
 tt9  !text "Przeciales ogrodzenie."
+     !hex  00
 tt10 !text "Wykopales deski."
+     !hex  00
 tt11 !text "Polozyles deski na gwozdziach."
+     !hex  00
 tt12 !text "Obezwladniles sprzedawce i okradles go."
+     !hex  00
 tt13 !text "Wysadziles mur."
+     !hex  00
 tt14 !text "Ostudziles goracy asfalt."
+     !hex  00
 tt15 !text "Wcisnales ukryty w murze przycisk."
+     !hex  00
 tt16 !text "Otrules straznika."
+     !hex  00
 
 

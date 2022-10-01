@@ -1,8 +1,6 @@
 ;         opt %100101
 ;         org $a000
-
-     
-;     include "atari.inc"
+;!To "Release\dc.bin", plain 
 !To "Release\DC.xex", plain 
 
 
@@ -18,88 +16,66 @@ konsol   = $d01f
 
 ; zmienne dane
 
-admap    = $0700
+rys      = $1000
+rep      = $1a40
+cz_cmc   = $2202
+gra_cmc  = $2887
+over_cmc = $31fd
+win_cmc  = $37bd
+
+gra_fnt  = $7800
+plansze  = $4000
 des      = $0a00
+admap    = $0700
+cz_fnt   = $7c00
 zst_fnt  = $0c00
+mi_fnt   = $7400
 
 
-*=$0500-6-3  ;org $0500 
-!hex FFFF
-!WORD head
-!WORD End
-
-head        jmp run
-
-x        !byte (10)
-y        !byte (7)
-z        !byte (1)
-znak     !byte (0)
-p        !byte (0)
-t        !byte (0)
-s        !byte (0)
-f        !byte (0)
-fuel     !byte (112)
-pf       !byte (4)
-damage   !byte (0)
-pd       !byte (0)
-pozmap   !word map+106
-pl       !byte (1)
-k        !byte (0)
-rzecz    !byte (0)
-kieszen  !byte (0),(0),(0),(0)
-music    !byte (1)
-pms      !byte (0)
-fr       !byte (0)
-
-
-
-
-
-
-
-;* = $0ff0
-; Naglowek pliku xex
-;!BYTE 0xFF, 0xFF     ; 00 - 01 $FFFF - Stala Wartosc oznaczajaca, ze to jest program
-;!BYTE <Start, >Start ; 02 - 03 Adres Startu Programu (dolny potem gorny bajt)
-;!BYTE <End, >End     ; 04 - 05 Adres Konca Programu  (dolny potem gorny bajt)
-
-
-
-
-* = $1000
-rys      = * ;$1000
+* = $1000-6-3
+!WORD $ffff
+!WORD begin1
+!WORD End-1
+begin1
+      jmp run
 !bin "plansze\rys",,6
-rep      = * ;$1a40
 !bin "plansze\music.rep",,6
-cz_cmc   = * ;$2202
 !bin "muzyka\czolo.cmc",,6
-gra_cmc  = * ;$2887
 !bin "muzyka\gra.cmc",,6
-over_cmc = * ;$31fd
 !bin "muzyka\gameover.cmc",,6
-win_cmc  = * ;$37bd
 !bin "muzyka\win.cmc",,6
+!source "variables.asm"
+end1
 
 * = $4000
-plansze  = * ;$4000
+;* = $4000-4
+;!WORD begin4
+;!WORD end4-1
+begin4
 !bin "plansze\pl",,6
-mi_fnt   = * ;$7400
 !bin "fonty\mirage.fnt",,6
-gra_fnt  = * ;$7800
 !bin "fonty\a.fnt",,6
-cz_fnt   = * ;$7c00
 !bin "fonty\b.fnt",,6
+end4
 
 
 
-         
 
-* = $8000
+*=$8000
+;*=$8000-4
+;!WORD begin8
+;!WORD end8-1
+begin8
 ;!source "DATA.asm"    ;     icl 'D8 DATA.ASM'
 !source "DATA-QA.asm"
- 
-* = $a000 ; Adres, pod ktory program bedzie zaladowany do pamieci Atari
+end8
 
+;* = $a000-6 ; Adres, pod ktory program bedzie zaladowany do pamieci Atari
+;!WORD $ffff
+;!WORD run
+;!WORD End-1
+
+* = $a000
 
 run      jsr run_cz
          jsr _movrzc
@@ -1398,4 +1374,6 @@ aa7      rts
 !source "PROC.ASM"   ;      icl 'D8 PROC.ASM'
 
 End  ; Koniec Programu
+
+
 

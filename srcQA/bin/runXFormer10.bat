@@ -1,0 +1,1 @@
+d:\ATARI\Xformer10.exe d:\GitHub\NowinskiK\DangerousCity\srcQA\bin\DANGEROUS.xex 

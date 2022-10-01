@@ -186,8 +186,8 @@ ax7      sta $d40a
 _win     lda #$40
          sta $d40e
          lda #$70
-         ldx <win_cmc
-         ldy >win_cmc
+         ldx #<win_cmc
+         ldy #>win_cmc
          jsr rep+3
          lda #0
          tax
@@ -215,7 +215,7 @@ _win     lda #$40
          lda #0
          sta $02c6
          sta $02c8
-         lda >cz_fnt
+         lda #>cz_fnt
          sta $02f4
          lda #$c0
          sta $d40e
@@ -364,12 +364,12 @@ aw2      lda #31
 
 av5      jmp end_v
 
-_usttc   ldx <tc1
-         ldy >tc1
+_usttc   ldx #<tc1
+         ldy #>tc1
          stx $e0
          sty $e1
-         ldx <tc2
-         ldy >tc2
+         ldx #<tc2
+         ldy #>tc2
          stx $e2
          sty $e3
          rts
@@ -450,7 +450,7 @@ dli2_cz  pha
          sta $d01a
          lda #15
          sta $d017
-         lda >cz_fnt
+         lda #>cz_fnt
          sta $d409
 
          ldx #<dli3_cz
@@ -465,11 +465,11 @@ dli3_cz  pha
          tya
          pha
 
-         lda >mi_fnt
+         lda #>mi_fnt
          sta $d409
-         lda #$e6
-         ldx #$ea
-         ldy #$e3
+         lda #$e8
+         ldx #$e4
+         ldy #$ec
          sta $d016
          stx $d017
          sty $d018

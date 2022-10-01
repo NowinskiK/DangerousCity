@@ -6,6 +6,7 @@ $new = [System.IO.File]::ReadAllBytes($newFile)
 
 $orgStart = 0x6d0b
 $newStart = 0x9010
+$newStart = 0x9b09
 $addr = 0xA000
 $i=0
 $fc=0
