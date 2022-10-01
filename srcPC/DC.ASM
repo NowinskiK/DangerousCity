@@ -1,6 +1,8 @@
 ;         opt %100101
 ;         org $a000
 
+!To "Release\DC.xex", plain 
+
 ; stale procedury komputera
 
 key      = $f2f8
@@ -17,23 +19,20 @@ admap    = $0700
 des      = $0a00
 zst_fnt  = $0c00
 
-
-!To "Release\DC.xex", plain 
-
-
-* = $0f00
+* = $0ff0
 ; Naglowek pliku xex
 !BYTE 0xFF, 0xFF     ; 00 - 01 $FFFF - Stala Wartosc oznaczajaca, ze to jest program
 !BYTE <Start, >Start ; 02 - 03 Adres Startu Programu (dolny potem gorny bajt)
 !BYTE <End, >End     ; 04 - 05 Adres Konca Programu  (dolny potem gorny bajt)
 
 Start  ; Poczatek programu -
-         ldx #<begin
-         ldy #>begin
-         stx $02e0
-         sty $02e1
+         ;ldx #<begin
+         ;ldy #>begin
+         ;stx $02e0
+         ;sty $02e1
          jmp begin
-         
+
+
 * = $1000
 rys      = * ;$1000
 !bin "plansze\rys",,6
@@ -57,6 +56,10 @@ gra_fnt  = * ;$7800
 !bin "fonty\a.fnt",,6
 cz_fnt   = * ;$7c00
 !bin "fonty\b.fnt",,6
+
+
+
+         
 
 * = $8000
 !source "DATA.asm"    ;     icl 'D8 DATA.ASM'
@@ -117,7 +120,7 @@ run      jsr run_cz
          sta $02c8
          lda #1
          sta $02f0
-         lda #>gra_fnt
+         lda >gra_fnt
          sta $02f4
 
          jsr _initmap
@@ -1288,8 +1291,8 @@ _keyoff  lda #$ff
          sta $02fc
          rts
 
-_msr     ldx #<(gra_fnt+208)
-         ldy #>(gra_fnt+208)
+_msr     ldx #<(gra_fnt+$d0)  ;208
+         ldy #>(gra_fnt+$d0)
          stx $d2
          sty $d3
          ldy #15

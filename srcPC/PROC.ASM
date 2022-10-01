@@ -1,12 +1,18 @@
+VDSLST   = $0200
 
-;*rep       nop
-;*          nop
-;*          rts
-;*          jmp rep
-;*          jmp rep
+_proc   LDA $85
+        CMP #$3F
+        BNE _rts
+        RTS
+;--------------------------------------------------
+_rts    RTS
+;--------------------------------------------------
+        PLA
+        JMP reset  
+
 
 _movrzc  ldy #70
-az6      lda plrzc_z,y
+az6      lda plrzc_z,y    ;todo: zly adres
          sta plrzc,y
          lda #0
          sta zrob,y
@@ -34,13 +40,14 @@ _ustres  lda #2
          rts
 
 reset   ;    equ *
-         lda #0
-         sta konsol
+         lda $85
+         cmp #$3F
+         bne zs
          lda konsol
          and #7
          cmp #7
          beq az3
-         lda #$ff    ;* zimny start
+zs       lda #$ff    ;* zimny start
          sta $0244
          jmp $e474
 az3      jmp run
@@ -179,8 +186,8 @@ ax7      sta $d40a
 _win     lda #$40
          sta $d40e
          lda #$70
-         ldx #<win_cmc
-         ldy #>win_cmc
+         ldx <win_cmc
+         ldy >win_cmc
          jsr rep+3
          lda #0
          tax
@@ -193,8 +200,8 @@ _win     lda #$40
          jsr set_v
          ldx #<dli_ov
          ldy #>dli_ov
-         stx $0200
-         sty $0201
+         stx VDSLST   ;$0200
+         sty VDSLST+1 ;$0201
          ldx #<dl_win
          ldy #>dl_win
          stx $0230
@@ -208,7 +215,7 @@ _win     lda #$40
          lda #0
          sta $02c6
          sta $02c8
-         lda #>cz_fnt
+         lda >cz_fnt
          sta $02f4
          lda #$c0
          sta $d40e
@@ -282,9 +289,8 @@ run2_cz  lda #$40
 
          ldx #16
          jsr _zegar
-aw3       jsr _joy
-;*         lda #0
-;*         sta konsol
+         jsr _proc
+aw3      jsr _joy
          lda konsol
          and #1
          beq aw8
@@ -358,12 +364,12 @@ aw2      lda #31
 
 av5      jmp end_v
 
-_usttc   ldx #<tc1
-         ldy #>tc1
+_usttc   ldx <tc1
+         ldy >tc1
          stx $e0
          sty $e1
-         ldx #<tc2
-         ldy #>tc2
+         ldx <tc2
+         ldy >tc2
          stx $e2
          sty $e3
          rts
@@ -444,7 +450,7 @@ dli2_cz  pha
          sta $d01a
          lda #15
          sta $d017
-         lda #>cz_fnt
+         lda >cz_fnt
          sta $d409
 
          ldx #<dli3_cz
@@ -459,7 +465,7 @@ dli3_cz  pha
          tya
          pha
 
-         lda #>mi_fnt
+         lda >mi_fnt
          sta $d409
          lda #$e6
          ldx #$ea
@@ -916,7 +922,7 @@ ar7      cpx #21
          ldy #>tt15
          jmp uzyl
 
-ar8       jmp zz1
+ar8      jmp zz1
 
 
 
@@ -927,7 +933,7 @@ uzyl     jsr _prkom
          bmi zz1
          lda #0
          sta t
-zz1       jmp _czruch
+zz1      jmp _czruch
 
 
 _szk     ldy #0
