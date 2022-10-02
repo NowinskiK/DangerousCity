@@ -1013,7 +1013,7 @@ DSKINV  = $E453         ;vector to DIO
 ;.else
 ;CIOV    = $E456         ;vector to CIO
 ;SIOV    = $E459         ;vector to SIO
-;SETVBV  = $E45C         ;vector to set VBLANK parameters
+SETVBV  = $E45C         ;vector to set VBLANK parameters
 ; aliases in order not to have to sprinkle common code with .ifdefs
 ;CIOV_org    = CIOV
 ;SIOV_org    = SIOV

@@ -43,7 +43,7 @@ reset   ;    equ *
          lda $85
          cmp #$3F
          bne zs
-         lda konsol
+         lda CONSOL
          and #7
          cmp #7
          beq az3
@@ -61,7 +61,7 @@ leg   ;      equ *
          lda #7
          ldx #$c2
          ldy #$8a
-         jsr set_v
+         jsr SETVBV
          ldx #<dl_leg
          ldy #>dl_leg
          stx $0230
@@ -179,7 +179,7 @@ ax7      sta $d40a
          cpy #8
          bne ax6
 
-         jmp end_v
+         jmp XITVBV
 
 
 
@@ -197,7 +197,7 @@ _win     lda #$40
          lda #7
          ldx #$c2
          ldy #$8a
-         jsr set_v
+         jsr SETVBV
          ldx #<dli_ov
          ldy #>dli_ov
          stx VDSLST   ;$0200
@@ -225,7 +225,7 @@ _win     lda #$40
 aw6      jsr _joy
 ;*         lda #0
 ;*         sta konsol
-         lda konsol
+         lda CONSOL
          and #7
          cmp #7
          bne aw7
@@ -264,11 +264,11 @@ run2_cz  lda #$40
          lda #6
          ldx #>vmus
          ldy #<vmus
-         jsr set_v
+         jsr SETVBV
          lda #7
          ldx #>v_cz
          ldy #<v_cz
-         jsr set_v
+         jsr SETVBV
          ldx #<dl_cz
          ldy #>dl_cz
          stx $0230
@@ -291,10 +291,10 @@ run2_cz  lda #$40
          jsr _zegar
          jsr _proc
 aw3      jsr _joy
-         lda konsol
+         lda CONSOL
          and #1
          beq aw8
-         lda konsol
+         lda CONSOL
          and #4
          bne aw9
          jmp leg
@@ -304,7 +304,7 @@ aw9      lda f
 aw8      lda #7
          ldx #$c2
          ldy #$8a
-         jsr set_v
+         jsr SETVBV
          lda #$40
          sta $d40e
          rts
@@ -362,7 +362,7 @@ aw2      lda #31
          sta $e8
          jsr _usttc
 
-av5      jmp end_v
+av5      jmp XITVBV
 
 _usttc   ldx #<tc1
          ldy #>tc1
@@ -437,7 +437,7 @@ au1      lda tlo_t,y
          ldy #>dli2_cz
          stx $0200
          sty $0201
-         jmp end_v
+         jmp XITVBV
 
 dli2_cz  pha
          txa
@@ -457,7 +457,7 @@ dli2_cz  pha
          ldy #>dli3_cz
          stx $0200
          sty $0201
-         jmp end_v
+         jmp XITVBV
 
 dli3_cz  pha
          txa
@@ -480,7 +480,7 @@ dli3_cz  pha
          ldy #>dli_cz
          stx $0200
          sty $0201
-         jmp end_v
+         jmp XITVBV
 
 
 
@@ -512,7 +512,7 @@ at8      lda #0
          ldy #$8a
          ldx #$c2
          lda #7
-         jsr set_v
+         jsr SETVBV
          ldx #<dl_over
          ldy #>dl_over
          stx $0230
@@ -537,7 +537,7 @@ at9      jsr _joy
          bne az4
 ;*         lda #0
 ;*         sta konsol
-         lda konsol
+         lda CONSOL
          and #7
          cmp #7
          bne az4
@@ -569,7 +569,7 @@ at1      lda $0480,y
          sta $d018
          sta $d01a
 
-         jmp end_v
+         jmp XITVBV
 
 _save    ;    equ *
 

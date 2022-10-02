@@ -1,16 +1,7 @@
 
 !To "Release\DC.xex", plain 
 
-
-; stale procedury komputera
-
-key      = $f2f8
-pr_a     = $f2b0
-pr_t     = $c642
-set_v    = $e45c
-end_v    = $e462
-end_v2   = $e45f
-konsol   = $d01f
+!source "atari.inc"
 
 ; zmienne dane
 

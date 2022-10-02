@@ -1,14 +1,4 @@
 
-; stale procedury komputera
-
-key      = $f2f8
-pr_a     = $f2b0
-pr_t     = $c642
-set_v    = $e45c
-end_v    = $e462
-end_v2   = $e45f
-konsol   = $d01f
-
 ; zmienne dane
 
 admap    = $0700
@@ -42,7 +32,7 @@ run      jsr run_cz
          lda #7
          ldx #>v
          ldy #<v
-         jsr set_v
+         jsr SETVBV
 
          ldx #<dli
          ldy #>dli
@@ -1026,7 +1016,7 @@ dli       ;equ *
          ldy #>dli_2
          stx $0200
          sty $0201
-         jmp end_v
+         jmp XITVBV
 
 dli_2    pha
          txa
@@ -1040,14 +1030,14 @@ dli_2    pha
          ldy #>dli
          stx $0200
          sty $0201
-         jmp end_v
+         jmp XITVBV
 
 vmus     jsr _music
          jsr rep+6
          jsr _zapisz
          lda #0
          sta $4d
-         jmp end_v2
+         jmp SYSVBV
 
 
 _zapisz  ldx #$80
@@ -1107,7 +1097,7 @@ ag9      ldx #<(ekr+446)
          ldy #>(ekr+446)
          jsr _rysslup
 
-         jmp end_v
+         jmp XITVBV
 
 _music   lda pms
          beq as5
