@@ -83,15 +83,16 @@ dl       ;equ *
      !WORD pasek
      !byte $42
      !word ekr
-     !text ""
-     !byte $80,$0f,2
+     !fill 14, $02
+     !byte $80,$0f,$02
      !byte $20,$4f
      !word linijka
      !byte $42
      !word rzeczy_w
-     !text "",$f0
-     !byte 2,$20,2
-     !byte $41,<dl,>dl
+     !hex  02 02 02 f0
+     !hex  02 20 02
+     !byte 41
+     !word dl
 
 !source "ekr_mapping.asm"
 leg_t    ;equ *
@@ -244,77 +245,77 @@ kod  !hex  05 3f 25 0d 00 08 3e 9b
 namepl_t ;equ *
      !CONVTAB raw
      !CT 'l',$0C, 'e',$05, 's',$13, 'z',$1A, 'a',$01, 'c',$03, 'n',$0E, 'o',$0F
-     !text "CENTRUM "      ;*1
-     !text " "
-     !text " "
-     !text " "
-     !text "BANK "
-     !text " "
-     !text " "
-     !text "STACJA PALIW "
-     !text " "
-     !text " "      ;*10
-     !text "GOSPODARSTWO WIEJSKIE "
-     !text " "
-     !text " "
-     !text "PRZEDSZKOLE "
-     !text " "
-     !text "BAR "
-     !text "GRANICA MIASTA "
-     !text " "
-     !text "PARKING POGOTOWIA "
-     !text " "      ;*20
-     !text " "
-     !text "OGRoDKI DZIAlKOWE "
-     !text "OGRoDKI DZIAlKOWE "
-     !text "OGRoDKI DZIAlKOWE "
-     !text " "
-     !text " "
-     !text "CIEMNA ULICZKA "
-     !text "STACJA PALIW "
-     !text "PARK "
-     !text "PARK "      ;*30
-     !text "PARK "
-     !text "PARK "
-     !text " "
-     !text "STACJA PALIW "
-     !text "GRANICA MIASTA "
-     !text " "
-     !text "STACJA PALIW "
-     !text " "
-     !text " "
-     !text "DOMEK "      ;*40
-     !text "RONDO "
-     !text "RONDO "
-     !text "RONDO "
-     !text "RONDO "
-     !text "RONDO "
-     !text "RONDO "
-     !text "sLEPA ULICZKA "
-     !text " "
-     !text " "
-     !text " "      ;*50
-     !text "GRANICA MIASTA "
-     !text " "
-     !text " "
-     !text "SUPER MARKET "
-     !text " "
-     !text " "
-     !text "GRANICA MIASTA "
-     !text " "
-     !text " "
-     !text " "      ;*60
-     !text " "
-     !text " "
-     !text " "
-     !text "SKLEP Z PUKAWKAMI "
-     !text " "
-     !text " "
-     !text "STACJA PALIW "
-     !text "ELEKTROWNIA NIEJaDROWA "
-     !text "ELEKTROWNIA NIEJaDROWA "
-     !text "ELEKTROWNIA NIEJaDROWA "      ;*70
-     !text "ELEKTROWNIA NIEJaDROWA "
+     !text "CENTRUM",0      ;*1
+     !text "",0
+     !text "",0
+     !text "",0
+     !text "BANK",0
+     !text "",0
+     !text "",0
+     !text "STACJA PALIW",0
+     !text "",0
+     !text "",0      ;*10
+     !text "GOSPODARSTWO WIEJSKIE",0
+     !text "",0
+     !text "",0
+     !text "PRZEDSZKOLE",0
+     !text "",0
+     !text "BAR",0
+     !text "GRANICA MIASTA",0
+     !text "",0
+     !text "PARKING POGOTOWIA",0
+     !text "",0      ;*20
+     !text "",0
+     !text "OGRoDKI DZIAlKOWE",0
+     !text "OGRoDKI DZIAlKOWE",0
+     !text "OGRoDKI DZIAlKOWE",0
+     !text "",0
+     !text "",0
+     !text "CIEMNA ULICZKA",0
+     !text "STACJA PALIW",0
+     !text "PARK",0
+     !text "PARK",0      ;*30
+     !text "PARK",0
+     !text "PARK",0
+     !text "",0
+     !text "STACJA PALIW",0
+     !text "GRANICA MIASTA",0
+     !text "",0
+     !text "STACJA PALIW",0
+     !text "",0
+     !text "",0
+     !text "DOMEK",0      ;*40
+     !text "RONDO",0
+     !text "RONDO",0
+     !text "RONDO",0
+     !text "RONDO",0
+     !text "RONDO",0
+     !text "RONDO",0
+     !text "sLEPA ULICZKA",0
+     !text "",0
+     !text "",0
+     !text "",0      ;*50
+     !text "GRANICA MIASTA",0
+     !text "",0
+     !text "",0
+     !text "SUPER MARKET",0
+     !text "",0
+     !text "",0
+     !text "GRANICA MIASTA",0
+     !text "",0
+     !text "",0
+     !text "",0      ;*60
+     !text "",0
+     !text "",0
+     !text "",0
+     !text "SKLEP Z PUKAWKAMI",0
+     !text "",0
+     !text "",0
+     !text "STACJA PALIW",0
+     !text "ELEKTROWNIA NIEJaDROWA",0
+     !text "ELEKTROWNIA NIEJaDROWA",0
+     !text "ELEKTROWNIA NIEJaDROWA",0      ;*70
+     !text "ELEKTROWNIA NIEJaDROWA",0
 
 tu_tab   ;equ *
 
@@ -359,34 +360,28 @@ adt_tab  ;equ *
 
      !CONVTAB raw
      !CT '£',$7B, '$',$02, '!',$04, '%',$16
-t1   !text "Sejf "
-t2   !text "Pusty sejf "
-t3   !text "Murek "
-t4   !text "Studnia "
-t5   !text "Piaskownica "
-t6   !text "Sprzedawca w sklepie "
-t7   !text "Nienasmarowana brama "
-t8   !text "Ogrodzenie "
-t9   !text "Gor!cy asfalt "
-t10  !text "Dziura w murze "
-t11  !text "Wystaj!ce gwo$dzie "
-t12  !text "Drzwi do domu "
-t13  !text "Otwarty dom "
-t14  !text "Obezw£adniony sprzedawca "
-t15  !text "Stra%nik "
-t16  !text "Dziura w p£ocie "
-t17  !text "Otruty stra%nik "
-t20  !text " "
+t1   !text "Sejf",0
+t2   !text "Pusty sejf",0
+t3   !text "Murek",0
+t4   !text "Studnia",0
+t5   !text "Piaskownica",0
+t6   !text "Sprzedawca w sklepie",0
+t7   !text "Nienasmarowana brama",0
+t8   !text "Ogrodzenie",0
+t9   !text "Gor!cy asfalt",0
+t10  !text "Dziura w murze",0
+t11  !text "Wystaj!ce gwo$dzie",0
+t12  !text "Drzwi do domu",0
+t13  !text "Otwarty dom",0
+t14  !text "Obezw£adniony sprzedawca",0
+t15  !text "Stra%nik",0
+t16  !text "Dziura w p£ocie",0
+t17  !text "Otruty stra%nik",0
+t20  !text "",0
 
-zrob !text "                    "
-     !text "                    "
-     !text "                    "
-     !text "            "
+zrob  !fill 72,$00
 
-plrzc !text "                    "
-      !text "                    "
-      !text "                    "
-      !text "           "
+plrzc !fill 71,$00 
 
 plrzc_z  ;equ ;*
 
@@ -497,37 +492,37 @@ rzc  !byte 22,11  ;*1
 rzc_nam  ;equ *
      !CONVTAB raw
      !CT 'l',$0C, 'e',$05, 's',$13, 'z',$1A, 'a',$01, 'c',$03, 'n',$0E, 'o',$0F
-     !text "SZMAL "
-     !text "PIWO "
-     !text "KLUCZ "
-     !text "CYJANEK "
-     !text "OTWIERACZ "
-     !text "OTWARTE PIWO "
-     !text "ZATRUTE PIWO "
-     !text "BATERIA "
-     !text "zARoWECZKA "
-     !text "LATARKA "
-     !text "KOMPLETNA LATARKA "
-     !text "SMAR "
-     !text "SlUCHAWKI LEKARSKIE "
-     !text "DETONATOR "
-     !text "SEKATOR "
-     !text "lOPATA "
-     !text "DESKI "
-     !text "GAZ lZAWIaCY "
-     !text "DYNAMIT "
-     !text "WIADRO WODY "
-     !text "KIJ "
-     !text "TAsMA KLEJaCA "
-     !text "KINESKOP "
-     !text "BUTELKA "
-     !text "OPONA "
-     !text "DeTKA "
-     !text "KSIazKA "
-     !text "BUDZIK "
-     !text "KARABIN "
-     !text "LATARKA Z zARoWKa "
-     !text "LATARKA Z BATERIa "
+     !text "SZMAL",0
+     !text "PIWO",0
+     !text "KLUCZ",0
+     !text "CYJANEK",0
+     !text "OTWIERACZ",0
+     !text "OTWARTE PIWO",0
+     !text "ZATRUTE PIWO",0
+     !text "BATERIA",0
+     !text "zARoWECZKA",0
+     !text "LATARKA",0
+     !text "KOMPLETNA LATARKA",0
+     !text "SMAR",0
+     !text "SlUCHAWKI LEKARSKIE",0
+     !text "DETONATOR",0
+     !text "SEKATOR",0
+     !text "lOPATA",0
+     !text "DESKI",0
+     !text "GAZ lZAWIaCY",0
+     !text "DYNAMIT",0
+     !text "WIADRO WODY",0
+     !text "KIJ",0
+     !text "TAsMA KLEJaCA",0
+     !text "KINESKOP",0
+     !text "BUTELKA",0
+     !text "OPONA",0
+     !text "DeTKA",0
+     !text "KSIazKA",0
+     !text "BUDZIK",0
+     !text "KARABIN",0
+     !text "LATARKA Z zARoWKa",0
+     !text "LATARKA Z BATERIa",0
 
 
 lit_t    ;equ *
@@ -570,38 +565,22 @@ tlo_t    ;equ *
      !CONVTAB raw
      ;    l        s        a        z        e       x       o
      !CT '£',$7B, '$',$06, '!',$04, '%',$16, '*',$12, '\',$02, '@',$10
-tt1  !text "Kupi£e$ piwo."
-     !hex  00
-tt2  !text "W domu znalaz£e$ cyjanek."   ;94d7
-     !hex  00
-tt3  !text "Otworzy£e$ piwo."
-     !hex  00
-tt4  !text "Dosypa£e$ cyjanku do piwa."
-     !hex  00
-tt5  !text "W£o%y£e$ bateri* do latarki."
-     !hex  00
-tt6  !text "Wkr*ci£e$ %ar@wk* do latarki."
-     !hex  00
-tt7  !text "Nasmarowa£e$ bram*."
-     !hex  00
-tt8  !text "Otworzy£e$ sejf i znalaz£e$ detonator."
-     !hex  00
-tt9  !text "Przeci!£e$ ogrodzenie."
-     !hex  00
-tt10 !text "Wykopa£e$ deski."
-     !hex  00
-tt11 !text "Po£o%y£e$ deski na gwo\dziach."
-     !hex  00
-tt12 !text "Obezw£adni£e$ sprzedawc* i okrad£e$ go."
-     !hex  00
-tt13 !text "Wysadzi£e$ mur."
-     !hex  00
-tt14 !text "Ostudzi£e$ gor!cy asfalt."
-     !hex  00
-tt15 !text "Wcisn!£e$ ukryty w murze przycisk."
-     !hex  00
-tt16 !text "Otru£e$ stra%nika."
-     !hex  00
+tt1  !text "Kupi£e$ piwo.",0
+tt2  !text "W domu znalaz£e$ cyjanek.",0  ;94d7
+tt3  !text "Otworzy£e$ piwo.",0
+tt4  !text "Dosypa£e$ cyjanku do piwa.",0
+tt5  !text "W£o%y£e$ bateri* do latarki.",0
+tt6  !text "Wkr*ci£e$ %ar@wk* do latarki.",0
+tt7  !text "Nasmarowa£e$ bram*.",0
+tt8  !text "Otworzy£e$ sejf i znalaz£e$ detonator.",0
+tt9  !text "Przeci!£e$ ogrodzenie.",0
+tt10 !text "Wykopa£e$ deski.",0
+tt11 !text "Po£o%y£e$ deski na gwo\dziach.",0
+tt12 !text "Obezw£adni£e$ sprzedawc* i okrad£e$ go.",0
+tt13 !text "Wysadzi£e$ mur.",0
+tt14 !text "Ostudzi£e$ gor!cy asfalt.",0
+tt15 !text "Wcisn!£e$ ukryty w murze przycisk.",0
+tt16 !text "Otru£e$ stra%nika.",0
 
 ;data_end
 
