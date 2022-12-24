@@ -1,6 +1,6 @@
 $header_len = 6
-$File = ".\srcPC\fonty\b.fnt";
-$TargetFile = ".\srcPC\fonty\b-tiles.chr"
+$File = ".\srcPC\fonty\mirage.fnt";
+$TargetFile = ".\srcPC\fonty\mirage.chr"
 
 $b = [System.IO.File]::ReadAllBytes($File)
 $len = $b.Length
