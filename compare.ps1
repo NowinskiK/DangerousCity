@@ -1,6 +1,9 @@
 $orgFile = ".\srcQA\bin\DANGEROUS.xex"
 $newFile = ".\srcPC\Release\DC.xex"
 
+$orgFile = ".\srcQA\bin\DANGEROUS.xex-8000.bin"
+$newFile = ".\srcPC\DATA.bin"
+
 $org = [System.IO.File]::ReadAllBytes($orgFile)
 $new = [System.IO.File]::ReadAllBytes($newFile)
 
@@ -29,7 +32,7 @@ do {
 ## Show body
 $i=0
 $lines=0
-$orgStart = 0x8d59-176
+$orgStart = 0x0b9e+4
 do {
     $orgLine = ($org[($i+$orgStart)..($orgStart+15+$i)]|ForEach-Object ToString X2) -join ' '
     Write-Host ("     !hex  $orgLine   ")

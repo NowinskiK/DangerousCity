@@ -29,4 +29,6 @@ Folder [srcPC](./srcPC/) zawiera kompletną solucję i projekt pozwalający skom
 
 Jeśli chcesz uruchomić program z kodu źródłowego pod platformą PC - [w tym folderze](./doc/) znajdziesz prezentację opisującą krok po kroku jak przygotować środowisko.
 
+# Some numbers
+- 24 x 14 tiles - each screen
 

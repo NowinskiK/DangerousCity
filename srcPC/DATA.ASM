@@ -1,7 +1,7 @@
-
-; Ten plik jest w tej chwili bezuzyteczny
-; Czesc tekstow nie kompiluje sie na wlasciwe bajty ATASCII
-; co powoduje, ze wiekszosc rzeczy w grze nie wyswietla sie prawidlowo.
+;*=$8000-4
+;!To "DATA.BIN", plain 
+;!word dl_leg
+;!word data_end-1
 
 dl_leg   !byte $70,$70,$70
          !byte $70,$70,$f0
@@ -44,7 +44,8 @@ dl_cz    !byte $70,$70
          !byte $f0,$30
          !byte $47,<ekr_cz,>ekr_cz
          !byte $70,$00
-         !byte $4e,<rys,>rys
+         ;!byte $4e,<rys,>rys
+         !byte $4e,0,$10
          !hex  0e 0e 0e
          !hex  0e 0e 0e 0e 0e 0e 0e 0e
          !hex  0e 0e 0e 0e 0e 0e 0e 0e
@@ -92,416 +93,138 @@ dl       ;equ *
      !byte 2,$20,2
      !byte $41,<dl,>dl
 
-
+!source "ekr_mapping.asm"
 leg_t    ;equ *
-     !PET "                                        "
-     !PET "  NARESZCIE !  PO TAK DLUGIEJ PRACY NAD "
-     !PET " ZDJECIAMI  DO  TWOJEGO  NOWEGO FILMU - "
-     !text " NALEZY  CI  SIE  PORZADNY  ODPOCZYNEK. "
+     !text "                                        "
+     !text "  NARESZCIE !  PO TAK DlUGIEJ PRACY NAD "
+     !text " ZDJeCIAMI  DO  TWOJEGO  NOWEGO FILMU - "
+     !text " NALEzY  CI  SIe  PORZaDNY  ODPOCZYNEK. "
      !text " DLATEGO  WRACASZ  TERAZ  SAMOCHODEM DO "
      !text " SWOJEGO DOMU,  GDZIE MIESZKASZ WRAZ ZE "
-     !text " SWOJA LICZNA RODZINA.                  "
+     !text " SWOJa LICZNa RODZINa.                  "
      !text "                                        "
 
-     !text "  BYLA TO BARDZO DLUGA I MECZACA PODRZ "
-     !text " ALE JUZ NIEDALEKO DO CHATY.            "
-     !text " - O KURCZE ! -  WRZASNALES SAM DO SIE- "
-     !text " BIE.  WJECHALES W JAKAS BOCZNA ULICZKE "
-     !text " I NIE ZNASZ WLASCIWEJ DROGI POWROTNEJ. "
-     !text " OKAZALO SIE, ZE ZNALAZLES SIE W JAKIMS "
-     !text " TAJEMNICZYM  MIESCIE,   GDZIE  NIE  MA "
-     !text " LUDZI I WYJSCIA !!!                    "
+     !text "  BYlA TO BARDZO DlUGA I MeCZaCA PODRoz "
+     !text " ALE JUz NIEDALEKO DO CHATY.            "
+     !text " - O KURCZE ! -  WRZASNalEs SAM DO SIE- "
+     !text " BIE.  WJECHAlEs W JAKas BOCZNa ULICZKe "
+     !text " I NIE ZNASZ WlAsCIWEJ DROGI POWROTNEJ. "
+     !text " OKAZAlO SIe, zE ZNALAZlEs SIe W JAKIMs "
+     !text " TAJEMNICZYM  MIEsCIE,   GDZIE  NIE  MA "
+     !text " LUDZI I WYJsCIA !!!                    "
 
-     !text "  PENETRUJAC TEREN, WIDZIALES PO DRODZE "
-     !text " JAKIES  PRZEDMIOTY,  ALE NIE ZNASZ ICH "
-     !text " PRZEZNACZENIA.  I  TU  ROZPOCZYNA  SIE "
-     !text " TWOJA  MISJA.  JEZDZAC PO TYM MIESCIE, "
-     !text " MUSISZ BRAC PRZEDMIOTY  I  UZYWAC  ICH "
-     !text " GDZIE TRZEBA.  ROBIAC TAK -  OTWORZYSZ "
-     !text " BRAME  PROWADZACA  DO  WYJSCIA  Z TEGO "
-     !text " PRZEKLETEGO MIASTA.                    "
+     !text "  PENETRUJaC TEREN, WIDZIAlEs PO DRODZE "
+     !text " JAKIEs  PRZEDMIOTY,  ALE NIE ZNASZ ICH "
+     !text " PRZEZNACZENIA.  I  TU  ROZPOCZYNA  SIe "
+     !text " TWOJA  MISJA.  JEzDZaC PO TYM MIEsCIE, "
+     !text " MUSISZ BRAc PRZEDMIOTY  I  UzYWAc  ICH "
+     !text " GDZIE TRZEBA.  ROBIaC TAK -  OTWORZYSZ "
+     !text " BRAMe  PROWADZaCa  DO  WYJsCIA  Z TEGO "
+     !text " PRZEKLeTEGO MIASTA.                    "
 
      !text "                                        "
-     !text " DOSTEPNE KLAWISZE :                    "
+     !text " DOSTePNE KLAWISZE :                    "
      !text "                                        "
      !text " "
-
-;
-
-;  UZYWANIE PRZEDMIOTOW
-     !byte 0
-
-
-
-;   KONIEC GRY
-     !byte 0 
-
-
-
-;  WLACZENIE / WYLACZENIE MUZYKI '
+     !hex  d9 91 59 0d d9 94 59
+     !text "  UzYWANIE PRZEDMIOToW            "
+     !hex  D9 A5 B3 A3 59 00 00 00 2B 2F 2E 29 25 23 00 27
+     !hex  32 39 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+     !hex  00 00 00 00 00 00 00 D9 B3 A8 A9 A6 B4 59 00    
+     !text " WlaCZENIE / WYlaCZENIE MUZYKI          "
      !text "                                        "
-     !text "                                        "
-     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-     !byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-     !byte 0,0,0,0,0,0,0,0,0,0,0,0
+     !text "                               "
+     
+     !CONVTAB raw
+     !CT ' ',$00
+     !CT '#',$80
+     !CT '=',$FF
 
 ekr_over !text "   koniec gry   "    ;85ee
 
-pasek    !text "                                "
-;861e
-ekr      !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-         !text "                              "
-linijka  !text "                                "     ;87fe
-plname   !text "                                "   ;881e
-rzeczy_w !text "                                "   ;883e
-         !text "                                "
-         !text "                                "
-         !text "                                "
+pasek    !text "   ##########################   "
+ekr      !text "   #                        #   "   ;861e
+         !text "   #                        #   "
+         !text "   #                        #   "
+         !text "   #                        #   "
+         !text "   #                        #   "
+         !text "   #                        #   "
+         !text "   #                        #   "
+         !text "   #                        #   "
+         !text "   #                        #   "
+         !text "   #                        #   "
+         !text "   #                        #   "
+         !text "   #                        #   "
+         !text "   #                        #   "
+         !text "   #                        #   "
+         !text "   ##########################   "
+         
+linijka  !text "    ========================    "     ;87fe
+plname   !text "    ########################    "   ;881e
+rzeczy_w !text "    ########################    "   ;883e
+         !text "    ########################    "
+         !text "    ########################    "
+         !text "    ########################    "
 kom      !text "                                        "  ;88be
 rzc_wid  !text "                                        "  ;88e6
 
 
-ekr_cz   !text " dangerous city "
+ekr_cz   !text " city dangerous "
 t1_cz    !text "                                "  ;$891e
          !text "                                "
 t2_cz    !text "                                "
          !text "                                "
 
+!source "ekr_mapping.asm"
 tc1      !text "         PROGRAMOWANIE          "
          !text "             MUZYKA             "
-         !text "       GRAFIKA PRZED GRA        "
+         !text "       GRAFIKA PRZED GRa        "
          !text "         GRAFIKA DO GRY         "
          !text "       SCENARIUSZ I MAPA        "
          !text "           PRODUKCJA            "
-         !text "          WROCLAW 1994          "
+         !text "          WROClAW 1994          "
 
-tc2  !text "        KAMIL  NOWINSKI         "
+tc2  !text "         KAMIL NOWInSKI         "
      !text "         KONRAD  GMUREK         "
-     !text "        HUBERT NOWINSKI         "
-     !text "        KAMIL NOWINSKI          "
-     !text "    KAMIL,  HUBERT NOWINSCY     "
+     !text "        HUBERT  NOWInSKI        "
+     !text "         KAMIL NOWInSKI         "
+     !text "     KAMIL, HUBERT NOWInSCY     "
      !text "      MIRAGE SOFTWARE LTD.      "
      !text "                                "
      !text "                                "
      !text "                                "
 
 
-mi_t !text "           ABCDEFGHI   JK               "
-     !text "           LMNOP QRSTUVWXYZ[            "
-     !text "           \]^_`abcdefghijkl            "
+mi_t !hex  6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6C 6D
+     !hex  6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E
+     !hex  6E 6E 6E 6E 6E 6E 6E 6E 41 41 41 41 41 41 41 41
+     !hex  41 41 42 43 44 45 46 46 47 48 49 4A 4B 4C 4D 4E
+     !hex  4F 50 51 52 53 54 41 41 41 41 41 41 41 41 41 41
+     !hex  55 55 55 55 55 55 55 55 56 57 58 59 5A 5B 5B 5C
+     !hex  5D 5E 5F 60 61 62 63 64 65 66 67 68 69 69 69 6A
+     !hex  6B 55 55 55 55 55 55 55 
 
+     !CONVTAB raw
+     !CT '-',$0D
 grat1    !text "---gratulacje---"     ;8c16
-grat2    !text "    WYDOSTALES SIE Z MIASTA,    "
-         !text "      W KTORYM ZABLADZILES      "
-         !text "    I WYJEZDZAJAC Z BOCZNEJ     "
-         !text "   ULICZKI PROWADZACEJ PRZEZ    "
-         !text "    MROCZNY LAS - UDALES SIE    "
+    !source "ekr_mapping.asm"
+    
+grat2    !text "    WYDOSTAlEs SIe Z MIASTA,    "
+         !text "      W KToRYM ZABlaDZIlEs      "
+         !text "    I WYJEzDZAJaC Z BOCZNEJ     "
+         !text "   ULICZKI PROWADZaCEJ PRZEZ    "
+         !text "    MROCZNY LAS - UDAlEs SIe    "
          !text "       WRESZCIE DO DOMU .       "
-         !text "      JUZ WSZYSTKIE TWOJE       "
-         !text "    KLOPOTY MINELY, LECZ NIE    "
-         !text "     WIADOMO CO SIE JESZCZE     "
-         !text "        MOZE ZDARZYC ...        "
+         !text "      JUz WSZYSTKIE TWOJE       "
+         !text "    KlOPOTY MINelY, LECZ NIE    "
+         !text "     WIADOMO CO SIe JESZCZE     "
+         !text "        MOzE ZDARZYc ...        "
 
+tabzw    !hex 01 1c 02 1f 03 1d 04 1e 00 ;8d66
 
+!source "car.asm"
 
-tabzw    !text "         "  ;8d66
-
-lewf    ; equ ;*   8d6f
-     !byte %00000000 ;*0
-     !byte %00000000
-     !byte %00000000
-     !byte %00000000
-     !byte %00000000
-     !byte %00000000
-     !byte %00000000
-     !byte %00000000
-     !byte %00000000
-     !byte %01100111
-     !byte %11011011
-     !byte %11011011
-     !byte %11011011
-     !byte %11011011
-     !byte %01100111
-     !byte %00000000
-
-     !byte %00000000 ;*1
-     !byte %00000000
-     !byte %00000001
-     !byte %00000001
-     !byte %00000001
-     !byte %00000001
-     !byte %00000000
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %11001110
-     !byte %10110110
-     !byte %10110110
-     !byte %10110110
-     !byte %10110110
-     !byte %11001110
-     !byte %00000000
-
-     !byte %00000000 ;*2
-     !byte %00000001
-     !byte %00000011
-     !byte %00000011
-     !byte %00000011
-     !byte %00000011
-     !byte %00000001
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %10011100
-     !byte %01101100
-     !byte %01101100
-     !byte %01101100
-     !byte %01101100
-     !byte %10011100
-     !byte %00000000
-
-     !byte %00000000 ;*3
-     !byte %00000011
-     !byte %00000110
-     !byte %00000110
-     !byte %00000110
-     !byte %00000110
-     !byte %00000011
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %00111000
-     !byte %11011000
-     !byte %11011000
-     !byte %11011000
-     !byte %11011000
-     !byte %00111000
-     !byte %00000000
-
-     !byte %00000000 ;*4
-     !byte %00000110
-     !byte %00001101
-     !byte %00001101
-     !byte %00001101
-     !byte %00001101
-     !byte %00000110
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %01110000
-     !byte %10110000
-     !byte %10110000
-     !byte %10110000
-     !byte %10110000
-     !byte %01110000
-     !byte %00000000
-
-     !byte %00000000 ;*5
-     !byte %00001100
-     !byte %00011011
-     !byte %00011011
-     !byte %00011011
-     !byte %00011011
-     !byte %00001100
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %11100000
-     !byte %01100000
-     !byte %01100000
-     !byte %01100000
-     !byte %01100000
-     !byte %11100000
-     !byte %00000000
-
-     !byte %00000000 ;*6
-     !byte %00011001
-     !byte %00110110
-     !byte %00110110
-     !byte %00110110
-     !byte %00110110
-     !byte %00011001
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %11000000
-     !byte %11000000
-     !byte %11000000
-     !byte %11000000
-     !byte %11000000
-     !byte %11000000
-     !byte %00000000
-
-     !byte %00000000 ;*7
-     !byte %00110011
-     !byte %01101101
-     !byte %01101101
-     !byte %01101101
-     !byte %01101101
-     !byte %00110011
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %10000000
-     !byte %10000000
-     !byte %10000000
-     !byte %10000000
-     !byte %10000000
-     !byte %10000000
-     !byte %00000000
-
-
-prawf    ;equ ;*  8def
-
-     !byte %00000000 ;*0
-     !byte %11100110
-     !byte %11011011
-     !byte %11011011
-     !byte %11011011
-     !byte %11011011
-     !byte %11100110
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %00000000
-     !byte %00000000
-     !byte %00000000
-     !byte %00000000
-     !byte %00000000
-     !byte %00000000
-     !byte %00000000
-
-     !byte %00000000 ;*1
-     !byte %01110011
-     !byte %01101101
-     !byte %01101101
-     !byte %01101101
-     !byte %01101101
-     !byte %01110011
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %00000000
-     !byte %10000000
-     !byte %10000000
-     !byte %10000000
-     !byte %10000000
-     !byte %00000000
-     !byte %00000000
-
-     !byte %00000000 ;*2
-     !byte %00111001
-     !byte %00110110
-     !byte %00110110
-     !byte %00110110
-     !byte %00110110
-     !byte %00111001
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %10000000
-     !byte %11000000
-     !byte %11000000
-     !byte %11000000
-     !byte %11000000
-     !byte %10000000
-     !byte %00000000
-
-     !byte %00000000 ;*3
-     !byte %00011100
-     !byte %00011011
-     !byte %00011011
-     !byte %00011011
-     !byte %00011011
-     !byte %00011100
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %11000000
-     !byte %01100000
-     !byte %01100000
-     !byte %01100000
-     !byte %01100000
-     !byte %11000000
-     !byte %00000000
-
-     !byte %00000000 ;*4
-     !byte %00001110
-     !byte %00001101
-     !byte %00001101
-     !byte %00001101
-     !byte %00001101
-     !byte %00001110
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %01100000
-     !byte %10110000
-     !byte %10110000
-     !byte %10110000
-     !byte %10110000
-     !byte %01100000
-     !byte %00000000
-
-     !byte %00000000 ;*5
-     !byte %00000111
-     !byte %00000110
-     !byte %00000110
-     !byte %00000110
-     !byte %00000110
-     !byte %00000111
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %00110000
-     !byte %11011000
-     !byte %11011000
-     !byte %11011000
-     !byte %11011000
-     !byte %00110000
-     !byte %00000000
-
-     !byte %00000000 ;*6
-     !byte %00000011
-     !byte %00000011
-     !byte %00000011
-     !byte %00000011
-     !byte %00000011
-     !byte %00000011
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %10011000
-     !byte %01101100
-     !byte %01101100
-     !byte %01101100
-     !byte %01101100
-     !byte %10011000
-     !byte %00000000
-
-     !byte %00000000 ;*7
-     !byte %00000001
-     !byte %00000001
-     !byte %00000001
-     !byte %00000001
-     !byte %00000001
-     !byte %00000001
-     !byte %00000000
-     !byte %00000000 ;*
-     !byte %11001100
-     !byte %10110110
-     !byte %10110110
-     !byte %10110110
-     !byte %10110110
-     !byte %11001100
-     !byte %00000000
-
-; mapa gry  ABCDEFGHIJKLMN     ;8e6f
+;mapa gry     A  B  C  D  E  F  G  H  I  J  K  L  M  N     ;8e6f
 
 map  !hex  00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00
      !hex  00 00 33 32 00 00 39 00 00 00 16 17 18 00 1C 00  ;1
@@ -519,7 +242,8 @@ cpn  !hex  2B 2C 4B 4C 6B 6C ;$8F1F
 kod  !hex  05 3f 25 0d 00 08 3e 9b 
 
 namepl_t ;equ *
-
+     !CONVTAB raw
+     !CT 'l',$0C, 'e',$05, 's',$13, 'z',$1A, 'a',$01, 'c',$03, 'n',$0E, 'o',$0F
      !text "CENTRUM "      ;*1
      !text " "
      !text " "
@@ -541,9 +265,9 @@ namepl_t ;equ *
      !text "PARKING POGOTOWIA "
      !text " "      ;*20
      !text " "
-     !text "OGRODKI DZIALKOWE "
-     !text "OGRODKI DZIALKOWE "
-     !text "OGRODKI DZIALKOWE "
+     !text "OGRoDKI DZIAlKOWE "
+     !text "OGRoDKI DZIAlKOWE "
+     !text "OGRoDKI DZIAlKOWE "
      !text " "
      !text " "
      !text "CIEMNA ULICZKA "
@@ -566,7 +290,7 @@ namepl_t ;equ *
      !text "RONDO "
      !text "RONDO "
      !text "RONDO "
-     !text "SLEPA ULICZKA "
+     !text "sLEPA ULICZKA "
      !text " "
      !text " "
      !text " "      ;*50
@@ -587,10 +311,10 @@ namepl_t ;equ *
      !text " "
      !text " "
      !text "STACJA PALIW "
-     !text "ELEKTROWNIA NIEJADROWA "
-     !text "ELEKTROWNIA NIEJADROWA "
-     !text "ELEKTROWNIA NIEJADROWA "      ;*70
-     !text "ELEKTROWNIA NIEJADROWA "
+     !text "ELEKTROWNIA NIEJaDROWA "
+     !text "ELEKTROWNIA NIEJaDROWA "
+     !text "ELEKTROWNIA NIEJaDROWA "      ;*70
+     !text "ELEKTROWNIA NIEJaDROWA "
 
 tu_tab   ;equ *
 
@@ -633,7 +357,8 @@ adt_tab  ;equ *
      !word (t20)
      !word (t20)
 
-
+     !CONVTAB raw
+     !CT '£',$7B, '$',$02, '!',$04, '%',$16
 t1   !text "Sejf "
 t2   !text "Pusty sejf "
 t3   !text "Murek "
@@ -642,15 +367,15 @@ t5   !text "Piaskownica "
 t6   !text "Sprzedawca w sklepie "
 t7   !text "Nienasmarowana brama "
 t8   !text "Ogrodzenie "
-t9   !text "Goracy asfalt "
+t9   !text "Gor!cy asfalt "
 t10  !text "Dziura w murze "
-t11  !text "Wystajace gwodzie "
+t11  !text "Wystaj!ce gwo$dzie "
 t12  !text "Drzwi do domu "
 t13  !text "Otwarty dom "
-t14  !text "Obezwladniony sprzedawca "
-t15  !text "Straznik "
-t16  !text "Dziura w plocie "
-t17  !text "Otruty straznik "
+t14  !text "Obezw£adniony sprzedawca "
+t15  !text "Stra%nik "
+t16  !text "Dziura w p£ocie "
+t17  !text "Otruty stra%nik "
 t20  !text " "
 
 zrob !text "                    "
@@ -770,7 +495,8 @@ rzc  !byte 22,11  ;*1
      !byte 0,0
 
 rzc_nam  ;equ *
-
+     !CONVTAB raw
+     !CT 'l',$0C, 'e',$05, 's',$13, 'z',$1A, 'a',$01, 'c',$03, 'n',$0E, 'o',$0F
      !text "SZMAL "
      !text "PIWO "
      !text "KLUCZ "
@@ -779,29 +505,29 @@ rzc_nam  ;equ *
      !text "OTWARTE PIWO "
      !text "ZATRUTE PIWO "
      !text "BATERIA "
-     !text "ZAROWECZKA "
+     !text "zARoWECZKA "
      !text "LATARKA "
      !text "KOMPLETNA LATARKA "
      !text "SMAR "
-     !text "SLUCHAWKI LEKARSKIE "
+     !text "SlUCHAWKI LEKARSKIE "
      !text "DETONATOR "
      !text "SEKATOR "
-     !text "LOPATA "
+     !text "lOPATA "
      !text "DESKI "
-     !text "GAZ LZAWIaCY "
+     !text "GAZ lZAWIaCY "
      !text "DYNAMIT "
      !text "WIADRO WODY "
      !text "KIJ "
-     !text "TASMA KLEJACA "
+     !text "TAsMA KLEJaCA "
      !text "KINESKOP "
      !text "BUTELKA "
      !text "OPONA "
-     !text "DETKA "
-     !text "KSIAZKA "
+     !text "DeTKA "
+     !text "KSIazKA "
      !text "BUDZIK "
      !text "KARABIN "
-     !text "LATARKA Z ZAROWKA "
-     !text "LATARKA Z BATERIA "
+     !text "LATARKA Z zARoWKa "
+     !text "LATARKA Z BATERIa "
 
 
 lit_t    ;equ *
@@ -841,38 +567,41 @@ tlo_t    ;equ *
      !byte (2)
 
 
+     !CONVTAB raw
+     ;    l        s        a        z        e       x       o
+     !CT '£',$7B, '$',$06, '!',$04, '%',$16, '*',$12, '\',$02, '@',$10
+tt1  !text "Kupi£e$ piwo."
+     !hex  00
+tt2  !text "W domu znalaz£e$ cyjanek."   ;94d7
+     !hex  00
+tt3  !text "Otworzy£e$ piwo."
+     !hex  00
+tt4  !text "Dosypa£e$ cyjanku do piwa."
+     !hex  00
+tt5  !text "W£o%y£e$ bateri* do latarki."
+     !hex  00
+tt6  !text "Wkr*ci£e$ %ar@wk* do latarki."
+     !hex  00
+tt7  !text "Nasmarowa£e$ bram*."
+     !hex  00
+tt8  !text "Otworzy£e$ sejf i znalaz£e$ detonator."
+     !hex  00
+tt9  !text "Przeci!£e$ ogrodzenie."
+     !hex  00
+tt10 !text "Wykopa£e$ deski."
+     !hex  00
+tt11 !text "Po£o%y£e$ deski na gwo\dziach."
+     !hex  00
+tt12 !text "Obezw£adni£e$ sprzedawc* i okrad£e$ go."
+     !hex  00
+tt13 !text "Wysadzi£e$ mur."
+     !hex  00
+tt14 !text "Ostudzi£e$ gor!cy asfalt."
+     !hex  00
+tt15 !text "Wcisn!£e$ ukryty w murze przycisk."
+     !hex  00
+tt16 !text "Otru£e$ stra%nika."
+     !hex  00
 
-tt1  !text "Kupiles piwo."
-     !hex  00
-tt2  !text "W domu znalazles cyjanek."   ;94d7
-     !hex  00
-tt3  !text "Otworzyles piwo."
-     !hex  00
-tt4  !text "Dosypales cyjanku do piwa."
-     !hex  00
-tt5  !text "Wlozyles baterie do latarki."
-     !hex  00
-tt6  !text "Wkreciles zarowke do latarki."
-     !hex  00
-tt7  !text "Nasmarowales brame."
-     !hex  00
-tt8  !text "Otworzyles sejf i znalazles detonator."
-     !hex  00
-tt9  !text "Przeciales ogrodzenie."
-     !hex  00
-tt10 !text "Wykopales deski."
-     !hex  00
-tt11 !text "Polozyles deski na gwozdziach."
-     !hex  00
-tt12 !text "Obezwladniles sprzedawce i okradles go."
-     !hex  00
-tt13 !text "Wysadziles mur."
-     !hex  00
-tt14 !text "Ostudziles goracy asfalt."
-     !hex  00
-tt15 !text "Wcisnales ukryty w murze przycisk."
-     !hex  00
-tt16 !text "Otrules straznika."
-     !hex  00
-
+;data_end
 

@@ -42,8 +42,8 @@ cz_fnt   = $7c00
 
 
 *=$8000
-;!source "DATA.asm"
-!source "DATA-QA.asm"
+!source "DATA.asm"
+;!source "DATA-QA.asm"
 
 * = $a000
 !source "DC.asm"
