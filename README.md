@@ -18,12 +18,17 @@ Tutaj przeczytasz więcej o tym jak zaczęła się cała historia i dlaczego ta 
 
 # ATARI - Quick Assembler
 
-Folder [srcQA](./srcQA/) zawiera oryginale pliki zrzucone z moich dyskietek, które przetrwały ponad 20 lat, najpierw w mieszkaniu, potem w piwnicy.
+Folder [src/QA](./src/QA/) zawiera oryginale pliki zrzucone z moich dyskietek, które przetrwały ponad 20 lat, najpierw w mieszkaniu, potem w piwnicy.
 
 
-# PC - Assember dla środowiska C64
+# PC - Assember dla środowiska C64 Studio
 
-Folder [srcPC](./srcPC/) zawiera kompletną solucję i projekt pozwalający skompilować grę przy użyciu środowiska `C64 Studio`.
+Folder [src/C64S](./src/C64S/) zawiera kompletną solucję i projekt pozwalający skompilować grę przy użyciu środowiska `C64 Studio`.
+
+# PC - Assember dla MADS
+
+Folder [src/MADS](./src/MADS/) zawiera zestaw plików pozwalający skompilować grę przy użyciu [Mad-Assembler](https://github.com/tebe6502/Mad-Assembler) (MADS).
+
 
 # Jak zacząć?
 
