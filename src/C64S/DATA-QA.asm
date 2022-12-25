@@ -1,5 +1,5 @@
 
-!bin "..\srcQA\bin\DANGEROUS.xex-8000.bin",,4
+!bin "..\QA\bin\DANGEROUS.xex-8000.bin",,4
 
 
 dl_leg   = $8000
