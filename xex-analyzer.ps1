@@ -1,15 +1,20 @@
-$File = ".\srcQA\bin\DANGEROUS.xex"; $DiscoverGap = $false
-$File = "d:\GitHub\NowinskiK\DangerousCity\srcPC\Release\DC.xex"; $DiscoverGap = $true
+#$File = ".\srcQA\bin\DANGEROUS.xex"; $DiscoverGap = $false
+#$File = "d:\GitHub\NowinskiK\DangerousCity\srcPC\Release\DC.xex"; $DiscoverGap = $true
 #$File = "d:\GitHub\NowinskiK\DangerousCity\srcPC\Release\DC.xex"
 #$File = "d:\ATARI\gry\Fred (1991)(L.K. Avalon)(PL)[a1].xex" 
 #$File = "d:\ATARI\gry\PJ[128k].xex"
 #$File = "d:\ATARI\gry\River Raid\River Raid (v1).xex" 
 #$File = "d:\ATARI\gry\Problem Jasia\Problem Jasia (v2,128).xex" 
-$File = "d:\GitHub\NowinskiK\DangerousCity\srcPC\grafika2023\TYT10_PTODT4.xex"
-$File = "d:\GitHub\NowinskiK\DangerousCity\srcMADS\TYT10_PTODT4_2.xex"
+#$File = "d:\GitHub\NowinskiK\DangerousCity\srcPC\grafika2023\TYT10_PTODT4.xex"
 
-$save = $true
-$save = $false
+
+function Measure-xexFile {
+    param (
+        [string] $File,
+        [bool] $DiscoverGap = $false,
+        [bool] $save = $false
+    )
+
 $b = [System.IO.File]::ReadAllBytes($File)
 
 Write-Host ("File: {0}  (Len={1})" -f $File, $b.Length)
@@ -52,3 +57,5 @@ do {
 } until ( $i -ge $b.Length ) #-or $len -lt 2 )
 
 Write-Host "EOF."
+}
+

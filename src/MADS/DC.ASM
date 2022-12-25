@@ -1148,7 +1148,7 @@ _mfuel   ldy k
          rts
 ah4      dec pf
          bne ae7
-         lda #8
+         lda #fuel_exp
          sta pf
          dec fuel
          beq _ove

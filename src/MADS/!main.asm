@@ -1,5 +1,3 @@
-
-
     icl "atari.h"
 
 ; zmienne dane
@@ -15,6 +13,8 @@ mi_fnt   = $7400
 gra_fnt  = $7800
 cz_fnt   = $7c00
 
+fuel_exp = 8    ;Zuzycie paliwa: 4 oryginalne, 8 - wolniejsze
+
 SYSVBV  = $E45F         ;vector to process immediate VBLANK
 
 
@@ -25,7 +25,6 @@ SYSVBV  = $E45F         ;vector to process immediate VBLANK
     ins "muzyka\gra.cmc",6
     ins "muzyka\gameover.cmc",6
     ins "muzyka\win.cmc",6
-    icl "variables.asm"
 
     org $4000
     ins "plansze\pl",6
@@ -33,14 +32,16 @@ SYSVBV  = $E45F         ;vector to process immediate VBLANK
     ins "fonty\a.fnt",6
     ins "fonty\b.fnt",6
 
-    org $8000
-    icl "DATA.asm"
-
     org $a000
+main
     icl "DC.asm"
     icl "PROC.ASM"
 
+    org $8000
+    icl "DATA.asm"
 
-;!WORD $02e0
-;!WORD $02e1
-;!WORD run
+    org $0500
+    icl "variables.asm"
+
+    org $02e0
+    dta a(main)

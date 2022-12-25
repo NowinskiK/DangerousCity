@@ -94,126 +94,103 @@ dl       ;equ *
      dta a(dl)
 
      ;icl "ekr_mapping.asm"
+PLI_Z    EQU $5A
+
 leg_t    ;equ *
-     dta d "                                        "
-     dta d "  NARESZCIE !  PO TAK DlUGIEJ PRACY NAD "
-     dta d " ZDJeCIAMI  DO  TWOJEGO  NOWEGO FILMU - "
-     dta d " NALEzY  CI  SIe  PORZaDNY  ODPOCZYNEK. "
-     dta d " DLATEGO  WRACASZ  TERAZ  SAMOCHODEM DO "
-     dta d " SWOJEGO DOMU,  GDZIE MIESZKASZ WRAZ ZE "
-     dta d " SWOJa LICZNa RODZINa.                  "
-     dta d "                                        "
+     dta d'                                        '
+     dta d'  NARESZCIE !  PO TAK DUGIEJ PRACY NAD '
+     dta d' ZDJCIAMI  DO  TWOJEGO  NOWEGO FILMU - '
+     dta d' NALE',b(PLI_Z),d'Y  CI  SI  PORZDNY  ODPOCZYNEK. '
+     dta d' DLATEGO  WRACASZ  TERAZ  SAMOCHODEM DO '
+     dta d' SWOJEGO DOMU,  GDZIE MIESZKASZ WRAZ ZE '
+     dta d' SWOJ LICZN RODZIN.                  '
+     dta d'                                        '
 
-     dta d "  BYlA TO BARDZO DlUGA I MeCZaCA PODRoz "
-     dta d " ALE JUz NIEDALEKO DO CHATY.            "
-     dta d " - O KURCZE ! -  WRZASNalEs SAM DO SIE- "
-     dta d " BIE.  WJECHAlEs W JAKas BOCZNa ULICZKe "
-     dta d " I NIE ZNASZ WlAsCIWEJ DROGI POWROTNEJ. "
-     dta d " OKAZAlO SIe, zE ZNALAZlEs SIe W JAKIMs "
-     dta d " TAJEMNICZYM  MIEsCIE,   GDZIE  NIE  MA "
-     dta d " LUDZI I WYJsCIA !!!                    "
+     dta d'  BYA TO BARDZO DUGA I MCZCA PODR',b(PLI_Z),d' '
+     dta d' ALE JU',b(PLI_Z),d' NIEDALEKO DO CHATY.            '
+     dta d' - O KURCZE ! -  WRZASNE SAM DO SIE- '
+     dta d' BIE.  WJECHAE W JAK BOCZN ULICZK '
+     dta d' I NIE ZNASZ WACIWEJ DROGI POWROTNEJ. '
+     dta d' OKAZAO SI, ',b(PLI_Z),d'E ZNALAZE SI W JAKIM '
+     dta d' TAJEMNICZYM  MIECIE,   GDZIE  NIE  MA '
+     dta d' LUDZI I WYJCIA !!!                    '
 
-     dta d "  PENETRUJaC TEREN, WIDZIAlEs PO DRODZE "
-     dta d " JAKIEs  PRZEDMIOTY,  ALE NIE ZNASZ ICH "
-     dta d " PRZEZNACZENIA.  I  TU  ROZPOCZYNA  SIe "
-     dta d " TWOJA  MISJA.  JEzDZaC PO TYM MIEsCIE, "
-     dta d " MUSISZ BRAc PRZEDMIOTY  I  UzYWAc  ICH "
-     dta d " GDZIE TRZEBA.  ROBIaC TAK -  OTWORZYSZ "
-     dta d " BRAMe  PROWADZaCa  DO  WYJsCIA  Z TEGO "
-     dta d " PRZEKLeTEGO MIASTA.                    "
+     dta d'  PENETRUJC TEREN, WIDZIAE PO DRODZE '
+     dta d' JAKIE  PRZEDMIOTY,  ALE NIE ZNASZ ICH '
+     dta d' PRZEZNACZENIA.  I  TU  ROZPOCZYNA  SI '
+     dta d' TWOJA  MISJA.  JE',b(PLI_Z),d'DZC PO TYM MIECIE, '
+     dta d' MUSISZ BRA PRZEDMIOTY  I  U',b(PLI_Z),d'YWA  ICH '
+     dta d' GDZIE TRZEBA.  ROBIC TAK -  OTWORZYSZ '
+     dta d' BRAM  PROWADZC  DO  WYJCIA  Z TEGO '
+     dta d' PRZEKLTEGO MIASTA.                    '
 
-     dta d "                                        "
-     dta d " DOSTePNE KLAWISZE :                    "
-     dta d "                                        "
+     dta d'                                        '
+     dta d' DOSTPNE KLAWISZE :                    '
+     dta d'                                        '
+
+
      dta d " "
      .he d9 91 59 0d d9 94 59
-     dta d "  UzYWANIE PRZEDMIOToW            "
+     dta d '  U',b(PLI_Z),d'YWANIE PRZEDMIOTW            '
      .he D9 A5 B3 A3 59 00 00 00 2B 2F 2E 29 25 23 00 27
      .he 32 39 00 00 00 00 00 00 00 00 00 00 00 00 00 00
      .he 00 00 00 00 00 00 00 D9 B3 A8 A9 A6 B4 59 00    
-     dta d " WlaCZENIE / WYlaCZENIE MUZYKI          "
+     dta d " WCZENIE / WYCZENIE MUZYKI          "
      dta d "                                        "
      dta d "                               "
      
-     ;!CONVTAB raw
-     ;!CT ' ',$00
-     ;!CT '#',$80
-     ;!CT '=',$FF
-
 ekr_over dta d "   koniec gry   "    ;85ee
 
-pasek    dta d "   ##########################   "
-ekr      dta d "   #                        #   "   ;861e
-         dta d "   #                        #   "
-         dta d "   #                        #   "
-         dta d "   #                        #   "
-         dta d "   #                        #   "
-         dta d "   #                        #   "
-         dta d "   #                        #   "
-         dta d "   #                        #   "
-         dta d "   #                        #   "
-         dta d "   #                        #   "
-         dta d "   #                        #   "
-         dta d "   #                        #   "
-         dta d "   #                        #   "
-         dta d "   #                        #   "
-         dta d "   ##########################   "
+pasek       .he 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00
+ekr  :14    .he 00 00 00 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00 00 00  ;861e
+            .he 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00
          
-linijka  dta d "    ========================    "     ;87fe
-plname   dta d "    ########################    "   ;881e
-rzeczy_w dta d "    ########################    "   ;883e
-         dta d "    ########################    "
-         dta d "    ########################    "
-         dta d "    ########################    "
-kom      dta d "                                        "  ;88be
-rzc_wid  dta d "                                        "  ;88e6
+linijka     .he 00 00 00 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 00 00 00 00    ;87fe
+plname      .he 00 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00   ;881e
+rzeczy_w :4 .he 00 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00   ;883e
+
+kom      :40 dta d " "  ;88be
+rzc_wid  :40 dta d " "  ;88e6
 
 
 ekr_cz   dta d " city dangerous "
-t1_cz    dta d "                                "  ;$891e
-         dta d "                                "
-t2_cz    dta d "                                "
-         dta d "                                "
+t1_cz    :64 dta d " "  ;$891e
+t2_cz    :64 dta d " "
 
-;!source "ekr_mapping.asm"
-tc1      dta d "         PROGRAMOWANIE          "
-         dta d "             MUZYKA             "
-         dta d "       GRAFIKA PRZED GRa        "
-         dta d "         GRAFIKA DO GRY         "
-         dta d "       SCENARIUSZ I MAPA        "
-         dta d "           PRODUKCJA            "
-         dta d "          WROClAW 1994          "
+tc1  dta d '         PROGRAMOWANIE          '
+     dta d '             MUZYKA             '
+     dta d '       GRAFIKA PRZED GR        '
+     dta d '         GRAFIKA DO GRY         '
+     dta d '       SCENARIUSZ I MAPA        '
+     dta d '           PRODUKCJA            '
+     dta d '          WROCAW 1994          '
 
-tc2  dta d "         KAMIL NOWInSKI         "
+tc2  dta d "         KAMIL NOWISKI         "
      dta d "         KONRAD  GMUREK         "
-     dta d "        HUBERT  NOWInSKI        "
-     dta d "         KAMIL NOWInSKI         "
-     dta d "     KAMIL, HUBERT NOWInSCY     "
+     dta d "        HUBERT  NOWISKI        "
+     dta d "         KAMIL NOWISKI         "
+     dta d "     KAMIL, HUBERT NOWISCY     "
      dta d "      MIRAGE SOFTWARE LTD.      "
      dta d "                                "
      dta d "                                "
      dta d "                                "
 
-
 mi_t .he 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6C 6D 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 
      .he 41 41 41 41 41 41 41 41 41 41 42 43 44 45 46 46 47 48 49 4A 4B 4C 4D 4E 4F 50 51 52 53 54 41 41 41 41 41 41 41 41 41 41 
      .he 55 55 55 55 55 55 55 55 56 57 58 59 5A 5B 5B 5C 5D 5E 5F 60 61 62 63 64 65 66 67 68 69 69 69 6A 6B 55 55 55 55 55 55 55 
 
-     ;!CONVTAB raw
-     ;!CT '-',$0D
 grat1    dta d "---gratulacje---"     ;8c16
-    ;!source "ekr_mapping.asm"
     
-grat2    dta d "    WYDOSTAlEs SIe Z MIASTA,    "
-         dta d "      W KToRYM ZABlaDZIlEs      "
-         dta d "    I WYJEzDZAJaC Z BOCZNEJ     "
-         dta d "   ULICZKI PROWADZaCEJ PRZEZ    "
-         dta d "    MROCZNY LAS - UDAlEs SIe    "
-         dta d "       WRESZCIE DO DOMU .       "
-         dta d "      JUz WSZYSTKIE TWOJE       "
-         dta d "    KlOPOTY MINelY, LECZ NIE    "
-         dta d "     WIADOMO CO SIe JESZCZE     "
-         dta d "        MOzE ZDARZYc ...        "
+grat2    dta d'    WYDOSTAE SI Z MIASTA,    '
+         dta d'      W KTRYM ZABDZIE      '
+         dta d'    I WYJE',b(PLI_Z),d'DZAJC Z BOCZNEJ     '
+         dta d'   ULICZKI PROWADZCEJ PRZEZ    '
+         dta d'    MROCZNY LAS - UDAE SI    '
+         dta d'       WRESZCIE DO DOMU .       '
+         dta d'      JU',b(PLI_Z),d' WSZYSTKIE TWOJE       '
+         dta d'    KOPOTY MINY, LECZ NIE    '
+         dta d'     WIADOMO CO SI JESZCZE     '
+         dta d'        MO',b(PLI_Z),d'E ZDARZY ...        '
 
 tabzw    .he 01 1c 02 1f 03 1d 04 1e 00 ;8d66
 

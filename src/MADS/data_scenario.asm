@@ -1,7 +1,9 @@
+EOL    EQU 0
+PL_Z    EQU $1A
+PL_O    EQU $0F
+PL_L    EQU $0C
 
 namepl_t ;equ *
-     ;!CONVTAB raw
-     ;!CT 'l',$0C, 'e',$05, 's',$13, 'z',$1A, 'a',$01, 'c',$03, 'n',$0E, 'o',$0F
      dta c "CENTRUM",0      ;*1
      dta 0
      dta 0
@@ -23,9 +25,9 @@ namepl_t ;equ *
      dta c "PARKING POGOTOWIA",0
      dta 0      ;*20
      dta 0
-     dta c "OGRoDKI DZIAlKOWE",0
-     dta c "OGRoDKI DZIAlKOWE",0
-     dta c "OGRoDKI DZIAlKOWE",0
+     dta c "OGR",b(PL_O),c"DKI DZIA",b(PL_L),c"KOWE",0
+     dta c "OGR",b(PL_O),c"DKI DZIA",b(PL_L),c"KOWE",0
+     dta c "OGR",b(PL_O),c"DKI DZIA",b(PL_L),c"KOWE",0
      dta 0
      dta 0
      dta c "CIEMNA ULICZKA",0
@@ -48,7 +50,7 @@ namepl_t ;equ *
      dta c "RONDO",0
      dta c "RONDO",0
      dta c "RONDO",0
-     dta c "sLEPA ULICZKA",0
+     dta c "LEPA ULICZKA",0
      dta 0
      dta 0
      dta 0      ;*50
@@ -69,10 +71,10 @@ namepl_t ;equ *
      dta 0
      dta 0
      dta c "STACJA PALIW",0
-     dta c "ELEKTROWNIA NIEJaDROWA",0
-     dta c "ELEKTROWNIA NIEJaDROWA",0
-     dta c "ELEKTROWNIA NIEJaDROWA",0      ;*70
-     dta c "ELEKTROWNIA NIEJaDROWA",0
+     dta c "ELEKTROWNIA NIEJDROWA",0
+     dta c "ELEKTROWNIA NIEJDROWA",0
+     dta c "ELEKTROWNIA NIEJDROWA",0      ;*70
+     dta c "ELEKTROWNIA NIEJDROWA",0
 
 tu_tab   ;equ *
 
@@ -116,7 +118,7 @@ adt_tab  ;equ *
      dta a(t20)
 
      ;!CONVTAB raw
-     ;!CT '£',$7B, '$',$02, '!',$04, '%',$16
+     ;!CT '{',$7B, '$',$02, '!',$04, '%',$16
 t1   dta c "Sejf",0
 t2   dta c "Pusty sejf",0
 t3   dta c "Murek",0
@@ -125,15 +127,15 @@ t5   dta c "Piaskownica",0
 t6   dta c "Sprzedawca w sklepie",0
 t7   dta c "Nienasmarowana brama",0
 t8   dta c "Ogrodzenie",0
-t9   dta c "Gor!cy asfalt",0
-t10  dta c "Dziura w murze",0
-t11  dta c "Wystaj!ce gwo$dzie",0
+t9   dta c 'Gorcy asfalt', b(EOL)
+t10  dta c 'Dziura w murze', b(EOL)
+t11  dta c 'Wystajce gwodzie', b(EOL)
 t12  dta c "Drzwi do domu",0
 t13  dta c "Otwarty dom",0
-t14  dta c "Obezw£adniony sprzedawca",0
-t15  dta c "Stra%nik",0
-t16  dta c "Dziura w p£ocie",0
-t17  dta c "Otruty stra%nik",0
+t14  dta c "Obezw{adniony sprzedawca",0
+t15  dta c "Stranik",0
+t16  dta c "Dziura w p{ocie",0
+t17  dta c "Otruty stranik",0
 t20  dta 0
 
 zrob  :72 dta $00
@@ -247,39 +249,37 @@ rzc  dta 22,11  ;*1
      dta 0,0
 
 rzc_nam  ;equ *
-     ;!CONVTAB raw
-     ;!CT 'l',$0C, 'e',$05, 's',$13, 'z',$1A, 'a',$01, 'c',$03, 'n',$0E, 'o',$0F
-     dta c "SZMAL",0
-     dta c "PIWO",0
-     dta c "KLUCZ",0
-     dta c "CYJANEK",0
-     dta c "OTWIERACZ",0
-     dta c "OTWARTE PIWO",0
-     dta c "ZATRUTE PIWO",0
-     dta c "BATERIA",0
-     dta c "zARoWECZKA",0
-     dta c "LATARKA",0
-     dta c "KOMPLETNA LATARKA",0
-     dta c "SMAR",0
-     dta c "SlUCHAWKI LEKARSKIE",0
-     dta c "DETONATOR",0
-     dta c "SEKATOR",0
-     dta c "lOPATA",0
-     dta c "DESKI",0
-     dta c "GAZ lZAWIaCY",0
-     dta c "DYNAMIT",0
-     dta c "WIADRO WODY",0
-     dta c "KIJ",0
-     dta c "TAsMA KLEJaCA",0
-     dta c "KINESKOP",0
-     dta c "BUTELKA",0
-     dta c "OPONA",0
-     dta c "DeTKA",0
-     dta c "KSIazKA",0
-     dta c "BUDZIK",0
-     dta c "KARABIN",0
-     dta c "LATARKA Z zARoWKa",0
-     dta c "LATARKA Z BATERIa",0
+     dta c'SZMAL', b(EOL)
+     dta c'PIWO', b(EOL)
+     dta c'KLUCZ', b(EOL)
+     dta c'CYJANEK', b(EOL)
+     dta c'OTWIERACZ', b(EOL)
+     dta c'OTWARTE PIWO', b(EOL)
+     dta c'ZATRUTE PIWO', b(EOL)
+     dta c'BATERIA', b(EOL)
+     dta b(PL_Z),c'AR',b(PL_O),'WECZKA', b(EOL)
+     dta c'LATARKA', b(EOL)
+     dta c'KOMPLETNA LATARKA', b(EOL)
+     dta c'SMAR', b(EOL)
+     dta c'SUCHAWKI LEKARSKIE', b(EOL)
+     dta c'DETONATOR', b(EOL)
+     dta c'SEKATOR', b(EOL)
+     dta c'OPATA', b(EOL)
+     dta c'DESKI', b(EOL)
+     dta c'GAZ ZAWICY', b(EOL)
+     dta c'DYNAMIT', b(EOL)
+     dta c'WIADRO WODY', b(EOL)
+     dta c'KIJ', b(EOL)
+     dta c'TAMA KLEJCA', b(EOL)
+     dta c'KINESKOP', b(EOL)
+     dta c'BUTELKA', b(EOL)
+     dta c'OPONA', b(EOL)
+     dta c'DTKA', b(EOL)
+     dta c'KSI',b(PL_Z),'KA', b(EOL)
+     dta c'BUDZIK', b(EOL)
+     dta c'KARABIN', b(EOL)
+     dta c'LATARKA Z ',b(PL_Z),'AR',b(PL_O),'WK', b(EOL)
+     dta c'LATARKA Z BATERI', b(EOL)
 
 
 lit_t    ;equ *
@@ -319,22 +319,19 @@ tlo_t    ;equ *
      dta (2)
 
 
-     ;!CONVTAB raw
-     ;    l        s        a        z        e       x       o
-     ;!CT '£',$7B, '$',$06, '!',$04, '%',$16, '*',$12, '\',$02, '@',$10
-tt1  dta c "Kupi£e$ piwo.",0
-tt2  dta c "W domu znalaz£e$ cyjanek.",0  ;94d7
-tt3  dta c "Otworzy£e$ piwo.",0
-tt4  dta c "Dosypa£e$ cyjanku do piwa.",0
-tt5  dta c "W£o%y£e$ bateri* do latarki.",0
-tt6  dta c "Wkr*ci£e$ %ar@wk* do latarki.",0
-tt7  dta c "Nasmarowa£e$ bram*.",0
-tt8  dta c "Otworzy£e$ sejf i znalaz£e$ detonator.",0
-tt9  dta c "Przeci!£e$ ogrodzenie.",0
-tt10 dta c "Wykopa£e$ deski.",0
-tt11 dta c "Po£o%y£e$ deski na gwo\dziach.",0
-tt12 dta c "Obezw£adni£e$ sprzedawc* i okrad£e$ go.",0
-tt13 dta c "Wysadzi£e$ mur.",0
-tt14 dta c "Ostudzi£e$ gor!cy asfalt.",0
-tt15 dta c "Wcisn!£e$ ukryty w murze przycisk.",0
-tt16 dta c "Otru£e$ stra%nika.",0
+tt1  dta c'Kupi{e piwo.', b(EOL)
+tt2  dta c'W domu znalaz{e cyjanek.', b(EOL)
+tt3  dta c'Otworzy{e piwo.', b(EOL)
+tt4  dta c'Dosypa{e cyjanku do piwa.', b(EOL)
+tt5  dta c'W{oy{e bateri do latarki.', b(EOL)
+tt6  dta c'Wkrci{e arwk do latarki.', b(EOL)
+tt7  dta c'Nasmarowa{e bram.', b(EOL)
+tt8  dta c'Otworzy{e sejf i znalaz{e detonator.', b(EOL)
+tt9  dta c'Przeci{e ogrodzenie.', b(EOL)
+tt10 dta c'Wykopa{e deski.', b(EOL)
+tt11 dta c'Po{oy{e deski na gwodziach.', b(EOL)
+tt12 dta c'Obezw{adni{e sprzedawc i okrad{e go.', b(EOL)
+tt13 dta c'Wysadzi{e mur.', b(EOL)
+tt14 dta c'Ostudzi{e gorcy asfalt.', b(EOL)
+tt15 dta c'Wcisn{e ukryty w murze przycisk.', b(EOL)
+tt16 dta c'Otru{e stranika.',b(EOL)
