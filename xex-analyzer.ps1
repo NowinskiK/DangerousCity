@@ -6,6 +6,7 @@ $File = "d:\GitHub\NowinskiK\DangerousCity\srcPC\Release\DC.xex"; $DiscoverGap =
 #$File = "d:\ATARI\gry\River Raid\River Raid (v1).xex" 
 #$File = "d:\ATARI\gry\Problem Jasia\Problem Jasia (v2,128).xex" 
 $File = "d:\GitHub\NowinskiK\DangerousCity\srcPC\grafika2023\TYT10_PTODT4.xex"
+$File = "d:\GitHub\NowinskiK\DangerousCity\srcMADS\TYT10_PTODT4_2.xex"
 
 $save = $true
 $save = $false
