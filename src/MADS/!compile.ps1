@@ -1,14 +1,16 @@
 # Load functions
-. .\xex-analyzer.ps1
-. .\compare.ps1
+. ..\..\xex-analyzer.ps1
+. ..\..\compare.ps1
 
 . 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' '.\src\MADS\test\title.asm'
 Measure-xexFile ".\test\title.obx"
 
 
 # Compile game
-. 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' '.\src\MADS\!main.asm'
+. 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' '!main.asm'
 Measure-xexFile "!main.obx"
+
+
 #$fileorg = Resolve-Path ".\src\MADS\!main.obx"
 #$filexex = $fileorg -replace '.obx','.xex'
 #Remove-Item $filexex -ErrorAction 'SilentlyContinue'

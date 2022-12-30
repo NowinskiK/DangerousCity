@@ -26,17 +26,17 @@ plansze     ins "plansze\pl",6
 
             icl "title.asm"
 
-            ;org $4000
-            .ALIGN $0400
-fnt	        ins "newgfx\TYT10_PTODT4.fnt"
-logo_fnt = fnt + $0800
-
-            
+            .ALIGN $0100
+            .ds $0400
 main        jsr main_title
             jmp dc
 
 dc          icl "DC.asm"
             icl "PROC.ASM"
             icl "DATA.asm"
+
+            .ALIGN $0400
+fnt	        ins "newgfx\TYT10_PTODT4.fnt"
+;logo_fnt = fnt + $0800
 
             run main

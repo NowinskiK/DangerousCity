@@ -468,7 +468,7 @@ dli3_cz  pha
          tya
          pha
 
-         lda #>logo_fnt
+         lda #>fnt
          sta $d409
          lda #$e8
          ldx #$e4
