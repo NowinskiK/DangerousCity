@@ -62,6 +62,7 @@ timcnt3	=	$021C	; trzeci licznik systemu
 vvblki	=	$0222	; (2) wektor NMI natychmiastowego VBI
 vvblkd	=	$0224	; (2) wektor NMI op??nionego VBI
 timflg3	=	$022a	; znacznik wyzerowania licznika TIMCNT3
+SDMCTL  	 = $022F         ;SAVE DMACTL REGISTER
 
 colpf0s	=	$02C4	; rejestr-cie? COLPF0
 colpf1s	=	$02C5	; rejestr-cie? COLPF1

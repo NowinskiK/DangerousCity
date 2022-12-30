@@ -3,12 +3,12 @@
 /*  Mode: DLI (char mode)              */
 /***************************************/
 
+VBLKI   = 0			;wybor rodzaju przerwania VBLK
 WIDTH	= 32
 HEIGHT	= 30
 
 
 ; ---	MAIN PROGRAM
-    ;jmp main_title
 
 ant	dta $44,a(scr)
 	dta $84,$04,$04,$04,$04,$84,$04,$84,$04,$84,$04,$04,$84,$04,$84,$84
@@ -17,11 +17,6 @@ ant	dta $44,a(scr)
 	dta $41,a(ant)
 
 scr	ins "newgfx\TYT10_PTODT4.scr"
-
-	.ds 1*40
-
-	.ALIGN $0400
-fnt	ins "newgfx\TYT10_PTODT4.fnt"
 
 	ift USESPRITES
 	.ALIGN $0800
@@ -36,44 +31,50 @@ pmg	.ds $0300
 main_title
 ; ---	init PMG
 
-	ROMOFF = 0
+;	INIT_MUSIC
+	lda #$70
+	ldx #<cz_cmc
+	ldy #>cz_cmc
+	jsr rep+3
+	lda #0
+	tax
+	jsr rep+3
 
-	ift USESPRITES
 	mva >pmg pmbase		;missiles and players data address
 	mva #$03 pmcntl		;enable players and missiles
-	eif
 
 	lda:cmp:req $14		;wait 1 frame
 
-	ift ROMOFF
-	sei			;stop IRQ interrupts
+	sei
 	mva #$00 nmien		;stop NMI interrupts
-	sta dmactl     ;d400
-	mva #$fe portb		;switch off ROM to get 16k more ram
-	mwa #NMI $fffa		;new NMI handler
-	mva #1 vscrol   ;d405
+	sta dmactl
+	mva #1 vscrol
+
+;	INIT VBL
+	.if VBLKI
+	lda $0222
+	sta oldvbl
+	lda $0223
+	sta oldvbl+1
+	lda #$06		; muzyka ; VVBLKI (6) lub VVBLKD (7)  - SETVBLV
+	.else
+	lda $0224
+	sta oldvbl
+	lda $0225
+	sta oldvbl+1
+	lda #$07		; muzyka ; VVBLKI (6) lub VVBLKD (7)  - SETVBLV
+	.endif
+	ldx #>MyVBL
+	ldy #<MyVBL
+	jsr SETVBV      ;$E45C - JMP $c15d
+
 	mva #$c0 nmien		;switch on NMI+DLI again
-	els
-	;mwa #ant $0230
-	;mwa #ant dlptr    ;$d402
-	mva #$00 nmien		;stop NMI interrupts
-	mwa #NMI $0200
-	;mwa #NMI $fffa
-	;mva #1 vscrol
-	mva #$c0 nmien		;switch on NMI+DLI again
-	eif 
-
-	INIT_MUSIC
-
-
-	ift CHANGES		;if label CHANGES defined
-    
+	cli
+	mwa #ant $0230
+	;mva #@dmactl(narrow|dma|lineX1|players|missiles) dmactl	;set new screen width
+	mva #@dmactl(narrow|dma|lineX1|players|missiles) sdmctl	;set new screen width
 
 _lp	
-
-	;jsr rep+6		;gra bardzo szybko
-	;jsr _zegar		;z tym tylko szum slychac
-
     lda trig0		; FIRE #0
 	beq stop
 
@@ -88,19 +89,25 @@ _lp
 	and #$04
 	bne _lp			;wait to press any key; here you can put any own routine
 
-	els
-
-null	jmp DLI.dli1		;CPU is busy here, so no more routines allowed
-
-	eif
-
-
 stop
 	mva #$00 pmcntl		;PMG disabled
 	tax
 	sta:rne hposp0,x+
 
-	mva #$ff portb		;ROM switch on
+	;mva #$ff portb		;ROM switch on
+	sei
+	mva #$00 nmien
+	.if VBLKI
+	lda oldvbl
+	sta $0222
+	lda oldvbl+1
+	sta $0223
+	.else
+	lda oldvbl
+	sta $0224
+	lda oldvbl+1
+	sta $0225
+	.endif
 	mva #$40 nmien		;only NMI interrupts, DLI disabled
 	cli			;IRQ enabled
 
@@ -110,10 +117,7 @@ stop
 
 .local	DLI
 
-	?old_dli = *
-
 dli_start
-;		jsr rep+6
 
 dli11  
 	sta regA
@@ -265,14 +269,12 @@ dli6
 	lda >fnt+$400*$00
 	sta wsync		;line=144
 	sta chbase
-	;jsr rep+6
 	DLINEW dli7 1 0 0
 
 dli7
 	sta regA
 	stx regX
 	sty regY
-	;jsr rep+6    ;tutaj gralo ostatnio
 	lda >fnt+$400*$02
 c29	ldx #$00
 	ldy #$01
@@ -280,7 +282,6 @@ c29	ldx #$00
 	sta chbase
 	stx color2
 	sty gtictl
-
 	DLINEW dli8 1 1 1
 
 dli8
@@ -303,29 +304,11 @@ SCHR	= 127
 
 ; ---
 
-.proc	NMI
+.proc	MyVBL
 
-	bit nmist
-	bpl VBL
-
-	jmp DLI.dli_start
-dliv	equ *-2
-
-VBL 
 	sta regA
 	stx regX
 	sty regY
-
-	sta nmist		;reset NMI flag
-
-	ift ROMOFF
-	mwa #ant dlptr		;ANTIC address program
-	els
-	mwa #ant $0230		;ANTIC address program
-	eif
-	mva #@dmactl(narrow|dma|lineX1|players|missiles) dmactl	;set new screen width
-
-	inc cloc		;little timer
 
 ; Initial values
 
@@ -374,104 +357,36 @@ x5	lda #$00
 	sta sizep0
 	sta sizem
 	sta colpm0
-
-	mwa #DLI.dli_start dliv	;set the first address of DLI interrupt
+	
+	mwa #DLI.dli_start VDSLST    ;$0200
 
 ;this area is for yours routines
+	jsr rep+6
 
-quit
+quit ;DLINEW DLI.dli_start 1 1 1 
 	lda regA
 	ldx regX
 	ldy regY
-	rti
+
+	.if VBLKI
+	jmp SYSVBV		; skok do natychmiastowego przerwania sys 
+	.else
+	jmp XITVBV		; wyjscie z przerwania VBLK
+	.endif
+
+	; rti
 
 .endp
 
-; ---
-	;ini main
-; ---
 
-;	opt l-
+oldvbl dta a(0)		;stary wektor przerwania
 
-.MACRO	SPRITES
-missiles
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 40 40 60 60 60 60 60 60
-	.he 60 60 60 60 60 60 60 60 60 60 60 60 60 60 60 60
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-player0
-	.ds $100
-player1
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 01 11 11 11 11 11 11 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-player2
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 6C 6C 6C 6C 6C 6C 6C 04
-	.he 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04
-	.he 04 04 04 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 40 E4 EE EE EE 4E
-	.he 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-player3
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 C0 C0 C0 C0 C0 C0 C0
-	.he C0 C0 C0 00 00 40 40 40 40 40 40 40 40 40 40 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 22 77 77 77 77 22 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 10 10 18
-	.he 18 18 18 18 08 08 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-.ENDM
-
-USESPRITES = 1
 
 .MACRO	DLINEW
-	mva <:1 NMI.dliv
+	; Również makro DLINEW musi ustawiać wektor DLI nie adres jmp dliv:DLI.dli_start
+	mva <:1 VDSLST
 	ift [>?old_dli]<>[>:1]
-	mva >:1 NMI.dliv+1
+	mva >:1 VDSLST+1
 	eif
 
 	ift :2
