@@ -6,6 +6,7 @@
 # Atari
 *.lst
 *.xex
+*.obx
 
 # User-specific files
 *.rsuser
