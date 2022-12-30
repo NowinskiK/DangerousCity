@@ -51,11 +51,11 @@ zs       lda #$ff    ;* zimny start
 az3      jmp run
 
 
-leg   ;      equ *
+leg   ;      equ *   ;LEGENDA
          lda #$22
          sta $022f
          lda #$40
-         sta $d40e
+         sta nmien
          lda #7
          ldx #$c2
          ldy #$8a
@@ -89,7 +89,7 @@ ax1      sta leg_c,y
          bpl ax1
 
          lda #$c0
-         sta $d40e
+         sta nmien
 
          ldy #0
 ax3      lda leg_c,y
@@ -182,7 +182,7 @@ ax7      sta $d40a
 
 
 _win     lda #$40
-         sta $d40e
+         sta nmien
          lda #$70
          ldx #<win_cmc
          ldy #>win_cmc
@@ -216,7 +216,7 @@ _win     lda #$40
          lda #>cz_fnt
          sta $02f4
          lda #$c0
-         sta $d40e
+         sta nmien
          ldx #16
          jsr _zegar
 
@@ -247,6 +247,7 @@ run_cz    ;   equ *
          sta $e7
          sta $e8
 
+        ift PLAY_MUSIC
          lda #$70
          ldx #<cz_cmc
          ldy #>cz_cmc
@@ -254,19 +255,23 @@ run_cz    ;   equ *
          lda #0
          tax
          jsr rep+3
+        eif
 
 run2_cz  lda #$40
-         sta $d40e
+         sta nmien
          lda #$21
          sta $022f
-         lda #6
-         ldx #>vmus
-         ldy #<vmus
-         jsr SETVBV
-         lda #7
+
+        ;  lda #6         ; muzyka
+        ;  ldx #>vmus
+        ;  ldy #<vmus
+        ;  jsr SETVBV
+
+         lda #7         ; kod przesuwajacy napisy
          ldx #>v_cz
          ldy #<v_cz
          jsr SETVBV
+
          ldx #<dl_cz
          ldy #>dl_cz
          stx $0230
@@ -280,7 +285,7 @@ run2_cz  lda #$40
          ldx #2
          jsr _zegar
          lda #$c0
-         sta $d40e
+         sta nmien
          lda #0
          sta $02c6
          sta $02c8
@@ -304,7 +309,7 @@ aw8      lda #7
          ldy #$8a
          jsr SETVBV
          lda #$40
-         sta $d40e
+         sta nmien
          rts
 
 
@@ -463,7 +468,7 @@ dli3_cz  pha
          tya
          pha
 
-         lda #>mi_fnt
+         lda #>logo_fnt
          sta $d409
          lda #$e8
          ldx #$e4
@@ -504,7 +509,7 @@ at8      lda #0
          ldx #1
          jsr rep+3
          lda #$40
-         sta $d40e
+         sta nmien
          lda #$e0
          sta $02f4
          ldy #$8a
@@ -522,7 +527,7 @@ at8      lda #0
          stx $0200
          sty $0201
          lda #$c0
-         sta $d40e
+         sta nmien
          lda #0
          sta $02c4
          sta $02c6
@@ -543,7 +548,7 @@ at9      jsr _joy
          beq at9
 
 az4      lda #$40
-         sta $d40e
+         sta nmien
          jsr _keyoff
          jmp run
 

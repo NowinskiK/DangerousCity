@@ -1,8 +1,3 @@
-;*=$0500-6  ;org $0500 
-;!WORD $ffff
-;!WORD x
-;!WORD fr
-
 
 x        dta (10)
 y        dta (7)
@@ -24,3 +19,15 @@ kieszen  dta (0),(0),(0),(0)
 music    dta (1)
 pms      dta (0)
 fr       dta (0)
+
+
+	org $f0
+
+fcnt	.ds 2
+fadr	.ds 2
+fhlp	.ds 2
+cloc	.ds 1
+regA	.ds 1
+regX	.ds 1
+regY	.ds 1
+

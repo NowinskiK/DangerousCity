@@ -1,8 +1,3 @@
-;*=$8000-4
-;!To "DATA.BIN", plain 
-;dta dl_leg
-;dta data_end-1
-
 dl_leg   dta $70,$70,$70
          dta $70,$70,$f0
 ax9      dta $42,<leg_t,>leg_t
@@ -42,28 +37,19 @@ dl_win   dta $70,$70,$70
 
 dl_cz    dta $70,$70
          dta $f0,$30
-         dta $47,<ekr_cz,>ekr_cz
+         dta $47,a(ekr_cz)
          dta $70,$00
-         dta $4e,<rys,>rys
-         .he  0e 0e 0e
-         .he 0e 0e 0e 0e 0e 0e 0e 0e
-         .he 0e 0e 0e 0e 0e 0e 0e 0e
-         .he 0e 0e 0e 0e 0e 0e 0e 0e
-         .he 0e 0e 0e 0e 0e 0e 0e 0e
-         .he 0e 0e 0e 0e 0e 0e 0e 0e
-         .he 0e 0e 0e 0e 0e 0e 0e 0e
-         .he 0e 0e 0e 0e 0e 0e 0e 0e
-         .he 0e 0e 0e 0e 0e 0e 0e 0e
-         .he 0e 0e 0e 0e 0e 0e 0e 0e
-         .he 0e 0e 0e 0e 0e 0e 
+         dta $4e,a(rys)
+         .he 0e
+     :10 .he 0e 0e 0e 0e 0e 0e 0e 0e
          dta $70,$f0
-         dta $42,<t1_cz,>t1_cz
+         dta $42,a(t1_cz)
          dta $70
-         dta $42,<t2_cz,>t2_cz
+         dta $42,a(t2_cz)
          dta $f0
-         dta $44,<mi_t,>mi_t
+         dta $44,a(mi_t)
          dta $04,$04
-         dta $41,<dl_cz,>dl_cz
+         dta $41,a(dl_cz)
 
 
 dl_over  ;equ *
@@ -76,22 +62,17 @@ dl_over  ;equ *
      dta $41,<dl_over,>dl_over
 
 
-dl       ;equ *
-     dta a($7070)
-     dta $42  
-     dta a(pasek)
-     dta $42
-     dta a(ekr)
+dl_gra   ;equ *
+     dta $70,$70
+     dta $42,a(pasek)
+     dta $42,a(ekr)
      :14 dta $02
-     dta $80,$0f,$02
-     dta $20,$4f
-     dta a(linijka)
-     dta $42
-     dta a(rzeczy_w)
+     dta $80,$0f,$02,$20
+     dta $4f,a(linijka)
+     dta $42,a(rzeczy_w)
      .he 02 02 02 f0
      .he 02 20 02
-     dta $41
-     dta a(dl)
+     dta $41,a(dl_gra)
 
      ;icl "ekr_mapping.asm"
 PLI_Z    EQU $5A

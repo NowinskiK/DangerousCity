@@ -20,8 +20,8 @@ run      jsr run_cz
 
          lda #0
          sta $022f
-         ldx #<dl
-         ldy #>dl
+         ldx #<dl_gra
+         ldy #>dl_gra
          stx $0230
          sty $0231
          ldx #<ekr
@@ -34,14 +34,14 @@ run      jsr run_cz
          ldy #<v
          jsr SETVBV
 
-         ldx #<dli
-         ldy #>dli
+         ldx #<dli_1
+         ldy #>dli_1
          stx $0200
          sty $0201
          ldx #2
          jsr _zegar
          lda #$c0
-         sta $d40e
+         sta nmien
 
          lda #13
          sta $02c5
@@ -1003,7 +1003,7 @@ _rsl dta a (0)
 
 st        jmp st
 
-dli       ;equ *
+dli_1       ;equ *
 
          pha
          txa
@@ -1011,14 +1011,15 @@ dli       ;equ *
          tya
          pha
          lda #>cz_fnt
-         sta $d409
+         sta CHBASE
          ldx #<dli_2
          ldy #>dli_2
          stx $0200
          sty $0201
          jmp XITVBV
 
-dli_2    pha
+dli_2    
+         pha
          txa
          pha
          tya
@@ -1026,8 +1027,8 @@ dli_2    pha
 
          lda #$22
          sta $d400
-         ldx #<dli
-         ldy #>dli
+         ldx #<dli_1
+         ldy #>dli_1
          stx $0200
          sty $0201
          jmp XITVBV
@@ -1037,7 +1038,7 @@ vmus     jsr _music
          jsr _zapisz
          lda #0
          sta $4d
-         jmp SYSVBV
+         jmp SYSVBV    ;E45F
 
 
 _zapisz  ldx #$80
