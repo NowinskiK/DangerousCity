@@ -324,7 +324,7 @@ aw2      lda #31
          sta $e5
          inc $e8
          lda $e8
-         cmp #7
+         cmp #((tc2-tc1)/32)
          bcc av5
          lda #0
          sta $e8

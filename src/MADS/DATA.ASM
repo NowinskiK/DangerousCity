@@ -143,16 +143,17 @@ tc1  dta d '         PROGRAMOWANIE          '
      dta d '       GRAFIKA PRZED GR        '
      dta d '         GRAFIKA DO GRY         '
      dta d '       SCENARIUSZ I MAPA        '
-     dta d '           PRODUKCJA            '
-     dta d '          WROCAW 1994          '
+     dta d '      ORYGINALNA PRODUKCJA      '
+     dta d '        REMAKE I WYDANIE        '
 
 tc2  dta d "         KAMIL NOWISKI         "
      dta d "         KONRAD  GMUREK         "
-     dta d "        HUBERT  NOWISKI        "
+     dta d "    KRZYSZTOF ZIEMBIK  (KAZ)    "
      dta d "         KAMIL NOWISKI         "
      dta d "     KAMIL, HUBERT NOWISCY     "
-     dta d "      MIRAGE SOFTWARE LTD.      "
-     dta d "                                "
+     dta d '          WROCAW 1994          '
+     dta d "           PTODT 2023           "
+
      dta d "                                "
      dta d "                                "
 
