@@ -1,56 +1,3 @@
-dl_leg   dta $70,$70,$70
-         dta $70,$70,$f0
-ax9      dta $42,<leg_t,>leg_t
-         dta $70,2
-         dta $70,2
-         dta $70,2
-         dta $70,2
-         dta $70,2
-         dta $70,2
-         dta $70,2
-         dta $41,<dl_leg,>dl_leg
-
-leg_c    dta 0,0,0
-         dta 0,0,0
-         dta 0,0
-
-leg_sp   dta 8    ;leg_sp   dta 8)
-str_leg  dta 0    ;dta 0
-
-
-dl_win   dta $70,$70,$70
-         dta $47,<grat1,>grat1
-         dta $70
-         dta $42,<grat2,>grat2
-         dta 0,2
-         dta 0,2
-         dta 0,2
-         dta 0,2
-         dta 0,2
-         dta $70
-         dta 0,2
-         dta 0,2
-         dta 0,2
-         dta 0,2
-         dta $f0
-         dta $41,<dl_win,>dl_win
-
-dl_cz    dta $70,$70
-         dta $f0,$30
-         dta $47,a(ekr_cz)
-         dta $70,$00
-         dta $4e,a(rys)
-         .he 0e
-     :10 .he 0e 0e 0e 0e 0e 0e 0e 0e
-         dta $70,$f0
-         dta $42,a(t1_cz)
-         dta $70
-         dta $42,a(t2_cz)
-         dta $f0
-         dta $44,a(mi_t)
-         dta $04,$04
-         dta $41,a(dl_cz)
-
 
 dl_over  ;equ *
      dta $70,$70
@@ -58,8 +5,8 @@ dl_over  ;equ *
      dta $70,$70
      dta $70,$f0
      dta $70,$70
-     dta $47,<ekr_over,>ekr_over
-     dta $41,<dl_over,>dl_over
+     dta $47,a(ekr_over)
+     dta $41,a(dl_over)
 
 
 dl_gra   ;equ *

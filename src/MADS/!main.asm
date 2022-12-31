@@ -28,7 +28,9 @@ plansze     ins "plansze\pl",6
             .ALIGN $0100
             .ds $0400
 main        jsr main_title
-            jmp dc
+            ;jmp leg
+            jsr dc
+            jmp main
 
 dc          icl "DC.asm"
             icl "PROC.ASM"
@@ -36,6 +38,5 @@ dc          icl "DC.asm"
 
             .ALIGN $0400
 fnt	        ins "newgfx\TYT10_PTODT4.fnt"
-;logo_fnt = fnt + $0800
 
             run main

@@ -10,12 +10,11 @@ Measure-xexFile ".\test\title.obx"
 . 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' '!main.asm'
 Measure-xexFile "!main.obx"
 
-
-#$fileorg = Resolve-Path ".\src\MADS\!main.obx"
-#$filexex = $fileorg -replace '.obx','.xex'
-#Remove-Item $filexex -ErrorAction 'SilentlyContinue'
-#Rename-Item $fileorg $filexex 
+$fileorg = Resolve-Path "!main.obx"
+$filexex = $fileorg -replace '.obx','.xex'
+Remove-Item $filexex -ErrorAction 'SilentlyContinue'
 Copy-Item $fileorg $filexex 
+#Rename-Item $fileorg $filexex 
 
 # Analyze file
 #Measure-xexFile ".\src\C64S\Release\dc.xex"
