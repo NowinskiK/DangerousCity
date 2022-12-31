@@ -11,9 +11,24 @@ HEIGHT	= 30
 ; ---	MAIN PROGRAM
 
 ant	dta $44,a(scr)
-	dta $84,$04,$04,$04,$04,$84,$04,$84,$04,$84,$04,$04,$84,$04,$84,$84
-	dta $84,$04,$04,$04,$04,$F0
-	dta $02,$02,$02,$02,$02,$82,$22
+	dta $84,$04,$04,$04,$04                         ;dli11
+	dta $84,$04          ;dli12
+	dta $84,$04    ;dli2
+	dta $84,$04,$04  ;dli13
+	dta $84,$04   ;dli3
+	dta $84   ;dli4
+	dta $84     ;dli5
+	dta $84   ;dli6
+	dta $70
+	dta $42,a(t1_cz)
+	dta $70
+	dta $42,a(t2_cz)
+	;dta $04,$04
+	;dta $04,$04
+	dta $F0    ;dli7 (logo)
+	dta $42,a(scr+22*32)
+	dta $02,$02,$02,$02
+	dta $82,$02,$22         ;dli8
 	dta $41,a(ant)
 
 scr	ins "newgfx\TYT10_PTODT4.scr"
@@ -266,15 +281,21 @@ dli5
 
 dli6
 	sta regA
-	lda >fnt+$400*$00
-	sta wsync		;line=144
-	sta chbase
+	lda >cz_fnt
+	sta wsync		;line=144   ;d40a
+	sta chbase    ;d409
+		lda #0
+		sta color2
+		sta colbak
+		lda #$0b
+		sta color1
 	DLINEW dli7 1 0 0
 
 dli7
 	sta regA
 	stx regX
 	sty regY
+	lda #>cz_fnt
 	lda >fnt+$400*$02
 c29	ldx #$00
 	ldy #$01
@@ -282,6 +303,8 @@ c29	ldx #$00
 	sta chbase
 	stx color2
 	sty gtictl
+	lda #$0F
+	sta color1
 	DLINEW dli8 1 1 1
 
 dli8
@@ -289,7 +312,6 @@ dli8
 	lda >fnt+$400*$00
 	sta wsync		;line=232
 	sta chbase
-
 	lda regA
 	rti
 

@@ -30,7 +30,7 @@ mva #$40 nmien		;only NMI interrupts, DLI disabled
 http://atariki.krap.pl/index.php/NMI
 http://atariki.krap.pl/index.php/Rejestry_ANTIC-a#NMIEN
 
-
+http://atariki.krap.pl/index.php/ANTIC_Display_List
 
 ## New gfx
 Block #0: 2000-23C2 | Index = 0000 | Len = 6+963    kod + TYT10_PTODT4.scr
