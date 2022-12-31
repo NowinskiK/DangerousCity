@@ -157,10 +157,6 @@ tc2  dta d "         KAMIL NOWISKI         "
      dta d "                                "
      dta d "                                "
 
-mi_t .he 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6C 6D 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 6E 
-     .he 41 41 41 41 41 41 41 41 41 41 42 43 44 45 46 46 47 48 49 4A 4B 4C 4D 4E 4F 50 51 52 53 54 41 41 41 41 41 41 41 41 41 41 
-     .he 55 55 55 55 55 55 55 55 56 57 58 59 5A 5B 5B 5C 5D 5E 5F 60 61 62 63 64 65 66 67 68 69 69 69 6A 6B 55 55 55 55 55 55 55 
-
 grat1    dta d "---gratulacje---"     ;8c16
     
 grat2    dta d'    WYDOSTAE SI Z MIASTA,    '
