@@ -20,7 +20,6 @@ music    dta (1)
 pms      dta (0)
 fr       dta (0)
 
-
 	org $f0
 
 fcnt	.ds 2
@@ -30,4 +29,5 @@ cloc	.ds 1
 regA	.ds 1
 regX	.ds 1
 regY	.ds 1
+ekran   .ds 1  ; dta 0  ;0=title, 1=legend, 2=game
 

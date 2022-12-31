@@ -17,15 +17,15 @@ leg_c    dta 0,0,0
 leg_sp   dta 8    ;leg_sp   dta 8)
 str_leg  dta 0    ;dta 0
 
-leg   ;      equ *   ;LEGENDA
+; -----------------------------------------------
+
+run_leg   ;      equ *   ;LEGENDA
+
+        lda #$01
+         sta ekran
+
          lda #$22
-         sta $022f
-         lda #$40
-         sta nmien
-         lda #7
-         ldx #$c2
-         ldy #$8a
-         ;jsr SETVBV
+         sta SDMCTL  ;$022f
 
          ldx #<dl_leg
          ldy #>dl_leg
@@ -40,10 +40,7 @@ leg   ;      equ *   ;LEGENDA
          ldy #>leg_t
          stx ax9+1
          sty ax9+2
-         ldx #<dli_leg
-         ldy #>dli_leg
-         ;stx $0200
-         ;sty $0201
+
          ldx #2
          jsr _zegar
 
@@ -54,9 +51,6 @@ ax12     lda #0
 ax1      sta leg_c,y
          dey
          bpl ax1
-
-         lda #$c0
-         ;sta nmien
 
          ldy #0
 ax3      lda leg_c,y
@@ -72,7 +66,7 @@ ax3      lda leg_c,y
 ax2      cpy #7
          beq ax4
          iny
-         ldx #30
+         ldx #2 ;;30
          jsr _zegar
          jmp ax3
 
@@ -118,16 +112,20 @@ ax11     inc str_leg
          jmp ax12
 
 ; exit from legend
-ax13     rts  ;;jmp wait_cz
+ax13    jmp init_title
 
 
 
+VBL_leg
+	mwa #dli_leg VDSLST    ;$0200
+	jsr rep+6		; muzyka gra!
+	rts
 
-dli_leg  pha
-         txa
-         pha
-         tya
-         pha
+
+dli_leg  
+        sta regA
+        stx regX
+        sty regY
 
          ldy #0
 ax6      lda leg_c,y
@@ -146,5 +144,8 @@ ax7      sta $d40a
          cpy #8
          bne ax6
 
-         jmp XITVBV
+        lda regA
+        ldx regX
+        ldy regY
 
+        rti

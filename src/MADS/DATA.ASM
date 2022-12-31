@@ -1,13 +1,7 @@
-
-dl_over  ;equ *
-     dta $70,$70
-     dta $70,$70
-     dta $70,$70
-     dta $70,$f0
-     dta $70,$70
-     dta $47,a(ekr_over)
-     dta $41,a(dl_over)
-
+; tablica wewnetrznych skokow vblk
+; ekran, wektor
+tab_vblk  dta a(VBL_title)
+          dta a(VBL_leg)
 
 dl_gra   ;equ *
      dta $70,$70
@@ -21,7 +15,6 @@ dl_gra   ;equ *
      .he 02 20 02
      dta $41,a(dl_gra)
 
-     ;icl "ekr_mapping.asm"
 PLI_Z    EQU $5A
 
 leg_t    ;equ *

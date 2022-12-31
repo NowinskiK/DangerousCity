@@ -28,7 +28,6 @@ plansze     ins "plansze\pl",6
             .ALIGN $0100
             .ds $0400
 main        jsr main_title
-            ;jmp leg
             jsr dc
             jmp main
 

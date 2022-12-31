@@ -77,28 +77,16 @@ main_title
 
 	mva #$c0 nmien		;switch on NMI+DLI again
 	cli
+
+	; -- init screen
+init_title
+	lda #$00
+	sta ekran
 	mwa #ant $0230
-	;mva #@dmactl(narrow|dma|lineX1|players|missiles) dmactl	;set new screen width
 	mva #@dmactl(narrow|dma|lineX1|players|missiles) sdmctl	;set new screen width
-
-; _lp	
-;     lda trig0		; FIRE #0
-; 	beq stop
-
-; 	lda trig1		; FIRE #1
-; 	beq stop
-
-; 	lda consol		; START
-; 	and #1
-; 	beq stop
-
-; 	lda skctl
-; 	and #$04
-; 	bne _lp			;wait to press any key; here you can put any own routine
-
 	jsr wait_cz
 
-stop
+stop_title
 	mva #$00 pmcntl		;PMG disabled
 	tax
 	sta:rne hposp0,x+
@@ -132,11 +120,36 @@ SCHR	= 127
 
 ; ---
 
-.proc	MyVBL
-
+.proc	MyVBL		;General VBLK for all screens
 	sta regA
 	stx regX
 	sty regY
+
+	; ustaw wskaznik skoku w kontekscie biezacego ekranu
+	lda ekran
+	asl
+	tax
+	lda tab_vblk,x
+	sta vjp+1
+	lda tab_vblk+1,x
+	sta vjp+2
+
+vjp	jsr VBL_title
+
+quit 
+	lda regA
+	ldx regX
+	ldy regY
+
+	.if VBLKI
+	jmp SYSVBV		; skok do natychmiastowego przerwania sys 
+	.else
+	jmp XITVBV		; wyjscie z opoznionego przerwania VBLK
+	.endif
+.endp
+
+
+VBL_title
 
 ; Initial values
 
@@ -191,21 +204,7 @@ x5	lda #$00
 ;this area is for yours routines
 	jsr rep+6		; muzyka gra!
 	jsr v_cz		; kod przesuwajacy napisy
-
-quit ;DLINEW DLI.dli_start 1 1 1 
-	lda regA
-	ldx regX
-	ldy regY
-
-	.if VBLKI
-	jmp SYSVBV		; skok do natychmiastowego przerwania sys 
-	.else
-	jmp XITVBV		; wyjscie z opoznionego przerwania VBLK
-	.endif
-
-	; rti
-
-.endp
+	rts
 
 
 oldvbl dta a(0)		;stary wektor przerwania

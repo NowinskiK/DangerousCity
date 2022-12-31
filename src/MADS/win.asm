@@ -15,7 +15,9 @@ dl_win   dta $70,$70,$70
          dta $f0
          dta $41,a(dl_win)
 
-_win     lda #$40
+; -------------------------------------------------
+
+run_win  lda #$40
          sta nmien
          lda #$70
          ldx #<win_cmc

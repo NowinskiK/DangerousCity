@@ -919,7 +919,7 @@ _prmap    ;equ *
          bpl aw5
          pla
          pla
-         jmp _win
+         jmp run_win
 
 aw5      sec
          sbc #1
