@@ -48,7 +48,7 @@ reset   ;    equ *
 zs       lda #$ff    ;* zimny start
          sta $0244
          jmp $e474
-az3      jmp run
+az3      jmp play
 
 
 leg   ;      equ *   ;LEGENDA
@@ -149,7 +149,7 @@ ax11     inc str_leg
          beq ax13
          jmp ax12
 
-ax13     jmp run2_cz
+ax13     jmp wait_cz
 
 
 
@@ -229,12 +229,11 @@ aw6      jsr _joy
          bne aw7
          lda f
          beq aw6
-aw7      jmp run
+aw7      jmp play
 
 
 
-run_cz    ;   equ *
-
+init_cz    ;   equ *
          jsr _ustres
          jsr _usttc
          lda #31
@@ -247,7 +246,6 @@ run_cz    ;   equ *
          sta $e7
          sta $e8
 
-        ift PLAY_MUSIC
          lda #$70
          ldx #<cz_cmc
          ldy #>cz_cmc
@@ -255,42 +253,9 @@ run_cz    ;   equ *
          lda #0
          tax
          jsr rep+3
-        eif
+        rts
 
-run2_cz  lda #$40
-         sta nmien
-         lda #$21
-         sta $022f
-
-        ;  lda #6         ; muzyka
-        ;  ldx #>vmus
-        ;  ldy #<vmus
-        ;  jsr SETVBV
-
-         lda #7         ; kod przesuwajacy napisy
-         ldx #>v_cz
-         ldy #<v_cz
-         jsr SETVBV
-
-         ldx #<dl_cz
-         ldy #>dl_cz
-         stx $0230
-         sty $0231
-         lda #$e0
-         sta $02f4
-         ldx #<dli_cz
-         ldy #>dli_cz
-         stx $0200
-         sty $0201
-         ldx #2
-         jsr _zegar
-         lda #$c0
-         sta nmien
-         lda #0
-         sta $02c6
-         sta $02c8
-
-         ldx #16
+wait_cz  ldx #16
          jsr _zegar
          jsr _proc
 aw3      jsr _joy
@@ -365,7 +330,7 @@ aw2      lda #31
          sta $e8
          jsr _usttc
 
-av5      jmp XITVBV
+av5      rts   ;jmp XITVBV
 
 _usttc   ldx #<tc1
          ldy #>tc1
@@ -550,7 +515,7 @@ at9      jsr _joy
 az4      lda #$40
          sta nmien
          jsr _keyoff
-         jmp run
+         jmp play
 
 
 

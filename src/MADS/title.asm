@@ -23,8 +23,6 @@ ant	dta $44,a(scr)
 	dta $42,a(t1_cz)
 	dta $70
 	dta $42,a(t2_cz)
-	;dta $04,$04
-	;dta $04,$04
 	dta $F0    ;dli7 (logo)
 	dta $42,a(scr+22*32)
 	dta $02,$02,$02,$02
@@ -44,17 +42,11 @@ pmg	.ds $0300
 	eif
 
 main_title
+
+;	init cz
+	jsr init_cz
+
 ; ---	init PMG
-
-;	INIT_MUSIC
-	lda #$70
-	ldx #<cz_cmc
-	ldy #>cz_cmc
-	jsr rep+3
-	lda #0
-	tax
-	jsr rep+3
-
 	mva >pmg pmbase		;missiles and players data address
 	mva #$03 pmcntl		;enable players and missiles
 
@@ -89,27 +81,28 @@ main_title
 	;mva #@dmactl(narrow|dma|lineX1|players|missiles) dmactl	;set new screen width
 	mva #@dmactl(narrow|dma|lineX1|players|missiles) sdmctl	;set new screen width
 
-_lp	
-    lda trig0		; FIRE #0
-	beq stop
+; _lp	
+;     lda trig0		; FIRE #0
+; 	beq stop
 
-	lda trig1		; FIRE #1
-	beq stop
+; 	lda trig1		; FIRE #1
+; 	beq stop
 
-	lda consol		; START
-	and #1
-	beq stop
+; 	lda consol		; START
+; 	and #1
+; 	beq stop
 
-	lda skctl
-	and #$04
-	bne _lp			;wait to press any key; here you can put any own routine
+; 	lda skctl
+; 	and #$04
+; 	bne _lp			;wait to press any key; here you can put any own routine
+
+	jsr wait_cz
 
 stop
 	mva #$00 pmcntl		;PMG disabled
 	tax
 	sta:rne hposp0,x+
 
-	;mva #$ff portb		;ROM switch on
 	sei
 	mva #$00 nmien
 	.if VBLKI
@@ -383,7 +376,8 @@ x5	lda #$00
 	mwa #DLI.dli_start VDSLST    ;$0200
 
 ;this area is for yours routines
-	jsr rep+6
+	jsr rep+6		; muzyka gra!
+	jsr v_cz		; kod przesuwajacy napisy
 
 quit ;DLINEW DLI.dli_start 1 1 1 
 	lda regA

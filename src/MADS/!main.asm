@@ -5,7 +5,6 @@
 rys          = $1000
 fuel_exp     = 8            ;Zuzycie paliwa: 4 oryginalne, 8 - wolniejsze
 SYSVBV       = $E45F         ;vector to process immediate VBLANK
-PLAY_MUSIC   = 1
 USESPRITES   = 1
 
 

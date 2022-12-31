@@ -8,7 +8,12 @@ zst_fnt  = $0c00
 
 ; -------------------------------------- 
 
-run      jsr run_cz
+play      
+         lda #6         ; muzyka
+         ldx #>vmus
+         ldy #<vmus
+         jsr SETVBV
+
          jsr _movrzc
          lda #$70
          ldx #<gra_cmc
