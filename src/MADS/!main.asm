@@ -1,11 +1,6 @@
-            icl "atari.h"
+            icl "atari_g2f.h"
             icl "title_sprites.asm"
-
-; zmienne dane
-rys         = $1000
-fuel_exp    = 8            ;Zuzycie paliwa: 4 oryginalne, 8 - wolniejsze
-SYSVBV      = $E45F         ;vector to process immediate VBLANK
-USESPRITES  = 1
+            
 admap       = $0700
 des         = $0800
 zst_fnt     = $bc00
@@ -31,7 +26,6 @@ plansze     ins "plansze\pl",6
             .ds $0400
 main        jsr main_title
             jsr dc
-            ;jsr gameover
             jmp main
 
             icl "DATA.asm"

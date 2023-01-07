@@ -1,4 +1,3 @@
-EOL    EQU 0
 PL_Z    EQU $1A
 PL_O    EQU $0F
 PL_L    EQU $0C
@@ -127,9 +126,9 @@ t5   dta c "Piaskownica",0
 t6   dta c "Sprzedawca w sklepie",0
 t7   dta c "Nienasmarowana brama",0
 t8   dta c "Ogrodzenie",0
-t9   dta c 'Gorcy asfalt', b(EOL)
-t10  dta c 'Dziura w murze', b(EOL)
-t11  dta c 'Wystajce gwodzie', b(EOL)
+t9   dta c 'Gorcy asfalt',0
+t10  dta c 'Dziura w murze',0
+t11  dta c 'Wystajce gwodzie',0
 t12  dta c "Drzwi do domu",0
 t13  dta c "Otwarty dom",0
 t14  dta c "Obezw{adniony sprzedawca",0
@@ -249,37 +248,37 @@ rzc  dta 22,11  ;*1
      dta 0,0
 
 rzc_nam  ;equ *
-     dta c'SZMAL', b(EOL)
-     dta c'PIWO', b(EOL)
-     dta c'KLUCZ', b(EOL)
-     dta c'CYJANEK', b(EOL)
-     dta c'OTWIERACZ', b(EOL)
-     dta c'OTWARTE PIWO', b(EOL)
-     dta c'ZATRUTE PIWO', b(EOL)
-     dta c'BATERIA', b(EOL)
-     dta b(PL_Z),c'AR',b(PL_O),'WECZKA', b(EOL)
-     dta c'LATARKA', b(EOL)
-     dta c'KOMPLETNA LATARKA', b(EOL)
-     dta c'SMAR', b(EOL)
-     dta c'SUCHAWKI LEKARSKIE', b(EOL)
-     dta c'DETONATOR', b(EOL)
-     dta c'SEKATOR', b(EOL)
-     dta c'OPATA', b(EOL)
-     dta c'DESKI', b(EOL)
-     dta c'GAZ ZAWICY', b(EOL)
-     dta c'DYNAMIT', b(EOL)
-     dta c'WIADRO WODY', b(EOL)
-     dta c'KIJ', b(EOL)
-     dta c'TAMA KLEJCA', b(EOL)
-     dta c'KINESKOP', b(EOL)
-     dta c'BUTELKA', b(EOL)
-     dta c'OPONA', b(EOL)
-     dta c'DTKA', b(EOL)
-     dta c'KSI',b(PL_Z),'KA', b(EOL)
-     dta c'BUDZIK', b(EOL)
-     dta c'KARABIN', b(EOL)
-     dta c'LATARKA Z ',b(PL_Z),'AR',b(PL_O),'WK', b(EOL)
-     dta c'LATARKA Z BATERI', b(EOL)
+     dta c'SZMAL', b(ASCZER)
+     dta c'PIWO', b(ASCZER)
+     dta c'KLUCZ', b(ASCZER)
+     dta c'CYJANEK', b(ASCZER)
+     dta c'OTWIERACZ', b(ASCZER)
+     dta c'OTWARTE PIWO', b(ASCZER)
+     dta c'ZATRUTE PIWO', b(ASCZER)
+     dta c'BATERIA', b(ASCZER)
+     dta b(PL_Z),c'AR',b(PL_O),'WECZKA', b(ASCZER)
+     dta c'LATARKA', b(ASCZER)
+     dta c'KOMPLETNA LATARKA', b(ASCZER)
+     dta c'SMAR', b(ASCZER)
+     dta c'SUCHAWKI LEKARSKIE', b(ASCZER)
+     dta c'DETONATOR', b(ASCZER)
+     dta c'SEKATOR', b(ASCZER)
+     dta c'OPATA', b(ASCZER)
+     dta c'DESKI', b(ASCZER)
+     dta c'GAZ ZAWICY', b(ASCZER)
+     dta c'DYNAMIT', b(ASCZER)
+     dta c'WIADRO WODY', b(ASCZER)
+     dta c'KIJ', b(ASCZER)
+     dta c'TAMA KLEJCA', b(ASCZER)
+     dta c'KINESKOP', b(ASCZER)
+     dta c'BUTELKA', b(ASCZER)
+     dta c'OPONA', b(ASCZER)
+     dta c'DTKA', b(ASCZER)
+     dta c'KSI',b(PL_Z),'KA', b(ASCZER)
+     dta c'BUDZIK', b(ASCZER)
+     dta c'KARABIN', b(ASCZER)
+     dta c'LATARKA Z ',b(PL_Z),'AR',b(PL_O),'WK', b(ASCZER)
+     dta c'LATARKA Z BATERI', b(ASCZER)
 
 
 lit_t    ;equ *
@@ -319,19 +318,19 @@ tlo_t    ;equ *
      dta (2)
 
 
-tt1  dta c'Kupi{e piwo.', b(EOL)
-tt2  dta c'W domu znalaz{e cyjanek.', b(EOL)
-tt3  dta c'Otworzy{e piwo.', b(EOL)
-tt4  dta c'Dosypa{e cyjanku do piwa.', b(EOL)
-tt5  dta c'W{oy{e bateri do latarki.', b(EOL)
-tt6  dta c'Wkrci{e arwk do latarki.', b(EOL)
-tt7  dta c'Nasmarowa{e bram.', b(EOL)
-tt8  dta c'Otworzy{e sejf i znalaz{e detonator.', b(EOL)
-tt9  dta c'Przeci{e ogrodzenie.', b(EOL)
-tt10 dta c'Wykopa{e deski.', b(EOL)
-tt11 dta c'Po{oy{e deski na gwodziach.', b(EOL)
-tt12 dta c'Obezw{adni{e sprzedawc i okrad{e go.', b(EOL)
-tt13 dta c'Wysadzi{e mur.', b(EOL)
-tt14 dta c'Ostudzi{e gorcy asfalt.', b(EOL)
-tt15 dta c'Wcisn{e ukryty w murze przycisk.', b(EOL)
-tt16 dta c'Otru{e stranika.',b(EOL)
+tt1  dta c'Kupi{e piwo.', b(ASCZER)
+tt2  dta c'W domu znalaz{e cyjanek.', b(ASCZER)
+tt3  dta c'Otworzy{e piwo.', b(ASCZER)
+tt4  dta c'Dosypa{e cyjanku do piwa.', b(ASCZER)
+tt5  dta c'W{oy{e bateri do latarki.', b(ASCZER)
+tt6  dta c'Wkrci{e arwk do latarki.', b(ASCZER)
+tt7  dta c'Nasmarowa{e bram.', b(ASCZER)
+tt8  dta c'Otworzy{e sejf i znalaz{e detonator.', b(ASCZER)
+tt9  dta c'Przeci{e ogrodzenie.', b(ASCZER)
+tt10 dta c'Wykopa{e deski.', b(ASCZER)
+tt11 dta c'Po{oy{e deski na gwodziach.', b(ASCZER)
+tt12 dta c'Obezw{adni{e sprzedawc i okrad{e go.', b(ASCZER)
+tt13 dta c'Wysadzi{e mur.', b(ASCZER)
+tt14 dta c'Ostudzi{e gorcy asfalt.', b(ASCZER)
+tt15 dta c'Wcisn{e ukryty w murze przycisk.', b(ASCZER)
+tt16 dta c'Otru{e stranika.',b(ASCZER)

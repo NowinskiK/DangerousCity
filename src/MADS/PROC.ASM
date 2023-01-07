@@ -229,10 +229,10 @@ at4      lda $f4
 at3      rts
 
 
-_uzyj    lda $02fc
-         cmp #28
+_uzyj    lda kbcodes
+         cmp #key_esc
          bne az7
-         jsr gameover_pre       ;6 sec dead music - wait
+         jsr gameover_pre
          jsr gameover
          rts
 

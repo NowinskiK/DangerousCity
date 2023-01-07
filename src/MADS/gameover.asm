@@ -9,7 +9,7 @@ dl_over  ;equ *
 
 ; ----------------------------------------------
 
-gameover_pre
+gameover_pre        ;6 sec dead music - wait
          lda #$70
          ldx #<over_cmc
          ldy #>over_cmc
@@ -29,7 +29,7 @@ at7      dec color1
          ;jmp at7
 at8      rts
 
-gameover   
+gameover       ; Game over screen
          lda #stage_over
          sta ekran
 
@@ -65,7 +65,7 @@ gameover
 
 ; --- wait for user
 at9      jsr _joy
-         lda $02fc
+         lda kbcodes
          cmp #$ff
          bne az4
 ;         lda #0

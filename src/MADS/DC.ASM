@@ -129,7 +129,7 @@ _czruch  jsr _joy
          sta fr
          jmp _ruch
 
-az5      lda $02fc
+az5      lda kbcodes
          cmp #$ff
          beq am10
          jmp _uzyj
@@ -769,14 +769,15 @@ al3      lda ($c0),y
          bne al3
 al8      rts
 
-_kode    ;    equ *
+_kode    equ *
 
-         lda $02fc
+         lda kbcodes
          cmp #$ff
          bne ah1
 ah2      rts
-ah1      ldx #$ff
-         stx $02fc
+ah1      ;sta kbcodes
+         ldx #$ff
+         stx kbcodes
          ldy k
          cpy #7
          beq ah2
@@ -1020,7 +1021,7 @@ _zapisz  ldx #$80
          jmp _save
 
 
-video
+video    equ *
          jsr _kode
          lda #0
          sta $4d
@@ -1095,7 +1096,8 @@ ae9      inc damage
          rts
 _ove     pla
          pla
-         ;jmp game-over
+         jsr gameover_pre
+         jsr gameover
          rts
 
 
@@ -1176,7 +1178,7 @@ ae1      rts
 
 
 _keyoff  lda #$ff
-         sta $02fc
+         sta kbcodes
          rts
 
 _msr     ldx #<(gra_fnt+$d0)  ;208

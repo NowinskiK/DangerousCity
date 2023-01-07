@@ -47,3 +47,10 @@ regX	.ds 1
 regY	.ds 1
 ekran   .ds 1  ; dta 0  ;0=title, 1=legend, 2=game
 
+; CONST
+ASCZER  = $00           ;ASCII ZERO
+COLON   = $3A           ;ASCII COLON
+CR      = $9B           ;SYSTEM EOL (CARRIAGE RETURN)
+USESPRITES  = 1
+
+fuel_exp    = 8            ;Zuzycie paliwa: 4 oryginalne, 8 - wolniejsze

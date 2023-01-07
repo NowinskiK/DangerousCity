@@ -3,7 +3,6 @@ VBL_game
         sta CHBASE
 
         mwa #dli_1 VDSLST    ;$0200
-        ;jsr rep+6		; muzyka gra!
         jsr vmus
         jsr video
         rts
