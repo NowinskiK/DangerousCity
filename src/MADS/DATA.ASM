@@ -74,7 +74,7 @@ leg_t    ;equ *
 
 
 ekr_cz   dta d " city dangerous "
-t1_cz    :64 dta d " "  ;$891e
+t1_cz    :64 dta d " "
 t2_cz    :64 dta d " "
 
 tc1  dta d '         PROGRAMOWANIE          '
@@ -84,6 +84,7 @@ tc1  dta d '         PROGRAMOWANIE          '
      dta d '       SCENARIUSZ I MAPA        '
      dta d '      ORYGINALNA PRODUKCJA      '
      dta d '        REMAKE I WYDANIE        '
+     dta d '  SPECJALNE PODZIKOWANIA DLA:  '
 
 tc2  dta d "         KAMIL NOWISKI         "
      dta d "         KONRAD  GMUREK         "
@@ -92,11 +93,12 @@ tc2  dta d "         KAMIL NOWISKI         "
      dta d "     KAMIL, HUBERT NOWISCY     "
      dta d "          WROCAW 1994          "
      dta d "           PTODT 2023           "
+     dta d "              PEBE              "
 
      dta d "                                "
      dta d "                                "
 
-grat1    dta d "---gratulacje---"     ;8c16
+grat1    dta d "---gratulacje---"
     
 grat2    dta d'    WYDOSTAE SI Z MIASTA,    '
          dta d'      W KTRYM ZABDZIE      '
@@ -109,11 +111,11 @@ grat2    dta d'    WYDOSTAE SI Z MIASTA,    '
          dta d'     WIADOMO CO SI JESZCZE     '
          dta d'        MO',b(PLI_Z),d'E ZDARZY ...        '
 
-tabzw    .he 01 1c 02 1f 03 1d 04 1e 00 ;8d66
+tabzw    .he 01 1c 02 1f 03 1d 04 1e 00
 
      icl "data_car.asm"
 
-;mapa gry     A  B  C  D  E  F  G  H  I  J  K  L  M  N     ;8e6f
+;mapa gry   A  B  C  D  E  F  G  H  I  J  K  L  M  N
 
 map  .he 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00
      .he 00 00 33 32 00 00 39 00 00 00 16 17 18 00 1C 00  ;1
@@ -127,7 +129,7 @@ map  .he 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00
      .he 00 00 40 00 45 46 47 00 00 00 00 00 10 11 00 00  ;9
      .he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 
-cpn  .he 2B 2C 4B 4C 6B 6C ;$8F1F
+cpn  .he 2B 2C 4B 4C 6B 6C
 kod  .he 05 3f 25 0d 00 08 3e 9b 
 
      icl "data_scenario.asm"
