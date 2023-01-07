@@ -237,16 +237,16 @@ _uzyj    lda kbcodes
          rts
 
 az7      ldx #0
-         cmp #31
+         cmp #KEY_1
          bne *+4
          ldx #1
-         cmp #30
+         cmp #KEY_2
          bne *+4
          ldx #2
-         cmp #26
+         cmp #KEY_3
          bne *+4
          ldx #3
-         cmp #24
+         cmp #KEY_4
          bne *+4
          ldx #4
 
