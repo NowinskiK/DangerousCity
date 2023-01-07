@@ -3,12 +3,14 @@ dl_gra   ;equ *
      dta $70,$70
      dta $42,a(pasek)
      dta $42,a(ekr)
-     :14 dta $02
+ :14 dta $02
      dta $80,$0f,$02,$20
      dta $4f,a(linijka)
      dta $42,a(rzeczy_w)
-     .he 02 02 02 f0
-     .he 02 20 02
+     dta $02,$02,$02
+     dta $40,$80,$30
+     dta $02,$20,$02
+     dta $a0
      dta $41,a(dl_gra)
 
 pasek       .he 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00

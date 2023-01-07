@@ -11,12 +11,44 @@ dli_1   sta regA
         lda #>cz_fnt
         sta CHBASE
 
+	;lda #$00
+	;sta colbak
+	lda #$0f
+        sta color1
+	lda #$24
+        sta color2
+        sta wsync
+        sta wsync
+        sta wsync
+        sta wsync
+        sta wsync
+        sta wsync
+        sta wsync
+        sta wsync
+        sta wsync
+        sta wsync
+	lda #$72
+        sta color2
+
         DLINEW dli_2 1 0 0
 
 dli_2   sta regA
 
         lda #$22
         sta $d400
+
+        sta wsync
+	lda #$42
+        sta color2
+        sta colbak
+
+        DLINEW dli_3 1 0 0
+
+dli_3   sta regA
+
+        sta wsync
+	lda #$00
+        sta colbak
 
         lda regA
         rti
