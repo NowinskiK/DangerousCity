@@ -184,89 +184,6 @@ av2      lda ($e2),y
          bpl av2
          rts
 
-
-dli_cz   ; equ *
-         pha
-         txa
-         pha
-         tya
-         pha
-
-         ldy #0
-au1      lda tlo_t,y
-         clc
-         adc #$b0
-         sta $d40a
-         sta $d01a
-         sta $d018
-         lda lit_t,y
-         clc
-         adc #$80
-         sta $d017
-         iny
-         cpy #24
-         bne au1
-
-         sta $d40a
-         lda #$34
-         sta $d016
-         lda #6
-         sta $d017
-         lda #$cc
-         sta $d018
-         lda #0
-         sta $d019
-         sta $d01a
-
-         ldx #<dli2_cz
-         ldy #>dli2_cz
-         stx $0200
-         sty $0201
-         jmp XITVBV
-
-dli2_cz  pha
-         txa
-         pha
-         tya
-         pha
-
-         lda #0
-         sta $d018
-         sta $d01a
-         lda #15
-         sta $d017
-         lda #>cz_fnt
-         sta $d409
-
-         ldx #<dli3_cz
-         ldy #>dli3_cz
-         stx $0200
-         sty $0201
-         jmp XITVBV
-
-dli3_cz  pha
-         txa
-         pha
-         tya
-         pha
-
-         lda #>fnt
-         sta $d409
-         lda #$e8
-         ldx #$e4
-         ldy #$ec
-         sta $d016
-         stx $d017
-         sty $d018
-         lda #$22
-         sta $d400
-
-         ldx #<dli_cz
-         ldy #>dli_cz
-         stx $0200
-         sty $0201
-         jmp XITVBV
-
         icl "gameover.asm"
 
 
@@ -316,6 +233,7 @@ _uzyj    lda $02fc
          cmp #28
          bne az7
          jsr gameover_pre       ;6 sec dead music - wait
+         jsr gameover
          rts
 
 az7      ldx #0
