@@ -66,7 +66,7 @@ gameover       ; Game over screen
 ; --- wait for user
 at9      jsr _joy
          lda kbcodes
-         cmp #$ff
+         cmp #KEY_NONE
          bne az4
 ;         lda #0
 ;         sta consol

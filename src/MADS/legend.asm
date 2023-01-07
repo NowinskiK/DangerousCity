@@ -70,11 +70,11 @@ ax2      cpy #7
          jsr _zegar
          jmp ax3
 
-ax4      lda #$ff
+ax4      lda #KEY_NONE
          sta kbcodes
 az1      jsr _joy
          lda kbcodes
-         cmp #$ff
+         cmp #KEY_NONE
          bne az2
          lda f
          bne az2

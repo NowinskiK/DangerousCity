@@ -8,7 +8,7 @@ p        dta (0)
 t        dta (0)
 s        dta (0)
 f        dta (0)
-fuel     dta (112)
+fuel     dta (MAX_FUEL)
 pf       dta b(fuel_exp)
 damage   dta (0)
 pd       dta (0)
@@ -51,6 +51,7 @@ ekran   .ds 1  ; dta 0  ;0=title, 1=legend, 2=game
 ASCZER  = $00           ;ASCII ZERO
 COLON   = $3A           ;ASCII COLON
 CR      = $9B           ;SYSTEM EOL (CARRIAGE RETURN)
-USESPRITES  = 1
-
-fuel_exp    = 8            ;Zuzycie paliwa: 4 oryginalne, 8 - wolniejsze
+USESPRITES = 1
+MAX_FUEL   = 14*8 ;112
+MAX_DAMAGE = 14*8 ;112
+fuel_exp   = 8            ;Zuzycie paliwa: 4 oryginalne, 8 - wolniejsze

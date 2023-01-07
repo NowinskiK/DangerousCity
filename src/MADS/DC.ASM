@@ -130,7 +130,7 @@ _czruch  jsr _joy
          jmp _ruch
 
 az5      lda kbcodes
-         cmp #$ff
+         cmp #KEY_NONE
          beq am10
          jmp _uzyj
 am10     lda s
@@ -626,7 +626,7 @@ _initgra lda #1
          sta p
          sta k
          sta damage
-         lda #112
+         lda #MAX_FUEL
          sta fuel
          ldx #10
          ldy #7
@@ -772,11 +772,11 @@ al8      rts
 _kode    equ *
 
          lda kbcodes
-         cmp #$ff
+         cmp #KEY_NONE
          bne ah1
 ah2      rts
 ah1      ;sta kbcodes
-         ldx #$ff
+         ldx #KEY_NONE
          stx kbcodes
          ldy k
          cpy #7
@@ -790,7 +790,7 @@ ah3      lda #0
          rts
 
 tankuj   lda fuel
-         cmp #112
+         cmp #MAX_FUEL
          bcs ag8
          inc fuel
          ldx #1
@@ -995,90 +995,7 @@ _bta dta b (0)
 _btb dta a (0)
 _rsl dta a (0)
 
-st        jmp st
-
         icl "game_dli.asm"
-
-_zapisz  ldx #$80
-         ldy #$04
-         stx $f0
-         sty $f1
-
-         lda rep+9
-         ldx #$10
-         jsr _save
-
-         lda #$90
-         sta $f0
-         lda rep+10
-         ldx #$a0
-         jsr _save
-
-         lda #$a0
-         sta $f0
-         lda rep+11
-         ldx #$50
-         jmp _save
-
-
-video    equ *
-         jsr _kode
-         lda #0
-         sta $4d
-         lda #'~'
-         ldx #<(gra_fnt+$03f0)
-         ldy #>(gra_fnt+$03f0)
-         sta $f5
-         stx $f6
-         sty $f7
-         lda fuel
-         cmp #113
-         bcc ag7
-         lda #112
-         sta fuel
-ag7      ldx #<(ekr+417)
-         ldy #>(ekr+417)
-         jsr _rysslup
-
-         lda #''
-         ldx #<(gra_fnt+$03f8)
-         ldy #>(gra_fnt+$03f8)
-         sta $f5
-         stx $f6
-         sty $f7
-         lda damage
-         cmp #113
-         bcc ag9
-         lda #112
-         sta damage
-ag9      ldx #<(ekr+446)
-         ldy #>(ekr+446)
-         jsr _rysslup
-
-         rts
-
-_music   lda pms
-         beq as5
-         dec pms
-         rts
-as5      lda $d20f
-         and #8
-         beq as2
-         rts
-as2      lda #16
-         sta pms
-         ldx music
-         inx
-         cpx #2
-         bcc as3
-         ldx #0
-as3      stx music
-         beq as4
-         lda #$60
-         jmp rep+3
-as4      lda #$50
-         jmp rep+3
-
 
 _pdmg    lda pd
          beq ae9
@@ -1091,7 +1008,7 @@ ae9      inc damage
          ldx #2
          jsr _zegar
          lda damage
-         cmp #112
+         cmp #MAX_DAMAGE
          beq _ove
          rts
 _ove     pla
@@ -1114,70 +1031,7 @@ ah4      dec pf
          beq _ove
 ae7      rts
 
-_rysslup   ; equ *
-         stx $f0
-         sty $f1
-         sta $f2
-         lsr 
-         lsr 
-         lsr 
-         sta $f3
-
-         tax
-         beq ae3
-ae2      lda #$80
-         ldy #0
-         sta ($f0),y
-         jsr _odj
-         dex
-         bne ae2
-ae3      lda $f3
-         asl 
-         asl 
-         asl 
-         sta $f3
-         lda $f2
-         sec
-         sbc $f3
-         sta $f4
-         beq ae4
-         ldy #0
-         lda $f5
-         sta ($f0),y
-
-         ldy #7
-         lda #0
-ae6      sta ($f6),y
-         dey
-         bpl ae6
-
-         ldy #7
-         ldx $f4
-         lda #$ff
-ae5      sta ($f6),y
-         dey
-         dex
-         bne ae5
-
-         jsr _odj
-ae4      lda #0
-         tay
-         sta ($f0),y
-
-         rts
-
-_odj     lda $f0
-         sec
-         sbc #32
-         sta $f0
-         bcs ae1
-         dec $f1
-ae1      rts
-
-
-
-
-_keyoff  lda #$ff
+_keyoff  lda #KEY_NONE
          sta kbcodes
          rts
 
