@@ -2,23 +2,24 @@ dl_win   dta $70,$70,$70
          dta $47,a(grat1)
          dta $70
          dta $42,a(grat2)
-         dta 0,2
-         dta 0,2
-         dta 0,2
-         dta 0,2
-         dta 0,2
+         dta $00,$02
+         dta $00,$02
+         dta $00,$02
+         dta $00,$02
+         dta $00,$02
          dta $70
-         dta 0,2
-         dta 0,2
-         dta 0,2
-         dta 0,2
+         dta $00,$02
+         dta $00,$02
+         dta $00,$02
+         dta $00,$02
          dta $f0
          dta $41,a(dl_win)
 
 ; -------------------------------------------------
 
-run_win  lda #$40
-         sta nmien
+run_win  lda #stage_win
+         sta ekran
+
          lda #$70
          ldx #<win_cmc
          ldy #>win_cmc
@@ -26,22 +27,21 @@ run_win  lda #$40
          lda #0
          tax
          jsr rep+3
-         lda #$21
-         sta $022f
-         lda #7
-         ldx #$c2
-         ldy #$8a
-         jsr SETVBV
-         ldx #<dli_ov
-         ldy #>dli_ov
-         stx VDSLST   ;$0200
-         sty VDSLST+1 ;$0201
+
          ldx #<dl_win
          ldy #>dl_win
          stx $0230
          sty $0231
+         stx $d402
+         sty $d403
+         ldx #<dli_ov
+         ldy #>dli_ov
+         stx VDSLST   ;$0200
+         sty VDSLST+1 ;$0201
+
          ldx #2
          jsr _zegar
+
          lda #$3c
          sta $02c4
          lda #$56
@@ -51,11 +51,10 @@ run_win  lda #$40
          sta $02c8
          lda #>cz_fnt
          sta $02f4
-         lda #$c0
-         sta nmien
+
          ldx #16
          jsr _zegar
-
+        
 aw6      jsr _joy
 ;*         lda #0
 ;*         sta konsol
@@ -65,4 +64,4 @@ aw6      jsr _joy
          bne aw7
          lda f
          beq aw6
-aw7      jmp play
+aw7      rts

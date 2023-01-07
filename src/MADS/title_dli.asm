@@ -155,11 +155,11 @@ dli6
 	lda >cz_fnt
 	sta wsync		;line=144   ;d40a
 	sta chbase    ;d409
-		lda #0
-		sta color2
-		sta colbak
-		lda #$0b
-		sta color1
+	lda #0
+	sta color2
+	sta colbak
+	lda #$0b
+	sta color1
 	DLINEW dli7 1 0 0
 
 dli7
