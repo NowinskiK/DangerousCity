@@ -67,7 +67,7 @@ init_cz    ;   equ *
          sta $e7
          sta $e8
         lda #stage_title
-        sta ekran   ;ustaw znacznik gdzie jest gra
+        sta stage   ;ustaw znacznik gdzie jest gra
 
          lda #$70
          ldx #<cz_cmc

@@ -63,16 +63,16 @@ main_title
 	sta oldvbl
 	lda $0223
 	sta oldvbl+1
-	lda #$06		; muzyka ; VVBLKI (6) lub VVBLKD (7)  - SETVBLV
+	lda #$06		; VVBLKI (6)
 	.else
 	lda $0224
 	sta oldvbl
 	lda $0225
 	sta oldvbl+1
-	lda #$07		; muzyka ; VVBLKI (6) lub VVBLKD (7)  - SETVBLV
+	lda #$07		; VVBLKD (7)
 	.endif
-	ldx #>MyVBL
-	ldy #<MyVBL
+	ldx #>GlobalVBL
+	ldy #<GlobalVBL
 	jsr SETVBV      ;$E45C - JMP $c15d
 
 	mva #$c0 nmien		;switch on NMI+DLI again
@@ -81,7 +81,7 @@ main_title
 	; -- init screen
 init_title
 	lda #stage_title
-	sta ekran
+	sta stage
 	mwa #ant $0230
 	mva #@dmactl(narrow|dma|lineX1|players|missiles) sdmctl	;set new screen width
 
@@ -108,7 +108,7 @@ stop_title
 	; mva #$40 nmien		;only NMI interrupts, DLI disabled
 	; cli			;IRQ enabled
 
-	rts			;return to ... DOS
+	rts
 
 ; ---	DLI PROGRAM
         icl "title_dli.asm"
@@ -121,13 +121,13 @@ SCHR	= 127
 
 ; ---
 
-.proc	MyVBL		;General VBLK for all screens
+.proc	GlobalVBL		;General VBLK for all screens
 	sta regA
 	stx regX
 	sty regY
 
 	; ustaw wskaznik skoku w kontekscie biezacego ekranu
-	lda ekran
+	lda stage
 	asl
 	tax
 	lda tab_vblk,x

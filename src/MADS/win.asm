@@ -18,7 +18,7 @@ dl_win   dta $70,$70,$70
 ; -------------------------------------------------
 
 run_win  lda #stage_win
-         sta ekran
+         sta stage
 
          lda #$70
          ldx #<win_cmc

@@ -22,7 +22,7 @@ str_leg  dta 0    ;dta 0
 run_leg   ;      equ *   ;LEGENDA
 
          lda #stage_legend
-         sta ekran
+         sta stage
 
          lda #$22
          sta SDMCTL  ;$022f

@@ -1,6 +1,6 @@
-play     
-          lda #stage_game
-         sta ekran
+play     *
+         lda #stage_game
+         sta stage
  
          jsr _movrzc
          lda #$70
@@ -762,7 +762,7 @@ tankuj   lda fuel
          jmp tankuj
 ag8      jmp newruch
 
-kolizja    ;  equ *
+kolizja  equ *
 
          bpl af6
          jmp nextpl

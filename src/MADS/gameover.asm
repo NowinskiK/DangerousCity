@@ -31,7 +31,7 @@ at8      rts
 
 gameover       ; Game over screen
          lda #stage_over
-         sta ekran
+         sta stage
 
          lda #$70
          ldx #<over_cmc

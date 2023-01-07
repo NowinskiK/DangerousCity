@@ -20,9 +20,13 @@ kieszen  dta (0),(0),(0),(0)
 music    dta (1)
 pms      dta (0)
 fr       dta (0)
+stage    dta (0)
+
+
+;		org $0500
 
 ; tablica wewnetrznych skokow vblk
-; ekran, wektor
+; stage / wektor
 tab_vblk  dta a(VBL_title)    ;0=title
           dta a(VBL_leg)      ;1=legend
           dta a(VBL_game)     ;2=game
@@ -38,14 +42,10 @@ stage_win    = 4
 
 	org $f0
 
-fcnt	.ds 2
-fadr	.ds 2
-fhlp	.ds 2
-cloc	.ds 1
 regA	.ds 1
 regX	.ds 1
 regY	.ds 1
-ekran   .ds 1  ; dta 0  ;0=title, 1=legend, 2=game
+
 
 ; CONST
 ASCZER  = $00           ;ASCII ZERO
