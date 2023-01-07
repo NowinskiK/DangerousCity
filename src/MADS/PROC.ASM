@@ -250,6 +250,7 @@ az7      ldx #0
          bne *+4
          ldx #4
 
+         jsr _keyoff
          cpx #0
          bne an1
          jmp newruch

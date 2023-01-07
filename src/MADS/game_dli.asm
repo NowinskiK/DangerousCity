@@ -85,6 +85,24 @@ ag9      ldx #<(ekr+446)
 
          rts
 
+_kode    equ *
+         lda kbcodes
+         cmp #KEY_NONE
+         bne ah1
+ah2      rts
+ah1      ldx #KEY_NONE
+         ;stx kbcodes
+         ldy k
+         cpy #(kodend-kod)
+         beq ah2
+         cmp kod,y
+         bne ah3
+         inc k  ;idxk
+         rts
+ah3      lda #0
+         sta k
+         rts
+
 
 _music   lda pms
          beq as5

@@ -9,7 +9,7 @@ t        dta (0)
 s        dta (0)
 f        dta (0)
 fuel     dta (MAX_FUEL)
-pf       dta b(fuel_exp)
+pf       dta b(FUEL_EXP)
 damage   dta (0)
 pd       dta (0)
 pozmap   dta a(map+106)
@@ -54,4 +54,4 @@ CR      = $9B           ;SYSTEM EOL (CARRIAGE RETURN)
 USESPRITES = 1
 MAX_FUEL   = 14*8 ;112
 MAX_DAMAGE = 14*8 ;112
-fuel_exp   = 8            ;Zuzycie paliwa: 4 oryginalne, 8 - wolniejsze
+FUEL_EXP   = 8            ;Zuzycie paliwa: 4 oryginalne, 8 - wolniejsze

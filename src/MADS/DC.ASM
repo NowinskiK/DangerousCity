@@ -22,29 +22,14 @@ play
          stx $58
          sty $59
 
-     ;     lda #7
-     ;     ldx #>v
-     ;     ldy #<v
-     ;     jsr SETVBV
-
-     ;     ldx #<dli_1
-     ;     ldy #>dli_1
-     ;     stx $0200
-     ;     sty $0201
-     ;    ldx #2
-     ;    jsr _zegar
-     ;     lda #$c0
-     ;     sta nmien
-
-         ;lda #13                ; ------ tu nie dziala
-         ;sta color1
+         lda #13
+         sta color1
          lda #0
          sta $02c6
          sta $02c8
-     ;     lda #1
-     ;     sta $02f0
-     ;     lda #>gra_fnt
-     ;     sta $02f4
+
+         lda #1
+         sta $02f0
 
          jsr _initmap
          jsr _initgra
@@ -740,8 +725,7 @@ _des     inc $c2
 ending   rts
 
 
-_szuk   ;    equ *
-
+_szuk    equ *
          cmp #1
          bne aj1
          rts
@@ -768,26 +752,6 @@ al3      lda ($c0),y
          iny
          bne al3
 al8      rts
-
-_kode    equ *
-
-         lda kbcodes
-         cmp #KEY_NONE
-         bne ah1
-ah2      rts
-ah1      ;sta kbcodes
-         ldx #KEY_NONE
-         stx kbcodes
-         ldy k
-         cpy #7
-         beq ah2
-         cmp kod,y
-         bne ah3
-         inc k
-         rts
-ah3      lda #0
-         sta k
-         rts
 
 tankuj   lda fuel
          cmp #MAX_FUEL
@@ -1025,7 +989,7 @@ _mfuel   ldy k
          rts
 ah4      dec pf
          bne ae7
-         lda #fuel_exp
+         lda #FUEL_EXP
          sta pf
          dec fuel
          beq _ove
