@@ -130,7 +130,8 @@ map  .he 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00
      .he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 
 cpn  .he 2B 2C 4B 4C 6B 6C
-kod  .he 05 3f 25 0d 00 08 3e 9b 
+kod  .he 05 3f 25 0d 00 08 3e 
+     dta CR 
 
      icl "data_scenario.asm"
 

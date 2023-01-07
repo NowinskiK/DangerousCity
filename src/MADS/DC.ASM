@@ -1020,7 +1020,7 @@ _ove     pla
 
 _mfuel   ldy k 
          lda kod,y
-         cmp #$9b
+         cmp #CR
          bne ah4
          rts
 ah4      dec pf
