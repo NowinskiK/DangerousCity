@@ -26,15 +26,14 @@ at7      dec color1
          bmi at8
          ldx #2
          jsr _zegar
-         jmp at7
-
-         rts
+         ;jmp at7
+at8      rts
 
 gameover   
          lda #stage_over
          sta ekran
 
-at8      lda #$70
+         lda #$70
          ldx #<over_cmc
          ldy #>over_cmc
          jsr rep+3
@@ -84,6 +83,7 @@ az4      jsr _keyoff
 VBL_ov
 	    mwa #dli_ov VDSLST    ;$0200
          jmp vmus        ;rts at the end
+         ;rts
 
 dli_ov   
          sta regA

@@ -1020,8 +1020,7 @@ _zapisz  ldx #$80
          jmp _save
 
 
-v        ;equ *
-
+video
          jsr _kode
          lda #0
          sta $4d
@@ -1055,7 +1054,7 @@ ag9      ldx #<(ekr+446)
          ldy #>(ekr+446)
          jsr _rysslup
 
-         jmp XITVBV
+         rts
 
 _music   lda pms
          beq as5

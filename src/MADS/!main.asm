@@ -31,13 +31,12 @@ plansze     ins "plansze\pl",6
             .ds $0400
 main        jsr main_title
             jsr dc
-            jsr gameover
+            ;jsr gameover
             jmp main
 
+            icl "DATA.asm"
 dc          icl "DC.asm"
             icl "PROC.ASM"
-            .ALIGN $0100
-            icl "DATA.asm"
 
             .ALIGN $0400
 fnt	        ins "newgfx\TYT10_PTODT4.fnt"
