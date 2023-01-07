@@ -80,13 +80,14 @@ main_title
 
 	; -- init screen
 init_title
-	lda #$00
+	lda #stage_title
 	sta ekran
 	mwa #ant $0230
 	mva #@dmactl(narrow|dma|lineX1|players|missiles) sdmctl	;set new screen width
-	jsr wait_cz
 
-stop_title
+	jsr wait_cz
+	
+stop_title  
 	mva #$00 pmcntl		;PMG disabled
 	tax
 	sta:rne hposp0,x+

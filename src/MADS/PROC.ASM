@@ -10,7 +10,7 @@ _rts    RTS
 
 
 _movrzc  ldy #70
-az6      lda plrzc_z,y    ;todo: zly adres
+az6      lda plrzc_z,y
          sta plrzc,y
          lda #0
          sta zrob,y
@@ -55,7 +55,7 @@ az3      jmp play
 
 
 init_cz    ;   equ *
-         jsr _ustres
+         ;jsr _ustres   ;KN: what the hell is this?
          jsr _usttc
          lda #31
          sta $e4
@@ -66,6 +66,7 @@ init_cz    ;   equ *
          lda #0
          sta $e7
          sta $e8
+        lda #stage_title
         sta ekran   ;ustaw znacznik gdzie jest gra
 
          lda #$70
@@ -91,13 +92,7 @@ aw3      jsr _joy
 aw9      lda f
          beq aw3
 
-aw8      lda #7
-         ldx #$c2
-         ldy #$8a
-         jsr SETVBV
-         lda #$40
-         sta nmien
-         rts
+aw8      rts
 
 
 v_cz     ;equ *
@@ -320,7 +315,8 @@ at3      rts
 _uzyj    lda $02fc
          cmp #28
          bne az7
-         jmp gameover
+         jsr gameover_pre       ;6 sec dead music - wait
+         rts
 
 az7      ldx #0
          cmp #31

@@ -9,8 +9,7 @@ dl_over  ;equ *
 
 ; ----------------------------------------------
 
-gameover   ; equ *
-
+gameover_pre
          lda #$70
          ldx #<over_cmc
          ldy #>over_cmc
@@ -18,25 +17,33 @@ gameover   ; equ *
          lda #0
          tax
          jsr rep+3
-         ldx #$e0
+         ldx #$f0
          jsr _zegar
-at7      dec $02c5
-         lda $02c5
+
+         ;sciemniaj ekran
+at7      dec color1
+         lda color1
          bmi at8
          ldx #2
          jsr _zegar
          jmp at7
-at8      lda #0
-         ldx #1
+
+         rts
+
+gameover   
+         lda #stage_over
+         sta ekran
+
+at8      lda #$70
+         ldx #<over_cmc
+         ldy #>over_cmc
          jsr rep+3
-         lda #$40
-         sta nmien
+         lda #0          ;play game over music
+         ldx #1          ;song 2
+         jsr rep+3
+
          lda #$e0
          sta $02f4
-         ldy #$8a
-         ldx #$c2
-         lda #7
-         jsr SETVBV
          ldx #<dl_over
          ldy #>dl_over
          stx $0230
@@ -47,20 +54,23 @@ at8      lda #0
          ldy #>dli_ov
          stx $0200
          sty $0201
-         lda #$c0
-         sta nmien
+
          lda #0
          sta $02c4
          sta $02c6
          sta $02c8
          jsr _keyoff
 
+         ldx #10
+         jsr _zegar
+
+; --- wait for user
 at9      jsr _joy
          lda $02fc
          cmp #$ff
          bne az4
-;*         lda #0
-;*         sta konsol
+;         lda #0
+;         sta consol
          lda CONSOL
          and #7
          cmp #7
@@ -68,29 +78,32 @@ at9      jsr _joy
          lda f
          beq at9
 
-az4      lda #$40
-         sta nmien
-         jsr _keyoff
-         jmp play
+az4      jsr _keyoff
+         rts
 
+VBL_ov
+	    mwa #dli_ov VDSLST    ;$0200
+         jmp vmus        ;rts at the end
 
-
-dli_ov   pha
-         txa
-         pha
-         tya
-         pha
+dli_ov   
+         sta regA
+         stx regX
+         sty regY
 
          ldy #$00
 at1      lda $0480,y
-         sta $d40a
-         sta $d018
-         sta $d01a
+         sta wsync
+         sta color2
+         sta colbak
          iny
          cpy #$30
          bne at1
          lda #$00
-         sta $d018
-         sta $d01a
+         sta color2
+         sta colbak
 
-         jmp XITVBV
+         lda regA
+         ldx regX
+         ldy regY
+
+         rti

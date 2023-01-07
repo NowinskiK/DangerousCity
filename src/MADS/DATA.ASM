@@ -1,7 +1,3 @@
-; tablica wewnetrznych skokow vblk
-; ekran, wektor
-tab_vblk  dta a(VBL_title)
-          dta a(VBL_leg)
 
 dl_gra   ;equ *
      dta $70,$70
@@ -14,6 +10,21 @@ dl_gra   ;equ *
      .he 02 02 02 f0
      .he 02 20 02
      dta $41,a(dl_gra)
+
+pasek       .he 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00
+ekr  :14    .he 00 00 00 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00 00 00
+            .he 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00
+         
+linijka     .he 00 00 00 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 00 00 00 00
+plname      .he 00 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00
+rzeczy_w :4 .he 00 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00
+
+kom      :40 dta d " "
+rzc_wid  :40 dta d " "
+
+ekr_over dta d "   koniec gry   "
+
+
 
 PLI_Z    EQU $5A
 
@@ -60,18 +71,6 @@ leg_t    ;equ *
      dta d "                                        "
      dta d "                               "
      
-ekr_over dta d "   koniec gry   "    ;85ee
-
-pasek       .he 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00
-ekr  :14    .he 00 00 00 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00 00 00  ;861e
-            .he 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00
-         
-linijka     .he 00 00 00 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 00 00 00 00    ;87fe
-plname      .he 00 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00   ;881e
-rzeczy_w :4 .he 00 00 00 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00   ;883e
-
-kom      :40 dta d " "  ;88be
-rzc_wid  :40 dta d " "  ;88e6
 
 
 ekr_cz   dta d " city dangerous "
@@ -88,10 +87,10 @@ tc1  dta d '         PROGRAMOWANIE          '
 
 tc2  dta d "         KAMIL NOWISKI         "
      dta d "         KONRAD  GMUREK         "
-     dta d "    KRZYSZTOF ZIEMBIK  (KAZ)    "
+     dta d "    KRZYSZTOF 'KAZ' ZIEMBIK     "
      dta d "         KAMIL NOWISKI         "
      dta d "     KAMIL, HUBERT NOWISCY     "
-     dta d '          WROCAW 1994          '
+     dta d "          WROCAW 1994          "
      dta d "           PTODT 2023           "
 
      dta d "                                "
@@ -133,6 +132,4 @@ kod  .he 05 3f 25 0d 00 08 3e 9b
 
      icl "data_scenario.asm"
 
-
-;data_end
 

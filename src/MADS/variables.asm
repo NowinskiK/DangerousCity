@@ -1,3 +1,4 @@
+		org $0500
 		
 x        dta (10)
 y        dta (7)
@@ -19,6 +20,19 @@ kieszen  dta (0),(0),(0),(0)
 music    dta (1)
 pms      dta (0)
 fr       dta (0)
+
+; tablica wewnetrznych skokow vblk
+; ekran, wektor
+tab_vblk  dta a(VBL_title)    ;0=title
+          dta a(VBL_leg)      ;1=legend
+          dta a(VBL_game)     ;2=game
+          dta a(VBL_ov)       ;3=gameover
+
+stage_title  = 0
+stage_legend = 1
+stage_game   = 2
+stage_over   = 3
+
 
 	org $f0
 

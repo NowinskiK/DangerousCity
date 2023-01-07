@@ -21,7 +21,7 @@ str_leg  dta 0    ;dta 0
 
 run_leg   ;      equ *   ;LEGENDA
 
-        lda #$01
+         lda #stage_legend
          sta ekran
 
          lda #$22
@@ -123,9 +123,9 @@ VBL_leg
 
 
 dli_leg  
-        sta regA
-        stx regX
-        sty regY
+         sta regA
+         stx regX
+         sty regY
 
          ldy #0
 ax6      lda leg_c,y
@@ -144,8 +144,8 @@ ax7      sta $d40a
          cpy #8
          bne ax6
 
-        lda regA
-        ldx regX
-        ldy regY
+         lda regA
+         ldx regX
+         ldy regY
 
-        rti
+         rti

@@ -1,19 +1,7 @@
-
-; zmienne dane
-
-admap    = $0700
-des      = $0a00
-zst_fnt  = $0c00
-
-
-; -------------------------------------- 
-
-play      
-         lda #6         ; muzyka
-         ldx #>vmus
-         ldy #<vmus
-         jsr SETVBV
-
+play     
+          lda #stage_game
+         sta ekran
+ 
          jsr _movrzc
          lda #$70
          ldx #<gra_cmc
@@ -34,29 +22,29 @@ play
          stx $58
          sty $59
 
-         lda #7
-         ldx #>v
-         ldy #<v
-         jsr SETVBV
+     ;     lda #7
+     ;     ldx #>v
+     ;     ldy #<v
+     ;     jsr SETVBV
 
-         ldx #<dli_1
-         ldy #>dli_1
-         stx $0200
-         sty $0201
-         ldx #2
-         jsr _zegar
-         lda #$c0
-         sta nmien
+     ;     ldx #<dli_1
+     ;     ldy #>dli_1
+     ;     stx $0200
+     ;     sty $0201
+     ;    ldx #2
+     ;    jsr _zegar
+     ;     lda #$c0
+     ;     sta nmien
 
-         lda #13
-         sta $02c5
+         ;lda #13                ; ------ tu nie dziala
+         ;sta color1
          lda #0
          sta $02c6
          sta $02c8
-         lda #1
-         sta $02f0
-         lda #>gra_fnt
-         sta $02f4
+     ;     lda #1
+     ;     sta $02f0
+     ;     lda #>gra_fnt
+     ;     sta $02f4
 
          jsr _initmap
          jsr _initgra
@@ -64,7 +52,7 @@ play
          jsr _prkiesz
 
          lda #$21
-         sta $022f
+         sta SDMCTL   ;022f
          lda #1
          sta fr
 
@@ -1008,43 +996,7 @@ _rsl dta a (0)
 
 st        jmp st
 
-dli_1       ;equ *
-
-         pha
-         txa
-         pha
-         tya
-         pha
-         lda #>cz_fnt
-         sta CHBASE
-         ldx #<dli_2
-         ldy #>dli_2
-         stx $0200
-         sty $0201
-         jmp XITVBV
-
-dli_2    
-         pha
-         txa
-         pha
-         tya
-         pha
-
-         lda #$22
-         sta $d400
-         ldx #<dli_1
-         ldy #>dli_1
-         stx $0200
-         sty $0201
-         jmp XITVBV
-
-vmus     jsr _music
-         jsr rep+6
-         jsr _zapisz
-         lda #0
-         sta $4d
-         jmp SYSVBV    ;E45F
-
+        icl "game_dli.asm"
 
 _zapisz  ldx #$80
          ldy #$04
@@ -1144,7 +1096,8 @@ ae9      inc damage
          rts
 _ove     pla
          pla
-         jmp gameover
+         ;jmp game-over
+         rts
 
 
 _mfuel   ldy k 

@@ -180,6 +180,7 @@ color0	=	colpf0
 color1	=	colpf1
 color2	=	colpf2
 color3	=	colpf3
+color4  =   colbaks
 
 kolm0pf	=	$D000	; kolizja pocisku 0 z polem gry (O)
 kolm1pf	=	$D001	; kolizja pocisku 1 z polem gry (O)
