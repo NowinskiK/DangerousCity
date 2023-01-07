@@ -2,7 +2,7 @@ PL_Z    EQU $1A
 PL_O    EQU $0F
 PL_L    EQU $0C
 
-namepl_t ;equ *
+namepl_t equ *
      dta c "CENTRUM",0      ;*1
      dta 0
      dta 0
@@ -76,7 +76,6 @@ namepl_t ;equ *
      dta c "ELEKTROWNIA NIEJDROWA",0
 
 tu_tab   ;equ *
-
      dta 5,1,2
      dta 10,3,20
      dta 11,4,4
@@ -94,7 +93,6 @@ tu_tab   ;equ *
      dta 0
 
 adt_tab  ;equ *
-
      dta a(t1)
      dta a(t2)
      dta a(t3)
@@ -116,8 +114,6 @@ adt_tab  ;equ *
      dta a(t20)
      dta a(t20)
 
-     ;!CONVTAB raw
-     ;!CT '{',$7B, '$',$02, '!',$04, '%',$16
 t1   dta c "Sejf",0
 t2   dta c "Pusty sejf",0
 t3   dta c "Murek",0
@@ -141,8 +137,7 @@ zrob  :72 dta $00
 
 plrzc :71 dta $00 
 
-plrzc_z  ;equ ;*
-
+plrzc_z  equ *
      dta 0     ;*1
      dta 9
      dta 0
@@ -317,7 +312,6 @@ tlo_t    ;equ *
      dta (4)
      dta (2)
 
-
 tt1  dta c'Kupi{e piwo.', b(ASCZER)
 tt2  dta c'W domu znalaz{e cyjanek.', b(ASCZER)
 tt3  dta c'Otworzy{e piwo.', b(ASCZER)
@@ -334,3 +328,6 @@ tt13 dta c'Wysadzi{e mur.', b(ASCZER)
 tt14 dta c'Ostudzi{e gorcy asfalt.', b(ASCZER)
 tt15 dta c'Wcisn{e ukryty w murze przycisk.', b(ASCZER)
 tt16 dta c'Otru{e stranika.',b(ASCZER)
+
+tt50  dta c'Nie masz przedmiotu pod tym klawiszem.', b(ASCZER)
+tt51  dta c'Tutaj tego nie uyjesz.', b(ASCZER)

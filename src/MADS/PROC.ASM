@@ -260,7 +260,7 @@ an1      txa
          dey
          lda kieszen,y
          bne an4
-         jmp zz1
+         jmp brak_prz        ;brak przedmiotu
 an4      tax
          lda pl
 
@@ -298,7 +298,7 @@ an3      cpx #5
          lda #2
          jsr _szk
          bpl an6
-         jmp zz1
+         jmp nie_uzyl
 an6      lda #6
          sta kieszen,y
          lda #0
@@ -316,7 +316,7 @@ an5      cpx #4
          lda #6
          jsr _szk
          bpl an8
-         jmp zz1
+         jmp nie_uzyl
 an8      lda #7
          sta kieszen,y
          lda #0
@@ -407,7 +407,7 @@ ao6      cpx #9
          lda #31
          jsr _szk
          bpl ao9
-         jmp zz1
+         jmp nie_uzyl
 ao9      lda #11
          sta kieszen,y
          ldy $cf
@@ -505,7 +505,7 @@ ar4      cpx #14
          lda #19
          jsr _szk
          bpl ar6
-         jmp zz1
+         jmp nie_uzyl
 ar6      lda #0
          sta kieszen,y
          ldy $cf
@@ -541,18 +541,32 @@ ar7      cpx #21
          ldy #>tt15
          jmp uzyl
 
-ar8      jmp zz1
+ar8      jmp nie_uzyl
 
 
 
-uzyl     jsr _prkom
+uzyl *     
+         jsr _prkom
          jsr _mazanie
          jsr _prkiesz
          lda t
          bmi zz1
          lda #0
          sta t
-zz1      jmp _czruch
+zz1     jmp _czruch
+
+
+nie_uzyl *   ;poinformuj gracza, ze przedmiot nie moze byc uzyty
+        ldx #<tt51
+        ldy #>tt51
+        jsr _prkom
+        jmp _czruch
+
+brak_prz *   ;poinformuj gracza, ze nie ma przedmiotu do uzycia
+        ldx #<tt50
+        ldy #>tt50
+        jsr _prkom
+        jmp _czruch
 
 
 _szk     ldy #0
