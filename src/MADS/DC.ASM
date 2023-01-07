@@ -176,7 +176,9 @@ ac9      cmp #4
 ad8      jmp _prawo
 ae8      jsr _keyoff
          jmp _czruch
-ad1      jsr _pdmg
+ad1      ift NO_DAMAGE = 0
+         jsr _pdmg
+         eif
          jmp ae8
 
 _gora    ;equ *
@@ -780,11 +782,11 @@ ag5      dey
          bne am1
          jmp _wezrzc
 
-am1      jmp ad1
-
-
-
-
+am1      ift NO_OBSTACLES = 0
+          jmp ad1
+         els
+          jmp af5
+         eif
 
 
 nextpl    ;   equ *

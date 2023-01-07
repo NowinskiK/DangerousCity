@@ -48,10 +48,14 @@ regY	.ds 1
 
 
 ; CONST
-ASCZER  = $00           ;ASCII ZERO
-COLON   = $3A           ;ASCII COLON
-CR      = $9B           ;SYSTEM EOL (CARRIAGE RETURN)
+ASCZER     = $00           ;ASCII ZERO
+COLON      = $3A           ;ASCII COLON
+CR         = $9B           ;SYSTEM EOL (CARRIAGE RETURN)
 USESPRITES = 1
 MAX_FUEL   = 14*8 ;112
 MAX_DAMAGE = 14*8 ;112
 FUEL_EXP   = 8            ;Zuzycie paliwa: 4 oryginalne, 8 - wolniejsze
+
+; Trick flags
+NO_DAMAGE    = 0
+NO_OBSTACLES = 0
