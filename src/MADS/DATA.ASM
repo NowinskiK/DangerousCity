@@ -79,26 +79,36 @@ ekr_cz   dta d " city dangerous "
 t1_cz    :64 dta d " "
 t2_cz    :64 dta d " "
 
-tc1  dta d '         PROGRAMOWANIE          '
-     dta d '             MUZYKA             '
-     dta d '       GRAFIKA PRZED GR        '
-     dta d '         GRAFIKA DO GRY         '
-     dta d '       SCENARIUSZ I MAPA        '
-     dta d '      ORYGINALNA PRODUKCJA      '
-     dta d '        REMAKE I WYDANIE        '
-     dta d '  SPECJALNE PODZIKOWANIA DLA:  '
-
-tc2  dta d "         KAMIL NOWISKI         "
-     dta d "         KONRAD  GMUREK         "
-     dta d "    KRZYSZTOF 'KAZ' ZIEMBIK     "
-     dta d "         KAMIL NOWISKI         "
-     dta d "     KAMIL, HUBERT NOWISCY     "
-     dta d "          WROCAW 1994          "
-     dta d "           PTODT 2023           "
-     dta d "              PEBE              "
-
+tc1  
+     dta d '  POLSKIE TOWARSZYSTWO OCHRONY  '     ;01
+     dta d '          PRZEDSTAWIA           '     ;02
+     dta d "          GR NAPISAN          "     ;03
+     dta d '    PROGRAMOWANIE I GRAFIKA     '     ;04
+     dta d '             MUZYKA             '     ;05
+     dta d '       GRAFIKA TYTUOWA         '     ;06
+     dta d '        SCENARIUSZ I MAPA       '     ;07
+     dta d '       SUPPORT TECHNICZNY       '     ;11
+     dta d "        PROJEKT PUDEKA         "     ;08
+     dta d "    START - ROZPOCZCZIE GRY    "     ;12
      dta d "                                "
+     dta d '      ORYGINALNA PRODUKCJA      '     ;09
+     dta d '        REMAKE I WYDANIE        '     ;10
+
+tc2  
+     dta d "    DZIEDZICTWA TECHNICZNEGO    "     ;01
+     dta d "                                "     ;02
+     dta d "     PIERWOTNIE W ROKU 1994     "     ;03
+     dta d "         KAMIL NOWISKI         "     ;04
+     dta d "         KONRAD  GMUREK         "     ;05
+     dta d "    KRZYSZTOF 'KAZ' ZIEMBIK     "     ;06
+     dta d "     KAMIL I HUBERT NOWISCY    "     ;07
+     dta d "              PEBE              "     ;11
+     dta d " R.DUDEK, P.KRUYCKI, K.ZIEMBIK "     ;08
+     dta d "     HELP - LEGENDA DO GRY      "     ;12
      dta d "                                "
+     dta d "          WROCAW 1994          "     ;09
+     dta d "           PTODT 2023           "     ;10
+;     dta d "                                "
 
 grat1    dta d "---gratulacje---"
     
