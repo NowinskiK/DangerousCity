@@ -28,7 +28,7 @@ Tutaj przeczytasz więcej o tym jak zaczęła się cała historia i dlaczego ta 
 Kodowanie: **Kamil Nowiński**  
 Grafika tytułowa: **Krzysztof "Kaz" Ziembik**  
 Wsparcie techniczne: **PEBE**  
-Cartridge: **Jakub Husak** 
+Cartridge: **Jakub Husak**  
 Projekt pudełka: **Rafał Dudek, Piotr Piter Krużycki, Krzysztof "Kaz" Ziembik**  
 
 
