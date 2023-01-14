@@ -31,21 +31,11 @@ ant	dta $44,a(scr)
 
 scr	ins "newgfx\TYT10_PTODT4.scr"
 
-	ift USESPRITES
-	.ALIGN $0800
-pmg	.ds $0300
-	ift FADECHR = 0
-	SPRITES
-	els
-	.ds $500
-	eif
-	eif
-
 main_title
 
 ;	init cz
 	jsr init_cz
-
+	
 ; ---	init PMG
 	mva >pmg pmbase		;missiles and players data address
 	mva #$03 pmcntl		;enable players and missiles
@@ -56,6 +46,8 @@ main_title
 	mva #$00 nmien		;stop NMI interrupts
 	sta dmactl
 	mva #1 vscrol
+
+	jsr _decmp_tit_spr
 
 ;	INIT VBL
 	.if VBLKI
@@ -112,13 +104,6 @@ stop_title
 
 ; ---	DLI PROGRAM
         icl "title_dli.asm"
-; ---
-
-CHANGES = 1
-FADECHR	= 0
-
-SCHR	= 127
-
 ; ---
 
 .proc	GlobalVBL		;General VBLK for all screens

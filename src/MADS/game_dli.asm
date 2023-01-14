@@ -1,6 +1,32 @@
+        .ALIGN $0100
 VBL_game
         lda #>gra_fnt
         sta CHBASE
+	lda #$0f
+        sta color1
+
+        lda #$44
+        sta hposp0
+        lda #$50
+        sta hposp1
+        lda #$50+8*4
+        sta hposp2
+        lda #$50+8*4*2
+        sta hposp3
+        lda #$b8
+        sta hposm0
+        lda #$b8+2
+        sta hposm1
+
+        lda #$02  ;34   ;f6
+        sta colpm0
+        lda #$d2
+        sta colpm1
+        sta colpm2
+        sta colpm3
+        ; priorytety
+        ;lda #%0000
+        ;sta GTIACTL
 
         mwa #dli_1 VDSLST    ;$0200
         jsr vmus
@@ -11,9 +37,7 @@ dli_1   sta regA
         lda #>cz_fnt
         sta CHBASE
 
-	;lda #$00
-	;sta colbak
-	lda #$0f
+	lda #$0b
         sta color1
 	lda #$24
         sta color2
@@ -34,8 +58,8 @@ dli_1   sta regA
 
 dli_2   sta regA
 
-        lda #$22
-        sta $d400
+        lda #scr40    ;$22
+        sta dmactl    ;$d400
 
         sta wsync
 	lda #$42

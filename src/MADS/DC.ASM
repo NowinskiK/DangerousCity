@@ -12,7 +12,7 @@ play     *
          jsr rep+3
 
          lda #0
-         sta $022f
+         sta SDMCTL
          ldx #<dl_gra
          ldy #>dl_gra
          stx $0230
@@ -31,13 +31,23 @@ play     *
          lda #1
          sta $02f0
 
+         jsr _init_spr
          jsr _initmap
          jsr _initgra
          jsr _prmap  ;* rysuj mape
          jsr _prkiesz
+         
+         mva >pmg pmbase
+         mva #$03 pmcntl
+         mva #%00 sizep0      ;1x width for player 0
+         lda #%11             ;4x width for players 1-3
+         sta sizep1
+         sta sizep2
+         sta sizep3
+         mva #%01 sizem       ;2x width for 1.missile
 
-         lda #$21
-         sta SDMCTL   ;022f
+         lda #@dmactl(narrow|dma|lineX1|players|missiles)  ;3d
+         sta SDMCTL   ;022f game
          lda #1
          sta fr
 
@@ -357,6 +367,20 @@ ad3      lda ($d0),y
          inc $d1
 ad5      jmp ad6
 ad4      rts
+
+_init_spr    *    ;Decompress sprites
+         ldx #<(compr_spr)
+         ldy #>(compr_spr)
+         stx $c0
+         sty $c1
+         ldx #$00
+         ldy #>(pmg + $0300)
+         stx $c2
+         sty $c3
+         jsr _dekompff
+         rts
+
+         icl "functions.asm"
 
 _prkiesz  ; equ *
          ldx #<(rzeczy_w+4)
@@ -687,45 +711,6 @@ ah8      ldx $cc
          bcc ah9
          rts
 
-_dekomp  ldx #<des
-         ldy #>des
-         stx $c2
-         sty $c3
-ah5      ldy #0
-         lda ($c0),y
-         cmp #$9b
-         bne ah6
-         jmp ending
-ah6      cmp #$80     ;* rozpakuj !
-         bcs depack
-         ldy #0
-         sta ($c2),y
-         jsr _sou
-         jsr _des
-         jmp ah5
-depack   eor #$80
-         sta $cf
-         jsr _sou
-         ldy #0
-         lda ($c0),y
-         tax
-         jsr _sou
-         ldy #0
-ah7      lda $cf
-         sta ($c2),y
-         jsr _des
-         dex
-         bne ah7
-         jmp ah5
-_sou     inc $c0
-         bne *+4
-         inc $c1
-         rts
-_des     inc $c2
-         bne *+4
-         inc $c3
-ending   rts
-
 
 _szuk    equ *
          cmp #1
@@ -884,8 +869,11 @@ aw5      sec
          sta $c0
          lda admap+1,y
          sta $c1
-
-         jsr _dekomp
+         ldx #<des
+         ldy #>des
+         stx $c2
+         sty $c3
+         jsr _dekomp     ;Decompress map
 
          ldx #<des
          ldy #>des

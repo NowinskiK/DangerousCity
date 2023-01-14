@@ -74,8 +74,6 @@ leg_t    ;equ *
      dta d "                               "
      
 
-
-ekr_cz   dta d " city dangerous "
 t1_cz    :64 dta d " "
 t2_cz    :64 dta d " "
 
@@ -147,4 +145,8 @@ kodend dta CR
 
      icl "data_scenario.asm"
 
+compr_spr
+     GAME_SPRITES_COMPRESSED
 
+compr_spr_title
+     TITLE_SPRITES_COMPRESSED

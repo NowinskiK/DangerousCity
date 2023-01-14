@@ -1,6 +1,13 @@
 # Dangerous City 2023
 
+
+http://atariki.krap.pl/index.php/Player/Missile_Graphics
+https://g2f.atari8.info/edit_colors.png
+http://atariki.krap.pl/index.php/Rejestry_GTIA#SIZEP0
+
+
 # Assembler 6502
+
 
 
 

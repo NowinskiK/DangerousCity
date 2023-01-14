@@ -54,6 +54,15 @@ gameover       ; Game over screen
          stx $0200
          sty $0201
 
+          ;reset sprites
+        lda #$00
+        sta hposp0
+        sta hposp1
+        sta hposp2
+        sta hposp3
+        sta hposm0
+        sta hposm1
+
          lda #0
          sta $02c4
          sta $02c6

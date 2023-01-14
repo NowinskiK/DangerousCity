@@ -322,13 +322,6 @@ dli8
 
 ; ---
 
-CHANGES = 1
-FADECHR	= 0
-
-SCHR	= 127
-
-; ---
-
 .proc	MyVBL
 
 	sta regA

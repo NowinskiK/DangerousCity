@@ -1,3 +1,6 @@
+.MACRO	SPRITES_BUFFER
+	.ds $500
+.ENDM
 
 .MACRO	SPRITES
 missiles
@@ -71,3 +74,34 @@ player3
 	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 	.he 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 .ENDM
+
+
+.MACRO	TITLE_SPRITES_COMPRESSED
+;missiles
+	.he 00 28 40 02 60 16 00 c0
+;player0
+	.he 00 80 00 80
+;player1
+	.he 00 70 01 01 11 06 00 89
+;player2
+	.he 00 28 6C 07 04 14 00 1d 00 0a 40 01 e4 01 ee 03 4e 01 04 01 00 8f
+;player3
+	.he 00 29 C0 0a 00 02 40 0a 00 29 22 01 77 04 22 01 00 0f 10 02 18 05 08 02 00 7a
+;end
+	.he 9b
+
+.ENDM
+
+
+
+
+
+		ift USESPRITES
+		.ALIGN $0800
+pmg		.ds $0300
+		ift FADECHR = 0
+		SPRITES
+		els
+		.ds $500
+		eif
+		eif

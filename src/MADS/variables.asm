@@ -51,10 +51,14 @@ regY	.ds 1
 ASCZER     = $00           ;ASCII ZERO
 COLON      = $3A           ;ASCII COLON
 CR         = $9B           ;SYSTEM EOL (CARRIAGE RETURN)
+EOL        = $9B           ;end of line (RETURN)
 USESPRITES = 1
 MAX_FUEL   = 14*8 ;112
 MAX_DAMAGE = 14*8 ;112
 FUEL_EXP   = 8            ;Zuzycie paliwa: 4 oryginalne, 8 - wolniejsze
+FADECHR	   = 1            ;1 = left only buffer for sprites and decompress
+SCHR	   = 127
+
 
 ; Trick flags
 NO_DAMAGE    = 0
