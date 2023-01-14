@@ -1,9 +1,10 @@
             icl "atari_g2f.h"
             icl "variables.asm"
+            icl "ver.asm"
             
 admap       = $0700     ;tablica adresow do skompresowanych plansz
 des         = $0800     ;bufor dla rozpakowanej planszy
-zst_fnt     = $bc00
+zst_fnt     = $bc00     ;bufor dla backup'u fontow
 
             org $1000
             icl "title_sprites.asm"

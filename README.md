@@ -15,6 +15,9 @@ Plansze: Kamil & Hubert
 Tutaj przeczytasz więcej o tym jak zaczęła się cała historia i dlaczego ta gra wylądowała na GitHub:
 [AtariOnline: CamoSoft / Kamilos - historia, programy](https://atarionline.pl/forum/comments.php?DiscussionID=6703)
 
+# Edycja 2023
+
+
 
 # ATARI - Quick Assembler
 
@@ -23,17 +26,18 @@ Folder [src/QA](./src/QA/) zawiera oryginale pliki zrzucone z moich dyskietek, k
 
 # PC - Assember dla środowiska C64 Studio
 
-Folder [src/C64S](./src/C64S/) zawiera kompletną solucję i projekt pozwalający skompilować grę przy użyciu środowiska `C64 Studio`.
+Folder [src/C64S](./src/C64S/) zawiera kompletną solucję i projekt pozwalający skompilować grę przy użyciu środowiska `C64 Studio`.  
+Jeśli chcesz uruchomić program z kodu źródłowego pod platformą PC - [w tym folderze](./doc/) znajdziesz prezentację opisującą krok po kroku jak przygotować środowisko.  
+> Miej na uwadze, że ta wersja kodu nie jest w pełni kompatybilna z QA. 
+
+Aby uzyskać pełną kompatybilność i większe możliwości - cały kod został przygotowany w kolejnym folderze: MADS (czytaj niżej).
 
 # PC - Assember dla MADS
 
 Folder [src/MADS](./src/MADS/) zawiera zestaw plików pozwalający skompilować grę przy użyciu [Mad-Assembler](https://github.com/tebe6502/Mad-Assembler) (MADS).
 
 
-# Jak zacząć?
-
-Jeśli chcesz uruchomić program z kodu źródłowego pod platformą PC - [w tym folderze](./doc/) znajdziesz prezentację opisującą krok po kroku jak przygotować środowisko.
 
 # Some numbers
 - 24 x 14 tiles - each screen
-
+- Mapa zawiera 71 ekranów

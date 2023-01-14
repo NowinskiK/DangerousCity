@@ -37,6 +37,8 @@ stage_game   = 2
 stage_over   = 3
 stage_win    = 4
 
+    VER
+
 
 	org $f0
 
