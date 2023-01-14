@@ -63,6 +63,8 @@ PL_Z    EQU $1A
 PL_O    EQU $0F
 PL_L    EQU $0C
 
+; Language
+LANG    = 'en'          ; pl - Polish, en - English
 
 ; Trick flags
 NO_DAMAGE    = 0

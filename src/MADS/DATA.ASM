@@ -31,10 +31,15 @@ t2_cz     :32 dta d " "
 
 tabzw    .he 01 1c 02 1f 03 1d 04 1e 00      ;mapowanie zwrotow
 
+.IF LANG = 'pl'
      icl "data_titles_pl.asm"
      icl "data_scenario_pl.asm"
      icl 'data_items_pl.asm'
-
+.ELSE
+     icl "data_titles_en.asm"
+     icl "data_scenario_en.asm"
+     icl 'data_items_en.asm'
+.ENDIF
      icl "data_scenario.asm"
      icl "data_car.asm"
      icl "data_map.asm"
