@@ -18,9 +18,9 @@ VBL_game
         lda #$b8+2
         sta hposm1
 
-        lda #$02  ;34   ;f6
+        lda #$14
         sta colpm0
-        lda #$d2
+        lda #$c2
         sta colpm1
         sta colpm2
         sta colpm3
@@ -39,7 +39,7 @@ dli_1   sta regA
 
 	lda #$0b
         sta color1
-	lda #$24
+	lda #$34
         sta color2
         sta wsync
         sta wsync
