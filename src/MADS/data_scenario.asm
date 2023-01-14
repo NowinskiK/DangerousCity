@@ -275,6 +275,7 @@ rzc_nam  ;equ *
      dta c'LATARKA Z ',b(PL_Z),'AR',b(PL_O),'WK', b(ASCZER)
      dta c'LATARKA Z BATERI', b(ASCZER)
 
+char1     dta d '1.'*
 
 lit_t    ;equ *
      dta (0),(0),(0),(0)

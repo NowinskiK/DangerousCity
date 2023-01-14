@@ -390,18 +390,29 @@ _prkiesz  ; equ *
          lda #0
          sta $c4
 
-am9      lda #$80
+am9      lda #$80        ;clean pocket's line
          ldy #23
 am7      sta ($c2),y
          dey
          bpl am7
+
+     ift NB_ITEMS = 1
+         lda char1
+         clc
+         adc $c4
+         ldy #1
+         sta ($c2),y
+         lda char1+1
+         iny
+         sta ($c2),y
+     eif
          ldx #<rzc_nam
          ldy #>rzc_nam
          stx $c0
          sty $c1
          ldy $c4
          lda kieszen,y
-         beq am6
+         beq am6         ; no item
          ldx #0
          jsr _szuk
          ldx #0
@@ -412,6 +423,7 @@ am7      sta ($c2),y
          sec
          sbc $cf
          lsr 
+         adc #NB_ITEMS
          sta $ca
          lda #0
          sta $cb
@@ -425,7 +437,7 @@ am5      ldy $cb
          inc $cb
          inc $ca
          bne am5
-am6      lda $c2
+am6      lda $c2         ;prep next line
          clc
          adc #32
          sta $c2

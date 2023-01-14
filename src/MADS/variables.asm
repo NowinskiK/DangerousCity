@@ -55,8 +55,9 @@ EOL        = $9B           ;end of line (RETURN)
 USESPRITES = 1
 MAX_FUEL   = 14*8 ;112
 MAX_DAMAGE = 14*8 ;112
-FUEL_EXP   = 8            ;Zuzycie paliwa: 4 oryginalne, 8 - wolniejsze
+FUEL_EXP   = 8            ;Zuzycie paliwa: 4 - oryginalne, 8 - wolniejsze
 FADECHR	   = 1            ;1 = left only buffer for sprites and decompress
+NB_ITEMS   = 1            ;1 = Show number (1,2,3,4.) in the pocket; 0 - no
 SCHR	   = 127
 
 
