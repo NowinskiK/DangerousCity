@@ -85,8 +85,8 @@ aw3      jsr _joy
          lda CONSOL
          and #1         ;START = Play game
          beq aw8
-         lda CONSOL
-         and #4         ;OPTION = Legenda
+         lda HLPFLG
+         cmp #KEY_HELP         ;HELP = Legenda
          bne aw9
          jmp run_leg
 aw9      lda f

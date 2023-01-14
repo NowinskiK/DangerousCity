@@ -5,6 +5,8 @@ http://atariki.krap.pl/index.php/Player/Missile_Graphics
 https://g2f.atari8.info/edit_colors.png
 http://atariki.krap.pl/index.php/Rejestry_GTIA#SIZEP0
 http://atariki.krap.pl/index.php/ATASCII
+http://atariki.krap.pl/index.php/Kody_klawiszy
+https://atariwiki.org/wiki/Wiki.jsp?page=CONSOL
 
 # Assembler 6502
 

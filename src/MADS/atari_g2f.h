@@ -72,6 +72,7 @@ colbaks	=	$02C8	; rejestr-cie? COLBAK
 
 dsctln	=	$02D5	; (2) Disk sector size register; default of 128 ($80) bytes
 dvstat	=	$02EA	; (4) device status
+HLPFLG  =   $02DC   ; zapisywany jest tam kod kombinacji klawisza HELP z ewentualnymi klawiszami SHIFT lub CONTROL
 
 crsinh	=	$02F0	; znacznik widoczno?ci kursora
 chact	=	$02F3	; rejestr cien CHRCTL
