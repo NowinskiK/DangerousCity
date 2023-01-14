@@ -1,4 +1,4 @@
-lewf    ; equ ;*   8d6f
+lewf    *
      dta %00000000 ;*0
      dta %00000000
      dta %00000000
@@ -136,7 +136,7 @@ lewf    ; equ ;*   8d6f
      dta %00000000
 
 
-prawf    ;equ ;*  8def
+prawf    *
 
      dta %00000000 ;*0
      dta %11100110

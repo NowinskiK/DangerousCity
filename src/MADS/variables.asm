@@ -23,8 +23,6 @@ fr       dta (0)
 stage    dta (0)
 
 
-;		org $0500
-
 ; tablica wewnetrznych skokow vblk
 ; stage / wektor
 tab_vblk  dta a(VBL_title)    ;0=title
@@ -59,6 +57,11 @@ FUEL_EXP   = 8            ;Zuzycie paliwa: 4 - oryginalne, 8 - wolniejsze
 FADECHR	   = 1            ;1 = left only buffer for sprites and decompress
 NB_ITEMS   = 1            ;1 = Show number (1,2,3,4.) in the pocket; 0 - no
 SCHR	   = 127
+; Special characters
+PLI_Z      = $5A
+PL_Z    EQU $1A
+PL_O    EQU $0F
+PL_L    EQU $0C
 
 
 ; Trick flags
