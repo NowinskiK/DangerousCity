@@ -27,6 +27,7 @@ fnt	        ins "newgfx\TYT10_PTODT4.fnt"
             .ALIGN $0400
             icl "DATA.asm"
 
+start       jsr _backup_fnt
 main        jsr main_title
             jsr dc
             jmp main
@@ -35,4 +36,4 @@ dc          icl "DC.asm"
             icl "PROC.ASM"
 
 
-            run main
+            run start

@@ -589,13 +589,13 @@ _ok      ldy pl
 
 _ciemno   ;  equ *
          lda pl
-         cmp #27
+         cmp #$1b
          bne ap2
          jmp _clso
-ap2      cmp #28
+ap2      cmp #$1c
          bne ap3
          jmp _jasno
-ap3      cmp #26
+ap3      cmp #$1a
          bne ap4
          jmp _jasno
 ap4      rts
@@ -633,7 +633,7 @@ ap6      lda zst_fnt+$0200,y
          bne ap6
          rts
 
-_movafnt   ; equ *
+_backup_fnt   ; equ *
          ldy #0
 ap1      lda gra_fnt,y
          sta zst_fnt,y

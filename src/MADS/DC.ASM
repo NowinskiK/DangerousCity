@@ -678,7 +678,7 @@ aj4      lda #0
          inc $c1
          dex
          bne aj4
-         jsr _movafnt
+         jsr _jasno
          rts
 
 
