@@ -112,7 +112,9 @@ ax11     inc str_leg
          jmp ax12
 
 ; exit from legend
-ax13    jmp init_title
+ax13    lda #0
+        sta HLPFLG
+        jmp init_title
 
 
 
