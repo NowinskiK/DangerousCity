@@ -2,7 +2,7 @@
 VBL_game
         lda #>gra_fnt
         sta CHBASE
-	lda #$0f
+        lda color_1
         sta color1
 
         lda #$44

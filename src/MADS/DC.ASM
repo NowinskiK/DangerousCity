@@ -22,8 +22,8 @@ play     *
          stx $58
          sty $59
 
-         lda #13
-         sta color1
+         lda #$0f
+         sta color_1
          lda #0
          sta $02c6
          sta $02c8
@@ -766,7 +766,7 @@ kolizja  equ *
          bpl af6
          jmp nextpl
 
-af6      ldy #5
+af6      ldy #(cpnend-cpn-1)
 ag6      lda cpn,y
          cmp t
          bne ag5

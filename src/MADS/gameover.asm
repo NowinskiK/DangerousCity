@@ -21,12 +21,11 @@ gameover_pre        ;6 sec dead music - wait
          jsr _zegar
 
          ;sciemniaj ekran
-at7      dec color1
-         lda color1
+at7      dec color_1
          bmi at8
          ldx #2
          jsr _zegar
-         ;jmp at7
+         jmp at7
 at8      rts
 
 gameover       ; Game over screen

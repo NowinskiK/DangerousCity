@@ -45,7 +45,7 @@ stage_win    = 4
 regA	.ds 1
 regX	.ds 1
 regY	.ds 1
-
+color_1 equ $f8
 
 ; CONST
 ASCZER     = $00           ;ASCII ZERO
