@@ -5,18 +5,31 @@ Przygotowałem dwie wersje: jedna z logo MIRAGE, druga z logo LK AVALON, jednak 
 
 ![Dangerous City](./doc/CD_Mirage.png)
 
-Kodowanie: Kamil Nowiński  
-Muzyka: Konrad Gmurek  
-Okładka tytułowa: Hubert Nowiński  
-Plansze: Kamil & Hubert  
+Kodowanie: **Kamil Nowiński**  
+Muzyka: **Konrad Gmurek**  
+Okładka tytułowa: **Hubert Nowiński**  
+Plansze: **Kamil & Hubert**  
 
+# Edycja 2023
+Prace nad nową edycją ruszyły jeszcze w 2022r, kiedy to KAZ zaproponował wydanie tego tytułu w ramach [Polskiego Towarszystwa Ochrony Dziedzictwa Technicznego](https://ptodt.org.pl/). Szybko ustaliliśmy wstępny zakres prac, a [pełną listę zmian można przeczytać tutaj](./ChangeLog.md).
+Dzisiaj już wiemy, że gra zostanie wydana na cartridge'u, a całość pojawi się w wersji pudełkowej.
+
+Okładka:
+![Box](./doc/DC_cover.jpg)
+
+Ekran tytułowy:
+![Dangerous City](./doc/DC_PTODT_title.png)
 
 ## Historia
 Tutaj przeczytasz więcej o tym jak zaczęła się cała historia i dlaczego ta gra wylądowała na GitHub:
 [AtariOnline: CamoSoft / Kamilos - historia, programy](https://atarionline.pl/forum/comments.php?DiscussionID=6703)
 
-# Edycja 2023
-
+## Osoby, które przyczyniły się do gry
+Kodowanie: **Kamil Nowiński**  
+Grafika tytułowa: **Krzysztof "Kaz" Ziembik**  
+Wsparcie techniczne: **PEBE**  
+Cartridge: **Jakub Husak** 
+Projekt pudełka: **Rafał Dudek, Piotr Piter Krużycki, Krzysztof "Kaz" Ziembik**  
 
 
 # ATARI - Quick Assembler
