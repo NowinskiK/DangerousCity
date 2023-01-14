@@ -163,11 +163,12 @@ ah3      lda #0
 _music   lda pms
          beq as5
          dec pms
-         rts
-as5      lda $d20f
-         and #8
-         beq as2
-         rts
+as_ret   rts
+as5      lda kbcodes
+         cmp #KEY_NONE
+         beq as_ret
+         cmp #KEY_M
+         bne as_ret
 as2      lda #16
          sta pms
          ldx music
@@ -177,9 +178,9 @@ as2      lda #16
          ldx #0
 as3      stx music
          beq as4
-         lda #$60
+         lda #$60       ;replay music
          jmp rep+3
-as4      lda #$50
+as4      lda #$50       ;pause music
          jmp rep+3
 
 

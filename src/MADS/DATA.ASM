@@ -62,17 +62,11 @@ leg_t    ;equ *
      dta d' DOSTPNE KLAWISZE :                    '
      dta d'                                        '
 
-
-     dta d " "
-     .he d9 91 59 0d d9 94 59
-     dta d '  U',b(PLI_Z),d'YWANIE PRZEDMIOTW            '
-     .he D9 A5 B3 A3 59 00 00 00 2B 2F 2E 29 25 23 00 27
-     .he 32 39 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-     .he 00 00 00 00 00 00 00 D9 B3 A8 A9 A6 B4 59 00    
-     dta d " WCZENIE / WYCZENIE MUZYKI          "
-     dta d "                                        "
-     dta d "                               "
-     
+     dta d' ',c'Y'*, d'1'*, c'Y', d'-', c'Y'*, d'4'*, c'Y', d'  U',b(PLI_Z),d'YWANIE PRZEDMIOTW           '
+     dta d' ',c'Y'*, d'ESC'*, c'Y', d'   KONIEC GRY                    '
+     dta d'   ',c'Y'*, d'M'*, c'Y', d'    WCZENIE / WYCZENIE MUZYKI'
+     dta d'                                        '
+     dta d'                                        '
 
 t1_cz    :64 dta d " "
 t2_cz    :64 dta d " "
