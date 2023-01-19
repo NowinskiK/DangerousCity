@@ -47,7 +47,7 @@ tc1
      dta d '             MUZYKA             '     ;05
      dta d '       GRAFIKA TYTUOWA         '     ;06
      dta d '        SCENARIUSZ I MAPA       '     ;07
-     dta d '       SUPPORT TECHNICZNY       '     ;11
+     dta d '       SUPPORT  TECHNICZNY      '     ;11
      dta d '            CARTRIDGE           '     ;13
      dta d "        PROJEKT PUDEKA         "     ;08
      dta d "    START - ROZPOCZCIE GRY     "     ;12
@@ -63,7 +63,7 @@ tc2
      dta d "         KONRAD  GMUREK         "     ;05
      dta d "    KRZYSZTOF 'KAZ' ZIEMBIK     "     ;06
      dta d "     KAMIL I HUBERT NOWISCY    "     ;07
-     dta d "              PEBE              "     ;11
+     dta d "           PEBE & MONO          "     ;11
      dta d '           JAKUB HUSAK          '     ;13
      dta d " R.DUDEK, P.KRUYCKI, K.ZIEMBIK "     ;08
      dta d "     HELP - LEGENDA DO GRY      "     ;12

@@ -63,7 +63,7 @@ tc2
      dta d "         KONRAD  GMUREK         "     ;05
      dta d "    KRZYSZTOF 'KAZ' ZIEMBIK     "     ;06
      dta d "     KAMIL & HUBERT NOWINSCY    "     ;07
-     dta d "              PEBE              "     ;11
+     dta d "           PEBE & MONO          "     ;11
      dta d '           JAKUB HUSAK          '     ;13
      dta d " R.DUDEK, P.KRUZYCKI, K.ZIEMBIK "     ;08
      dta d "       HELP - GAME LEGEND       "     ;12

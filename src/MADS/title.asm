@@ -26,7 +26,7 @@ ant	dta $44,a(scr)
 	dta $F0    ;dli7 (logo)
 	dta $42,a(scr+22*32)
 	dta $02,$02,$02,$02
-	dta $82,$02,$22         ;dli8
+	dta $82     ;dli8
 	dta $41,a(ant)
 
 scr	ins "newgfx\TYT10_PTODT4.scr"
