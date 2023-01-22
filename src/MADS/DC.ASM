@@ -35,7 +35,7 @@ play     *
          jsr _initmap
          jsr _initgra
          jsr _prmap  ;* rysuj mape
-         jsr _prkiesz
+         jsr _show_pocket
          
          mva >pmg pmbase
          mva #$03 pmcntl
@@ -382,7 +382,7 @@ _init_spr    *    ;Decompress sprites
 
          icl "functions.asm"
 
-_prkiesz  ; equ *
+_show_pocket *
          ldx #<(rzeczy_w+4)
          ldy #>(rzeczy_w+4)
          stx $c2
@@ -411,13 +411,13 @@ am7      sta ($c2),y
          stx $c0
          sty $c1
          ldy $c4
-         lda kieszen,y
+         lda pocket,y
          beq am6         ; no item
          ldx #0
          jsr _szuk
          ldx #0
          stx $cf
-         jsr _dl
+         jsr _get_len
          sty $cf
          lda #24
          sec
@@ -456,18 +456,18 @@ _wezrzc   ;  equ *
          jsr _wolne
          beq am4
          lda rzecz
-         sta kieszen-1,y
+         sta pocket-1,y
          ldy pl
          dey
          lda #0
          sta plrzc,y
          jsr _prrzc
-         jsr _prkiesz
+         jsr _show_pocket
          jmp af5
 am4      jmp newruch
 
 _wolne   ldy #0
-am2      lda kieszen,y
+am2      lda pocket,y
          beq am3
          iny
          cpy #4
@@ -529,7 +529,7 @@ al1      lda #84
          jsr _szuk
          lda #0
          sta $cf
-         jsr _dl
+         jsr _get_len
          sty $cf
          lda #40
          sec
@@ -579,10 +579,11 @@ ak7      sec
          sta $c1
          ldx $c0
          ldy $c1
-         jsr _prkom
+         jsr _show_msg
          rts
 
-_prkom   stx $c0
+_show_msg *
+         stx $c0
          sty $c1
          jsr _clrkom
          ldy #0
@@ -620,7 +621,7 @@ aj5      sta plname,y
          jsr _szuk
          lda #0
          sta $cf
-         jsr _dl
+         jsr _get_len
          sty $cf
          lda #32
          sec
@@ -744,7 +745,8 @@ _dod     inc $c0
          inc $c1
 aj3      rts
 
-_dl      ldy #0
+_get_len *     ;$c0 - txt pointer, $cf - EOL, Y - result
+         ldy #0
 al3      lda ($c0),y
          cmp $cf
          beq al8

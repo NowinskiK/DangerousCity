@@ -19,7 +19,7 @@ az6      lda plrzc_z,y
 
          ldy #3
          lda #0
-az8      sta kieszen,y
+az8      sta pocket,y
          dey
          bpl az8
          rts
@@ -249,7 +249,7 @@ az9      jsr _keyoff
 an1      txa
          tay
          dey
-         lda kieszen,y
+         lda pocket,y
          bne an4
          jmp brak_prz        ;brak przedmiotu
 an4      tax
@@ -262,7 +262,7 @@ an4      tax
          cmp #16
          bne an2
          lda #2
-         sta kieszen,y
+         sta pocket,y
          ldx #<tt1
          ldy #>tt1
          jmp uzyl
@@ -275,7 +275,7 @@ an2   ;      equ *
          cmp #40
          bne an3
          lda #4
-         sta kieszen,y
+         sta pocket,y
          jsr _ok
          ldx #<tt2
          ldy #>tt2
@@ -287,14 +287,14 @@ an3      cpx #5
          bne an5
          sty $cf
          lda #2
-         jsr _szk
+         jsr _check_pocket
          bpl an6
-         jmp nie_uzyl
+         jmp not_used
 an6      lda #6
-         sta kieszen,y
+         sta pocket,y
          lda #0
          ldy $cf
-         sta kieszen,y
+         sta pocket,y
          ldx #<tt3
          ldy #>tt3
          jmp uzyl
@@ -305,14 +305,14 @@ an5      cpx #4
          bne as1
          sty $cf
          lda #6
-         jsr _szk
+         jsr _check_pocket
          bpl an8
-         jmp nie_uzyl
+         jmp not_used
 an8      lda #7
-         sta kieszen,y
+         sta pocket,y
          lda #0
          ldy $cf
-         sta kieszen,y
+         sta pocket,y
          ldx #<tt4
          ldy #>tt4
          jmp uzyl
@@ -324,7 +324,7 @@ as1      cpx #7
          cmp #68
          bne an7
          lda #0
-         sta kieszen,y
+         sta pocket,y
          jsr _ok
          ldx #<tt16
          ldy #>tt16
@@ -336,16 +336,16 @@ an7      cpx #8
          bne ao1
          sty $cf
          lda #10
-         jsr _szk
+         jsr _check_pocket
          bpl ao2
          ldy $cf
          lda pl
          jmp ao1
 ao2      lda #31
-         sta kieszen,y
+         sta pocket,y
          lda #0
          ldy $cf
-         sta kieszen,y
+         sta pocket,y
          ldx #<tt5
          ldy #>tt5
          jmp uzyl
@@ -356,16 +356,16 @@ ao1      cpx #8
          bne ao5
          sty $cf
          lda #30
-         jsr _szk
+         jsr _check_pocket
          bpl ao4
          lda pl
          ldy $cf
          jmp ao5
 ao4      lda #11
-         sta kieszen,y
+         sta pocket,y
          ldy $cf
          lda #0
-         sta kieszen,y
+         sta pocket,y
          ldx #<tt5
          ldy #>tt5
          jmp uzyl
@@ -376,16 +376,16 @@ ao5      cpx #9
          bne ao6
          sty $cf
          lda #10
-         jsr _szk
+         jsr _check_pocket
          bpl ao8
          lda pl
          ldy $cf
          jmp ao6
 ao8      lda #30
-         sta kieszen,y
+         sta pocket,y
          ldy $cf
          lda #0
-         sta kieszen,y
+         sta pocket,y
          ldx #<tt6
          ldy #>tt6
          jmp uzyl
@@ -396,14 +396,14 @@ ao6      cpx #9
          bne ao7
          sty $cf
          lda #31
-         jsr _szk
+         jsr _check_pocket
          bpl ao9
-         jmp nie_uzyl
+         jmp not_used
 ao9      lda #11
-         sta kieszen,y
+         sta pocket,y
          ldy $cf
          lda #0
-         sta kieszen,y
+         sta pocket,y
          ldx #<tt6
          ldy #>tt6
          jmp uzyl
@@ -415,7 +415,7 @@ ao7      cpx #12
          cmp #19
          bne ap9
          lda #0
-         sta kieszen,y
+         sta pocket,y
          jsr _ok
          ldx #<tt7
          ldy #>tt7
@@ -428,7 +428,7 @@ ap9      cpx #13
          cmp #5
          bne aq1
          lda #14
-         sta kieszen,y
+         sta pocket,y
          jsr _ok
          ldx #<tt8
          ldy #>tt8
@@ -441,7 +441,7 @@ aq1      cpx #15
          cmp #22
          bne ar1
          lda #0
-         sta kieszen,y
+         sta pocket,y
          jsr _ok
          ldx #<tt9
          ldy #>tt9
@@ -454,7 +454,7 @@ ar1      cpx #16
          cmp #14
          bne ar2
          lda #17
-         sta kieszen,y
+         sta pocket,y
          jsr _ok
          ldx #<tt10
          ldy #>tt10
@@ -467,7 +467,7 @@ ar2      cpx #17
          cmp #50
          bne ar3
          lda #0
-         sta kieszen,y
+         sta pocket,y
          jsr _ok
          ldx #<tt11
          ldy #>tt11
@@ -480,7 +480,7 @@ ar3      cpx #18
          cmp #64
          bne ar4
          lda #19
-         sta kieszen,y
+         sta pocket,y
          jsr _ok
          ldx #<tt12
          ldy #>tt12
@@ -494,13 +494,13 @@ ar4      cpx #14
          bne ar5
          sty $cf
          lda #19
-         jsr _szk
+         jsr _check_pocket
          bpl ar6
-         jmp nie_uzyl
+         jmp not_used
 ar6      lda #0
-         sta kieszen,y
+         sta pocket,y
          ldy $cf
-         sta kieszen,y
+         sta pocket,y
          jsr _ok
          ldx #<tt13
          ldy #>tt13
@@ -513,7 +513,7 @@ ar5      cpx #20
          cmp #56
          bne ar7
          lda #0
-         sta kieszen,y
+         sta pocket,y
          jsr _ok
          ldx #<tt14
          ldy #>tt14
@@ -526,20 +526,20 @@ ar7      cpx #21
          cmp #57
          bne ar8
          lda #0
-         sta kieszen,y
+         sta pocket,y
          jsr _ok
          ldx #<tt15
          ldy #>tt15
          jmp uzyl
 
-ar8      jmp nie_uzyl
+ar8      jmp not_used
 
 
 
 uzyl *     
-         jsr _prkom
+         jsr _show_msg
          jsr _mazanie
-         jsr _prkiesz
+         jsr _show_pocket
          lda t
          bmi zz1
          lda #0
@@ -547,22 +547,24 @@ uzyl *
 zz1     jmp _czruch
 
 
-nie_uzyl *   ;poinformuj gracza, ze przedmiot nie moze byc uzyty
+not_used *   ;poinformuj gracza, ze przedmiot nie moze byc uzyty
         ldx #<tt51
         ldy #>tt51
-        jsr _prkom
+        jsr _show_msg
         jmp _czruch
 
 brak_prz *   ;poinformuj gracza, ze nie ma przedmiotu do uzycia
         ldx #<tt50
         ldy #>tt50
-        jsr _prkom
+        jsr _show_msg
         jmp _czruch
 
 
-_szk     ldy #0
+_check_pocket  ;check whether have an item in the pocket: A - item
+;_szk     
+         ldy #0
          sta $ce
-an10     lda kieszen,y
+an10     lda pocket,y
          cmp $ce
          beq an9
          iny
@@ -606,7 +608,7 @@ ap8      lda zst_fnt,y
          rts
 
 _clso    lda #11
-         jsr _szk
+         jsr _check_pocket
          bmi ap7
          rts
 ap7      lda #0
