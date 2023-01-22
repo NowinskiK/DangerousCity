@@ -4,26 +4,26 @@ ekr_over dta d "   game  over   "
 leg_t    ;equ *
      dta d'                                        '
      dta d'   FINALLY!  AFTER SUCH A LONG WORK ON  '
-     dta d' PHOTOS FOR YOUR NEW MOVIE  -  YOU NEED '
+     dta d' FILMING YOUR NEW MOVIE  -  YOU  NEED   '
      dta d' A GOOD REST.                           '
      dta d"   THAT'S WHY  YOU'RE  NOW  COMING BACK "
      dta d' BY CAR  TO YOUR HOME,  WHERE YOU LIVE  '
-     dta d' TOGETHER YOUR LARGE FAMILY.            '
+     dta d' WITH YOUR LARGE FAMILY.                '
      dta d'                                        '
 
-     dta d" IT WAS A VERY LONG AND TIRED JOURNEY   "
+     dta d" IT WAS A VERY LONG AND TIRING JOURNEY  "
      dta d" BUT CLOSE TO THE COTTAGE.              "
-     dta d" - DAMN IT ! -YOU SCREWED TO YOURSELF.  "
-     dta d"   YOU ENTERED A SIDE STREET  AND  YOU  "
-     dta d" DON'T KNOW THE RIGHT WAY BACK.         "
+     dta d" - DAMN IT ! - YOU CURSED IN MIND.      "
+     dta d"      YOU TOOK A WRONG EXIT  AND  DON'T "
+     dta d" KNOW THE RIGHT WAY BACK.               "
      dta d"  IT TURNED OUT THAT YOU FOUND YOURSELF "
      dta d" IN SOME A MYSTERIOUS CITY  WHERE THERE "
      dta d" IS NO PEOPLE AND EXIT!!!               "
 
-     dta d"   PENETRATING THE TERRAIN, YOU SAW ON  "
-     dta d" THE WAY SOME OBJECTS,  BUT  YOU DON'T  " 
-     dta d" KNOW THEM DESTINY.  AND HERE IT BEGINS "
-     dta d" YOUR  MISSION.         DRIVING THROUGH " 
+     dta d"    PENETRATING  THE TERRAIN,  YOU  SAW "
+     dta d" SOME OBJECTS ON THE WAY, BUT YOU DON'T " 
+     dta d" KNOW THEIR DESTINY.   AND THAT'S WHERE "
+     dta d" YOUR MISSION BEGINS.   DRIVING THROUGH " 
      dta d" THIS CITY,  YOU  MUST  TAKE  THE ITEMS "
      dta d" AND USE THEM WHERE NEEDED.             "
      dta d" BY DOING THIS - YOU WILL OPEN THE GATE "
