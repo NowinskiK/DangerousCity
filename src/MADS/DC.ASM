@@ -461,7 +461,7 @@ _wezrzc   ;  equ *
          dey
          lda #0
          sta plrzc,y
-         jsr _prrzc
+         jsr _show_ava_item
          jsr _show_pocket
          jmp af5
 am4      jmp newruch
@@ -477,7 +477,8 @@ am2      lda pocket,y
 am3      iny
          rts
 
-_prrzc   lda #0
+_show_ava_item *
+         lda #0
          ldy #39
 al2      sta rzc_wid,y
          dey
@@ -547,7 +548,8 @@ al4      lda ($c0),y
 al5      rts
 
 
-_prwidz  lda pl
+_show_sq_state *
+         lda pl
          sta $cf
          tay
          dey
@@ -593,7 +595,8 @@ ak5      lda ($c0),y
          sta kom,y
          iny
          bne ak5
-ak4      rts
+ak4      jsr _blink_msg
+         rts
 
 _clrkom  ldy #39
          lda #0
@@ -602,7 +605,28 @@ ak3      sta kom,y
          bpl ak3
          rts
 
-_prplnam   ; equ *
+_blink_msg *
+          lda msg_col
+          cmp #$ff
+          beq bmie
+          cmp #$0f
+          beq bm2
+          inc msg_col
+          ldx #$02
+          jsr _zegar
+          jmp _blink_msg
+bm2       lda msg_col
+          cmp #MSG_DEFCOL
+          beq bme
+          dec msg_col
+          ldx #$02
+          jsr _zegar
+          jmp bm2
+bme       ;lda #MSG_DEFCOL
+          ;sta msg_col
+bmie      rts
+
+_show_sq_name *
 
          lda #$80
          ldx #24
@@ -925,13 +949,16 @@ af2      lda $c2
 af3      dec $c4
          bne af4
 
+         lda #$ff
+         sta msg_col
          jsr _ciemno
          jsr _mazanie
-         jsr _prplnam
-         jsr _prwidz
-         jmp _prrzc
-
-
+         jsr _show_sq_name
+         jsr _show_sq_state
+         jsr _show_ava_item
+         lda #MSG_DEFCOL
+         sta msg_col
+         rts
 
 _mul eor #%11111111
      sta _bta

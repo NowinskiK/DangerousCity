@@ -66,6 +66,8 @@ dli_2   sta regA
 	lda #$42
         sta color2
         sta colbak
+	lda msg_col
+        sta color1
 
         DLINEW dli_3 1 0 0
 

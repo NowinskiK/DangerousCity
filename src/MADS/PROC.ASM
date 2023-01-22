@@ -25,17 +25,17 @@ az8      sta pocket,y
          rts
 
 
-_ustres  lda #2
-         ldx #<reset
-         ldy #>reset
-         sta $09
-         stx $02
-         sty $03
-         lda #0
-         sta $0244
-         lda #$c0
-         sta $6a
-         rts
+; _ustres  lda #2
+;          ldx #<reset
+;          ldy #>reset
+;          sta $09
+;          stx $02
+;          sty $03
+;          lda #0
+;          sta $0244
+;          lda #$c0
+;          sta $6a
+;          rts
 
 reset   ;    equ *
          lda $85

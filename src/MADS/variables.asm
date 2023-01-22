@@ -20,6 +20,7 @@ pocket   dta (0),(0),(0),(0)
 music    dta (1)
 fr       dta (0)
 stage    dta (0)
+msg_col  dta b(MSG_DEFCOL)
 
 color_index  dta b(2)
 color_v      dta b(0)
@@ -64,6 +65,7 @@ FADECHR	   = 1            ;1 = left only buffer for sprites and decompress
 NB_ITEMS   = 1            ;1 = Show number (1,2,3,4.) in the pocket; 0 - no
 SCHR	   = 127
 KEYDEFP    = $79
+MSG_DEFCOL = $0B
 
 ; Special characters
 PLI_Z      = $5A
