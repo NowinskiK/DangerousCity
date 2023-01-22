@@ -56,7 +56,7 @@ tc1
      dta d '        REMAKE & RELEASE        '     ;10
 
 tc2  
-     dta d "      HERITAGE  PROTECTION      "     ;01
+     dta d "      HERITAGE PROTECTION       "     ;01
      dta d "                                "     ;02
      dta d "       ORIGINALLY IN 1994       "     ;03
      dta d "         KAMIL NOWINSKI         "     ;04
