@@ -90,7 +90,7 @@ az4      jsr _keyoff
 
 VBL_ov
 	    mwa #dli_ov VDSLST    ;$0200
-         jmp vmus        ;rts at the end
+         jmp playmus        ;rts at the end
          ;rts
 
 dli_ov   

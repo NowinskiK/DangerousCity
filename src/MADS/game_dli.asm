@@ -30,7 +30,7 @@ VBL_game
         ;sta GTIACTL
 
         mwa #dli_1 VDSLST    ;$0200
-        jsr vmus
+        jsr playmus
         jsr video
         rts
 
@@ -78,8 +78,7 @@ dli_3   sta regA
         lda regA
         rti
 
-vmus    jsr _music
-        jsr rep+6
+playmus jsr rep+6
         jsr _zapisz
         lda #0
         sta $4d
@@ -107,7 +106,6 @@ _zapisz  ldx #$80
          jmp _save
 
 video    equ *
-         jsr _kode
          lda #0
          sta $4d
          lda #$7e
@@ -223,18 +221,10 @@ dlj     and #$0f
         .endif
 
 
-_music   lda pms
-         beq as5
-         dec pms
-as_ret   rts
-as5      lda kbcodes
-         cmp #KEY_NONE
-         beq as_ret
+_music   lda kbcodes
          cmp #KEY_M
          bne as_ret
-as2      lda #16
-         sta pms
-         ldx music
+as2      ldx music
          inx
          cpx #2
          bcc as3
@@ -245,7 +235,7 @@ as3      stx music
          jmp rep+3
 as4      lda #$50       ;pause music
          jmp rep+3
-
+as_ret   rts
 
 _rysslup   ; equ *
          stx $f0

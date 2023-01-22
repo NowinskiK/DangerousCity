@@ -18,7 +18,6 @@ k        dta (0)
 rzecz    dta (0)
 kieszen  dta (0),(0),(0),(0)
 music    dta (1)
-pms      dta (0)
 fr       dta (0)
 stage    dta (0)
 

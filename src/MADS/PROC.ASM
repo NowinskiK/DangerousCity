@@ -236,7 +236,9 @@ _uzyj    lda kbcodes
          jsr gameover
          rts
 
-az7      ldx #0
+az7      jsr _kode
+         jsr _music
+         ldx #0
         .if DEBUG_MODE
          ldy color_index
          cpy #2
