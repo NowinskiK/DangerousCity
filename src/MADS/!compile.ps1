@@ -6,9 +6,12 @@
 Measure-xexFile ".\test\title.obx"
 
 # Compile game
-. 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' 'src\MADS\!main.asm'
+. 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' 'src\MADS\!main.asm' -o:'src\MADS\bin\!main.obx'
 . 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' 'src\MADS\!main.asm' -o:'src\MADS\!DC2023_122_pl.obx'
-Measure-xexFile "src\MADS\!main.obx"
+Measure-xexFile "src\MADS\bin\!main.obx"
+
+. 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' 'src\MADS\loader.asm'
+Measure-xexFile "src\MADS\loader.obx"
 
 $fileorg = Resolve-Path "src\MADS\!main.obx"
 $filexex = $fileorg -replace '.obx','.xex'
