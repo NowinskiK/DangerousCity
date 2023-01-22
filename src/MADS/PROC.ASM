@@ -537,27 +537,46 @@ ar8      jmp not_used
 
 
 uzyl *     
-         jsr _show_msg
-         jsr _mazanie
-         jsr _show_pocket
-         lda t
-         bmi zz1
-         lda #0
-         sta t
+        jsr _show_msg
+        jsr _blink_msg
+        jsr _mazanie
+        jsr _show_pocket
+        lda t
+        bmi zz1
+        lda #0
+        sta t
 zz1     jmp _czruch
 
 
 not_used *   ;poinformuj gracza, ze przedmiot nie moze byc uzyty
+        lda #$c0
+        sta msg_tmp
         ldx #<tt51
         ldy #>tt51
         jsr _show_msg
+        jsr _blink_msg
         jmp _czruch
 
 brak_prz *   ;poinformuj gracza, ze nie ma przedmiotu do uzycia
+        lda #$c0
+        sta msg_tmp
         ldx #<tt50
         ldy #>tt50
         jsr _show_msg
+        jsr _blink_msg
         jmp _czruch
+
+_check_one_action *
+         lda one_act
+         beq coae
+         cmp #ACT_SHOW_SQ_STATE
+         bne coaf
+         jsr _show_sq_state
+         lda #MSG_DEFCOL
+         sta msg_col
+coaf     lda #0
+         sta one_act
+coae     rts
 
 
 _check_pocket  ;check whether have an item in the pocket: A - item

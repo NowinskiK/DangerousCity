@@ -21,6 +21,8 @@ music    dta (1)
 fr       dta (0)
 stage    dta (0)
 msg_col  dta b(MSG_DEFCOL)
+msg_tmp  dta b(0)
+one_act  dta b(0)
 
 color_index  dta b(2)
 color_v      dta b(0)
@@ -66,6 +68,9 @@ NB_ITEMS   = 1            ;1 = Show number (1,2,3,4.) in the pocket; 0 - no
 SCHR	   = 127
 KEYDEFP    = $79
 MSG_DEFCOL = $0B
+
+; One action
+ACT_SHOW_SQ_STATE = 1
 
 ; Special characters
 PLI_Z      = $5A

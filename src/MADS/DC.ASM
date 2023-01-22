@@ -116,8 +116,9 @@ ab6      ldy #0
 
 ;* czekanie na ruch
 
-_czruch  jsr _joy
-
+_czruch  *
+         jsr _check_one_action
+az0      jsr _joy
          lda fr
          beq az5
          lda #0
@@ -595,8 +596,7 @@ ak5      lda ($c0),y
          sta kom,y
          iny
          bne ak5
-ak4      jsr _blink_msg
-         rts
+ak4      rts
 
 _clrkom  ldy #39
          lda #0
@@ -622,8 +622,7 @@ bm2       lda msg_col
           ldx #$02
           jsr _zegar
           jmp bm2
-bme       ;lda #MSG_DEFCOL
-          ;sta msg_col
+bme       
 bmie      rts
 
 _show_sq_name *
@@ -882,6 +881,8 @@ ag3      cmp #4
 ag4      stx x
          sty y
 
+         lda #$00
+         sta msg_tmp
          jmp newruch
 
 

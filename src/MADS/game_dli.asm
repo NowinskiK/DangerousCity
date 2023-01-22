@@ -107,8 +107,20 @@ _zapisz  ldx #$80
          ldx #$50
          jmp _save
 
-video    equ *
-         lda #0
+video   equ *
+        lda msg_tmp
+        beq vid2
+        dec msg_tmp
+        lda msg_tmp
+        cmp #MSG_DEFCOL 
+        bcs vid2
+        sta msg_col
+        cmp #0
+        bne vid2
+        lda #ACT_SHOW_SQ_STATE
+        sta one_act
+        
+vid2     lda #0
          sta $4d
          lda #$7e
          ldx #<(gra_fnt+$03f0)
