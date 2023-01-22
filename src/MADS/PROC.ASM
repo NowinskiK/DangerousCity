@@ -78,22 +78,6 @@ init_cz    ;   equ *
          jsr rep+3
         rts
 
-wait_cz  ldx #16
-         jsr _zegar
-         jsr _proc
-aw3      jsr _joy
-         lda CONSOL
-         and #1         ;START = Play game
-         beq aw8
-         lda HLPFLG
-         cmp #KEY_HELP         ;HELP = Legenda
-         bne aw9
-         jmp run_leg
-aw9      lda f
-         beq aw3
-
-aw8      rts
-
 
 v_cz     ;equ *
          lda $e7

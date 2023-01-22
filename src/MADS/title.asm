@@ -84,23 +84,40 @@ stop_title
 	tax
 	sta:rne hposp0,x+
 
-	; sei
-	; mva #$00 nmien
-	; .if VBLKI
-	; lda oldvbl
-	; sta $0222
-	; lda oldvbl+1
-	; sta $0223
-	; .else
-	; lda oldvbl
-	; sta $0224
-	; lda oldvbl+1
-	; sta $0225
-	; .endif
-	; mva #$40 nmien		;only NMI interrupts, DLI disabled
-	; cli			;IRQ enabled
-
 	rts
+
+
+wait_cz  ldx #16
+         jsr _zegar
+         jsr _proc
+aw3      jsr _joy
+         lda CONSOL
+         and #1         ;START = Play game
+         beq aw8
+         lda HLPFLG
+         cmp #KEY_HELP         ;HELP = Legenda
+         bne aw9
+         jmp run_leg
+aw9      lda kbcodes
+         cmp #KEY_NONE
+         beq aw10
+         cmp #KEY_V
+         bne aw10
+         jsr show_ver
+aw10     lda f
+         beq aw3
+aw8      rts
+
+show_ver *
+        ldy #(ver2-ver1)
+bv9     lda ver1,y
+        sta t1_cz,y
+        lda ver2,y
+        sta t2_cz,y
+        dey
+        bpl bv9
+        jmp _keyoff
+
 
 ; ---	DLI PROGRAM
         icl "title_dli.asm"
@@ -220,3 +237,20 @@ oldvbl dta a(0)		;stary wektor przerwania
 	.def ?old_dli = *
 .ENDM
 
+.MACRO EXITAPP
+	sei
+	mva #$00 nmien
+	.if VBLKI
+	lda oldvbl
+	sta $0222
+	lda oldvbl+1
+	sta $0223
+	.else
+	lda oldvbl
+	sta $0224
+	lda oldvbl+1
+	sta $0225
+	.endif
+	mva #$40 nmien		;only NMI interrupts, DLI disabled
+	cli			;IRQ enabled
+.ENDM

@@ -7,6 +7,8 @@ http://atariki.krap.pl/index.php/Rejestry_GTIA#SIZEP0
 http://atariki.krap.pl/index.php/ATASCII
 http://atariki.krap.pl/index.php/Kody_klawiszy
 https://atariwiki.org/wiki/Wiki.jsp?page=CONSOL
+https://gury.atari8.info/refs/graphics_modes.php
+.dumpdlist $9c20     #https://www.youtube.com/watch?v=8dLz858ZHlc
 
 # Assembler 6502
 ADC / SBC 
