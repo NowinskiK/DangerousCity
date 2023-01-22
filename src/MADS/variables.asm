@@ -27,7 +27,7 @@ one_act  dta b(0)
 color_index  dta b(2)
 color_v      dta b(0)
 prompt       dta d'>'
-
+color_bri    dta b(0)
 
 ; tablica wewnetrznych skokow vblk
 ; stage / wektor

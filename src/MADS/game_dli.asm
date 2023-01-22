@@ -22,6 +22,7 @@ VBL_game
         sta colpm0
         ldx pl
         lda plcols,x
+        ora color_bri
         sta colpm1
         sta colpm2
         sta colpm3
@@ -119,8 +120,13 @@ video   equ *
         bne vid2
         lda #ACT_SHOW_SQ_STATE
         sta one_act
-        
-vid2     lda #0
+
+vid2    *
+        lda color_bri
+        beq vid3
+        dec color_bri
+
+vid3     lda #0
          sta $4d
          lda #$7e
          ldx #<(gra_fnt+$03f0)
@@ -157,8 +163,7 @@ ag9      ldx #<(ekr+446)
 _kode    equ *
          lda kbcodes
          cmp #KEY_NONE
-         bne ah1
-ah2      rts
+         beq ah2
 ah1      .if DEBUG_MODE
          jsr _setcolor
          .endif
@@ -169,10 +174,15 @@ ah1      .if DEBUG_MODE
          cmp kod,y
          bne ah3
          inc k  ;idxk
+         iny
+         cpy #(kodend-kod)
+         bne ah2
+         lda #$0f
+         sta color_bri
          rts
 ah3      lda #0
          sta k
-         rts
+ah2      rts
 
         .if DEBUG_MODE
 _setcolor
