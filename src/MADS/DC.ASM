@@ -584,11 +584,7 @@ ak7      sec
 
 _prkom   stx $c0
          sty $c1
-         ldy #39
-         lda #0
-ak3      sta kom,y
-         dey
-         bpl ak3
+         jsr _clrkom
          ldy #0
 ak5      lda ($c0),y
          beq ak4
@@ -598,8 +594,12 @@ ak5      lda ($c0),y
          bne ak5
 ak4      rts
 
-
-
+_clrkom  ldy #39
+         lda #0
+ak3      sta kom,y
+         dey
+         bpl ak3
+         rts
 
 _prplnam   ; equ *
 

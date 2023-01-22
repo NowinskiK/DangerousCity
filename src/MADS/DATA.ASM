@@ -30,6 +30,7 @@ t2_cz     :32 dta d " "
           :32 dta d " "
 
 tabzw    .he 01 1c 02 1f 03 1d 04 1e 00      ;mapowanie zwrotow
+tabhex   dta d"0123456789ABCDEF"
 
 .IF LANG = 'pl'
      icl "data_titles_pl.asm"

@@ -20,7 +20,8 @@ VBL_game
 
         lda #$14
         sta colpm0
-        lda #$c2
+        ldx pl
+        lda plcols,x
         sta colpm1
         sta colpm2
         sta colpm3
@@ -146,8 +147,10 @@ _kode    equ *
          cmp #KEY_NONE
          bne ah1
 ah2      rts
-ah1      ldx #KEY_NONE
-         ;stx kbcodes
+ah1      .if DEBUG_MODE
+         jsr _setcolor
+         .endif
+         lda kbcodes
          ldy k
          cpy #(kodend-kod)
          beq ah2
@@ -158,6 +161,66 @@ ah1      ldx #KEY_NONE
 ah3      lda #0
          sta k
          rts
+
+        .if DEBUG_MODE
+_setcolor
+        lda kbcodes
+        cmp #KEY_RETURN
+        bne ah41
+        lda #$00
+        sta color_index
+        jsr _clrkom
+        lda prompt
+        sta kom+1
+        lda #0
+        sta kom+2
+        sta kom+3
+        rts
+ah41    tay
+        cpy #$C0
+        bcs dlex
+        lda (KEYDEFP),Y
+        ldy color_index
+        cpy #2 
+        bcs dlex
+        jsr char_to_0f
+        tax
+        lda tabhex,x
+        sta kom+2,y
+        txa
+        cpy #$00
+        bne dl7
+        asl
+        asl 
+        asl
+        asl
+dl7     cpy #$01
+        bne dl8
+        clc
+        adc color_v
+dl8     sta color_v
+        iny
+        sty color_index
+        cpy #2
+        beq new_color_apply
+dlex    rts
+new_color_apply  *
+        ldx pl
+        sta plcols,x
+        lda #0
+        sta kom+1
+        rts
+
+char_to_0f
+        sec
+        sbc #$30
+        cmp #$0a
+        bcc dlj
+        sbc #$07
+dlj     and #$0f
+        rts
+
+        .endif
 
 
 _music   lda pms

@@ -42,6 +42,14 @@ zrob  :72 dta $00
 
 plrzc :71 dta $00 
 
+;color of screens
+plcols    .he FF 72 92 40 30 A0 60 50 40 A2 D2 A2 04 02 32 42
+          .he 72 92 C2 24 A0 A0 B4 B4 B4 B2 A0 02 40 A2 A2 A2
+          .he A2 30 40 22 E0 40 50 60 70 A0 A0 A0 A0 A0 A0 90
+          .he A2 40 E4 20 90 92 44 22 02 20 C2 C0 B2 A2 C4 22
+          .he F0 40 42 40 F4 F0 F2 F0 
+          .he FF
+
 plrzc_z  equ *
      dta 0     ;*1
      dta 9

@@ -237,6 +237,11 @@ _uzyj    lda kbcodes
          rts
 
 az7      ldx #0
+        .if DEBUG_MODE
+         ldy color_index
+         cpy #2
+         bne az9
+        .endif
          cmp #KEY_1
          bne *+4
          ldx #1
@@ -250,7 +255,7 @@ az7      ldx #0
          bne *+4
          ldx #4
 
-         jsr _keyoff
+az9      jsr _keyoff
          cpx #0
          bne an1
          jmp newruch

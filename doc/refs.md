@@ -9,9 +9,11 @@ http://atariki.krap.pl/index.php/Kody_klawiszy
 https://atariwiki.org/wiki/Wiki.jsp?page=CONSOL
 
 # Assembler 6502
+ADC / SBC 
+ASL A
+https://www.masswerk.at/6502/6502_instruction_set.html
 
-
-
+BCS / BCC  (Carry Set/clear)
 
 ## Old compilation
 `File: .\src\MADS\!main.xex  (Len=38078)`

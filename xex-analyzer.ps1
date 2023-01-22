@@ -6,7 +6,8 @@
 #$File = "d:\ATARI\gry\River Raid\River Raid (v1).xex" 
 #$File = "d:\ATARI\gry\Problem Jasia\Problem Jasia (v2,128).xex" 
 #$File = "d:\GitHub\NowinskiK\DangerousCity\srcPC\grafika2023\TYT10_PTODT4.xex"
-
+#$File = "d:\ATARI\CAMOsoft\Jaskiniowiec (1995)(StanBit)(PL)[h CAMOsoft][t +1 CAMOsoft].xex" 
+#Measure-xexFile $file
 
 function Measure-xexFile {
     param (

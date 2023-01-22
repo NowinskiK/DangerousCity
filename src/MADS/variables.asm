@@ -22,6 +22,10 @@ pms      dta (0)
 fr       dta (0)
 stage    dta (0)
 
+color_index  dta b(2)
+color_v      dta b(0)
+prompt       dta d'>'
+
 
 ; tablica wewnetrznych skokow vblk
 ; stage / wektor
@@ -59,6 +63,8 @@ FUEL_EXP   = 8            ;Zuzycie paliwa: 4 - oryginalne, 8 - wolniejsze
 FADECHR	   = 1            ;1 = left only buffer for sprites and decompress
 NB_ITEMS   = 1            ;1 = Show number (1,2,3,4.) in the pocket; 0 - no
 SCHR	   = 127
+KEYDEFP    = $79
+
 ; Special characters
 PLI_Z      = $5A
 PL_Z    EQU $1A
@@ -72,3 +78,4 @@ LANG    = 'pl'          ; pl - Polish, en - English
 ; Trick flags
 NO_DAMAGE    = 0
 NO_OBSTACLES = 0
+DEBUG_MODE   = 0
