@@ -4,6 +4,8 @@ Dangerous City
 Released: 2023-mm-dd
 
 ## == Features ==
+ * Dodany loader oraz wyłączenie BASIC'a przed ładowaniem gry 
+ * Dodane dodatkowe kody
  * Zmiana klawiszy: HELP - legenda #13
  * Zmiana klawiszy: M - włącza/wyłącza muzykę #10
  * Dodano wersję angielską - przełącznik kompilacji #9
