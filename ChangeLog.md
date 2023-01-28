@@ -18,3 +18,4 @@ Released: 2023-mm-dd
 
 ## == Bug Fixes ==
  * Fixed issue #11: Koniec gry na planszy "ciemna uliczka"
+ * Fixed issue with title scroll
