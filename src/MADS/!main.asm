@@ -4,6 +4,7 @@ admap       = $0700     ;tablica adresow do skompresowanych plansz
 des         = $0800     ;bufor dla rozpakowanej planszy
 zst_fnt     = $bc00     ;bufor dla backup'u fontow
 
+            icl "loader_basic_off.asm"
             org $bc00
             icl "loader.asm"
             org $1000
