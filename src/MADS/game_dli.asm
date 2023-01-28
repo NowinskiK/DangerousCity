@@ -158,30 +158,29 @@ ag9      ldx #<(ekr + BAR2_BOTTM)
          ldy #>(ekr + BAR2_BOTTM)
          jsr _rysslup
 
-         rts
+rts2     rts
 
 _kode    equ *
          lda kbcodes
          cmp #KEY_NONE
-         beq ah2
+         beq rts2
 ah1      .if DEBUG_MODE
          jsr _setcolor
          .endif
+         
          lda kbcodes
-         ldy k
+         ldy fki
          cpy #(kodend-kod)
          beq ah2
          cmp kod,y
          bne ah3
-         inc k  ;idxk
+         inc fki
          iny
          cpy #(kodend-kod)
-flash    bne ah2
-         lda #$0f
-         sta color_bri
-         rts
+         bne ah2
+         jmp flash
 ah3      lda #0
-         sta k
+         sta fki
 ah2      ;rts
 
          lda kbcodes
@@ -198,10 +197,29 @@ ah2      ;rts
          sta damage
          sta ikd
          jsr _clr_fuel_bar
-         jmp flash
+         jmp flashi
 ah31     lda #0
          sta ikd
-ah21     rts
+ah21     ;rts
+
+         lda kbcodes
+         ldy tnki
+         cpy #(tnkend-tnk)
+         beq tah2
+         cmp tnk,y
+         bne tah3
+         inc tnki
+         iny
+         cpy #(tnkend-tnk)
+         jmp flash
+tah3     lda #0
+         sta tnki
+tah2     rts
+
+flash   bne flend
+flashi   lda #$0f
+         sta color_bri
+flend    rts
 
 
         .if DEBUG_MODE

@@ -7,7 +7,8 @@ Measure-xexFile ".\test\title.obx"
 
 # Compile game
 . 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' 'src\MADS\!main.asm' -o:'src\MADS\bin\!main.obx'
-. 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' 'src\MADS\!main.asm' -o:'src\MADS\bin\!DC2023_128_pl.obx'
+. 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' 'src\MADS\!main.asm' -o:'src\MADS\bin\!DC2023_129_0_pl.obx'
+. 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' 'src\MADS\!main.asm' -o:'src\MADS\bin\!DC2023_129_0_pl.xex'
 Measure-xexFile "src\MADS\bin\!main.obx"
 
 . 'd:\ATARI\Tools\Mad-Assembler-2.1.5\mads.exe' 'src\MADS\loader.asm'

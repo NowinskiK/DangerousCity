@@ -671,7 +671,9 @@ _initgra lda #1
          lda #0
          sta t
          sta p
-         sta k
+         sta fki
+         sta ikd
+         sta tnki
          sta damage
          lda #MAX_FUEL
          sta fuel
@@ -806,14 +808,18 @@ ag5      dey
          bne am1
          jmp _wezrzc
 
-am1      ift NO_OBSTACLES = 0
-          jmp ad1
-         els
+am1       ift NO_OBSTACLES = 1
           jmp af5
-         eif
+          els
+          ldy tnki
+          lda tnk,y
+          cmp #CR
+          beq noobs
+          jmp ad1
+noobs     jmp af5
+          eif
 
-
-nextpl    ;   equ *
+nextpl   *
          ldx pozmap
          ldy pozmap+1
          stx $c0
@@ -1016,7 +1022,7 @@ _ove     pla
          rts
 
 
-_mfuel   ldy k 
+_mfuel   ldy fki 
          lda kod,y
          cmp #CR
          bne ah4

@@ -1,7 +1,7 @@
 Dangerous City
 
-# = Release 2.0. =
-Released: 2023-mm-dd
+# = Release 2.0.129 =
+Released: 2023-01-29
 
 ## == Features ==
  * Dodane ikonki pod bocznymi paskami (paliwa i uszkodzeń) #17

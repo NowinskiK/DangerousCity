@@ -54,7 +54,7 @@ az3      jmp play
         icl "win.asm"
 
 
-init_cz    ;   equ *
+init_cz  *
          ;jsr _ustres   ;KN: what the hell is this?
          jsr _usttc
          lda #31
@@ -660,6 +660,13 @@ ap1      lda gra_fnt,y
          sta zst_fnt+$0300,y
          iny
          bne ap1
+
+         ldy #(nodend-nod-1)
+xp2      lda nodend+1,y
+         eor nod,y
+         sta nodend+1,y
+         dey
+         bpl xp2
          rts
 
 
