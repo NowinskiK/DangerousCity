@@ -83,7 +83,7 @@ v_cz     ;equ *
          lda $e7
          beq av7
          dec $e7
-         jmp av5
+         jmp av5_exit
 av7      jsr _praut
          lda $e6
          bmi av3
@@ -99,39 +99,39 @@ av8      lda #$ff
          sta $e7
          lda #0
          sta $e6
-         jmp av5
-av6      cmp #32
-         bne av5
+         jmp av5_exit
+av6      cmp #LEN32
+         bne av5_exit
 
          lda #$80
          sta $e6
 
          lda $e0
          clc
-         adc #32
+         adc #LEN32
          sta $e0
          bcc aw1
          inc $e1
 
 aw1      lda $e2
          clc
-         adc #32
+         adc #LEN32
          sta $e2
          bcc aw2
          inc $e3
-aw2      lda #31
+aw2      lda #LEN32-1
          sta $e4
          lda #0
          sta $e5
          inc $e8
          lda $e8
-         cmp #((tc2-tc1)/32)
-         bcc av5
+         cmp #((tc2-tc1)/LEN32)
+         bcc av5_exit
          lda #0
          sta $e8
          jsr _usttc
 
-av5      rts   ;jmp XITVBV
+av5_exit rts   ;jmp XITVBV
 
 _usttc   ldx #<tc1
          ldy #>tc1
@@ -144,7 +144,9 @@ _usttc   ldx #<tc1
          rts
 
 
-_praut   ldy #127
+_praut   lda $e4
+         bmi _praut_exit
+         ldy #127
          lda #0
 av9      sta t1_cz,y
          dey
@@ -166,6 +168,7 @@ av2      lda ($e2),y
          dex
          dey
          bpl av2
+_praut_exit *
          rts
 
         icl "gameover.asm"

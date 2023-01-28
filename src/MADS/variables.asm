@@ -68,6 +68,7 @@ NB_ITEMS   = 1            ;1 = Show number (1,2,3,4.) in the pocket; 0 - no
 SCHR	   = 127
 KEYDEFP    = $79
 MSG_DEFCOL = $0B
+LEN32      = $20
 
 ; One action
 ACT_SHOW_SQ_STATE = 1
