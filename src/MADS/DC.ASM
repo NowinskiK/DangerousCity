@@ -684,6 +684,9 @@ _initgra lda #1
          stx pozmap
          sty pozmap+1
 
+         jsr _jasno
+
+_clr_fuel_bar *
          ldx #<(pasek+30)
          ldy #>(pasek+30)
          stx $c0
@@ -702,7 +705,6 @@ aj4      lda #0
          inc $c1
          dex
          bne aj4
-         jsr _jasno
          rts
 
 

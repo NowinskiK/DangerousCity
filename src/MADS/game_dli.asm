@@ -176,13 +176,33 @@ ah1      .if DEBUG_MODE
          inc k  ;idxk
          iny
          cpy #(kodend-kod)
-         bne ah2
+flash    bne ah2
          lda #$0f
          sta color_bri
          rts
 ah3      lda #0
          sta k
-ah2      rts
+ah2      ;rts
+
+         lda kbcodes
+         ldy ikd
+         cpy #(nodend-nod)
+         beq ah21
+         cmp nod,y
+         bne ah31
+         inc ikd
+         iny
+         cpy #(nodend-nod)
+         bne ah21
+         lda #0
+         sta damage
+         sta ikd
+         jsr _clr_fuel_bar
+         jmp flash
+ah31     lda #0
+         sta ikd
+ah21     rts
+
 
         .if DEBUG_MODE
 _setcolor

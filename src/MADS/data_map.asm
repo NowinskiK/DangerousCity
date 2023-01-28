@@ -17,3 +17,5 @@ cpn  .he 2B 2C 4B 4C 6B 6C
 cpnend *
 kod  .he 05 3f 25 0d 00 08 3e 
 kodend dta CR 
+nod  .he 38 0d 16 21 12 3f 28
+nodend dta CR 
