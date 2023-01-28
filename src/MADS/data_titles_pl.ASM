@@ -3,7 +3,7 @@ ekr_over dta d "   koniec gry   "
 
 leg_t    ;equ *
      dta d'                                        '
-     dta d'  NARESZCIE !  PO TAK DUGIEJ PRACY NAD '
+     dta d'   NARESZCIE!  PO TAK DUGIEJ PRACY NAD '
      dta d' ZDJCIAMI  DO  TWOJEGO  NOWEGO FILMU - '
      dta d' NALE',b(PLI_Z),d'Y  CI  SI  PORZDNY  ODPOCZYNEK. '
      dta d' DLATEGO  WRACASZ  TERAZ  SAMOCHODEM DO '
@@ -13,12 +13,12 @@ leg_t    ;equ *
 
      dta d'  BYA TO BARDZO DUGA I MCZCA PODR',b(PLI_Z),d' '
      dta d' ALE JU',b(PLI_Z),d' NIEDALEKO DO CHATY.            '
-     dta d' - O KURCZE ! -  WRZASNE SAM DO SIE- '
+     dta d' - O KURCZE!  -  WRZASNE SAM DO SIE- '
      dta d' BIE.  WJECHAE W JAK BOCZN ULICZK '
      dta d' I NIE ZNASZ WACIWEJ DROGI POWROTNEJ. '
      dta d' OKAZAO SI, ',b(PLI_Z),d'E ZNALAZE SI W JAKIM '
      dta d' TAJEMNICZYM  MIECIE,   GDZIE  NIE  MA '
-     dta d' LUDZI I WYJCIA !!!                    '
+     dta d' LUDZI I WYJCIA!!!                     '
 
      dta d'  PENETRUJC TEREN, WIDZIAE PO DRODZE '
      dta d' JAKIE  PRZEDMIOTY,  ALE NIE ZNASZ ICH '
@@ -30,7 +30,7 @@ leg_t    ;equ *
      dta d' PRZEKLTEGO MIASTA.                    '
 
      dta d'                                        '
-     dta d' DOSTPNE KLAWISZE :                    '
+     dta d' DOSTPNE KLAWISZE:                     '
      dta d'                                        '
 
      dta d' ',c'Y'*, d'1'*, c'Y', d'-', c'Y'*, d'4'*, c'Y', d'  U',b(PLI_Z),d'YWANIE PRZEDMIOTW           '
@@ -47,7 +47,7 @@ tc1
      dta d '             MUZYKA             '     ;05
      dta d '       GRAFIKA TYTUOWA         '     ;06
      dta d '        SCENARIUSZ I MAPA       '     ;07
-     dta d '       SUPPORT  TECHNICZNY      '     ;11
+     dta d '        POMOC  TECHNICZNA       '     ;11
      dta d '            CARTRIDGE           '     ;13
      dta d "        PROJEKT PUDEKA         "     ;08
      dta d "    START - ROZPOCZCIE GRY     "     ;12
