@@ -691,7 +691,7 @@ _clr_fuel_bar *
          ldy #>(pasek+30)
          stx $c0
          sty $c1
-         ldx #16
+         ldx #14
 
 aj4      lda #0
          tay

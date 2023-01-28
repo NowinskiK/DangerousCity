@@ -139,8 +139,8 @@ vid3     lda #0
          bcc ag7
          lda #MAX_FUEL
          sta fuel
-ag7      ldx #<(ekr+417)
-         ldy #>(ekr+417)
+ag7      ldx #<(ekr + BAR1_BOTTM)
+         ldy #>(ekr + BAR1_BOTTM)
          jsr _rysslup
 
          lda #$7f
@@ -154,8 +154,8 @@ ag7      ldx #<(ekr+417)
          bcc ag9
          lda #MAX_DAMAGE
          sta damage
-ag9      ldx #<(ekr+446)
-         ldy #>(ekr+446)
+ag9      ldx #<(ekr + BAR2_BOTTM)
+         ldy #>(ekr + BAR2_BOTTM)
          jsr _rysslup
 
          rts
@@ -281,7 +281,7 @@ as4      lda #$50       ;pause music
          jmp rep+3
 as_ret   rts
 
-_rysslup   ; equ *
+_rysslup *
          stx $f0
          sty $f1
          sta $f2

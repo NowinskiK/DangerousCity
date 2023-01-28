@@ -70,6 +70,8 @@ SCHR	   = 127
 KEYDEFP    = $79
 MSG_DEFCOL = $0B
 LEN32      = $20
+BAR1_BOTTM = LEN32 * 12 + 1
+BAR2_BOTTM = LEN32 * 12 + 30
 
 ; One action
 ACT_SHOW_SQ_STATE = 1
