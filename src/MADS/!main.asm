@@ -21,8 +21,8 @@ win_cmc     ins "muzyka\win.cmc",6
 plansze     ins "plansze\pl",6
 
             .ALIGN $0400
-gra_fnt     ins "fonty\gra.fnt",6
-cz_fnt      ins "fonty\cz.fnt",6
+gra_fnt     ins "fonty\gra.fnt"
+cz_fnt      ins "fonty\cz.fnt"
 fnt	        ins "newgfx\TYT10_PTODT4.fnt"
 
             icl "title.asm"
