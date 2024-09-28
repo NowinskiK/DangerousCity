@@ -1,56 +1,71 @@
-# Dangerous City
+# Dangerous City ![](doc\icons8-great-britain-48.png)
+Language: **English** | [Polish](README_PL.md)
 
-Gra napisana przeze mnie na 8-bitowe Atari w 1994 roku (miałem wtedy 16 lat).  
-Przygotowałem dwie wersje: jedna z logo MIRAGE, druga z logo LK AVALON, jednak żadna z firm nie zdecydowała się na komercyjne wydanie tej gry.
+A game I wrote for the 8-bit Atari in 1994 (I was 16 at the time).  
+I prepared two versions: one with the MIRAGE logo, and another with the LK AVALON logo, but neither of the companies decided to commercially release the game.
 
 ![Dangerous City](./doc/CD_Mirage.png)
 
-Kodowanie: **Kamil Nowiński**  
-Muzyka: **Konrad Gmurek**  
-Okładka tytułowa: **Hubert Nowiński**  
-Plansze: **Kamil & Hubert**  
+Coding: **Kamil Nowiński**  
+Music: **Konrad Gmurek**  
+Title gfx: **Hubert Nowiński**  
+Map: **Kamil & Hubert**  
 
-# Edycja 2023
-Prace nad nową edycją ruszyły jeszcze w 2022r, kiedy to KAZ zaproponował wydanie tego tytułu w ramach [Polskiego Towarszystwa Ochrony Dziedzictwa Technicznego](https://ptodt.org.pl/). Szybko ustaliliśmy wstępny zakres prac, a [pełną listę zmian można przeczytać tutaj](./ChangeLog.md).
-Dzisiaj już wiemy, że gra zostanie wydana na cartridge'u, a całość pojawi się w wersji pudełkowej.
+# Edition 2023
+Work on the new edition began back in 2022, when KAZ proposed releasing this title as part of the [Polish Society for the Protection of Technical Heritage](https://ptodt.org.pl/). We quickly established the preliminary scope of work, and [the full list of changes can be read here](./ChangeLog.md).  
+Today, we already know that the game will be released on a cartridge, and the entire package will be available in a boxed version.
 
-Okładka:
-![Box](./doc/DC_cover.jpg)
+Box (front):  
+![Box](./doc/aol_DC1.jpg)
 
-Ekran tytułowy:
+Box (rear):  
+![Box](./doc/aol_DC2.jpg)
+
+Title Screen:  
 ![Dangerous City](./doc/DC_PTODT_title.png)
 
-## Historia
-Tutaj przeczytasz więcej o tym jak zaczęła się cała historia i dlaczego ta gra wylądowała na GitHub:
+Map:  
+![Map](./doc/map_color_small_shiny.png)
+
+## History
+Here you can read more about how the whole story began and why this game ended up on GitHub:  
 [AtariOnline: CamoSoft / Kamilos - historia, programy](https://atarionline.pl/forum/comments.php?DiscussionID=6703)
 
-## Osoby, które przyczyniły się do gry
-Kodowanie: **Kamil Nowiński**  
-Grafika tytułowa: **Krzysztof "Kaz" Ziembik**  
-Wsparcie techniczne: **PEBE**  
+## People who contributed to the game
+Coding: **Kamil Nowiński**  
+Title gfx: **Krzysztof "Kaz" Ziembik**  
+Technical Support: **PEBE**  
 Cartridge: **Jakub Husak**  
-Projekt pudełka: **Rafał Dudek, Piotr Piter Krużycki, Krzysztof "Kaz" Ziembik**  
+Box Design: **Rafał Dudek, Piotr Piter Krużycki, Krzysztof "Kaz" Ziembik**  
 
 
 # ATARI - Quick Assembler
 
-Folder [src/QA](./src/QA/) zawiera oryginale pliki zrzucone z moich dyskietek, które przetrwały ponad 20 lat, najpierw w mieszkaniu, potem w piwnicy.
+Folder [src/QA](./src/QA/) includes the original files copied from my disks, which survived for over 20 years, first in an apartment, then in a basement.
 
 
-# PC - Assember dla środowiska C64 Studio
+# PC - Assember for C64 Studio environment
 
-Folder [src/C64S](./src/C64S/) zawiera kompletną solucję i projekt pozwalający skompilować grę przy użyciu środowiska `C64 Studio`.  
-Jeśli chcesz uruchomić program z kodu źródłowego pod platformą PC - [w tym folderze](./doc/) znajdziesz prezentację opisującą krok po kroku jak przygotować środowisko.  
-> Miej na uwadze, że ta wersja kodu nie jest w pełni kompatybilna z QA. 
+The [src/C64S](./src/C64S/) folder contains a complete solution and project that allows you to compile the game using the `C64 Studio` environment.  
+If you want to run the program from the source code on a PC platform – [in this folder](./doc/) you will find a presentation describing step by step how to set up the environment.  
+> Please note that this version of the code is not fully compatible with QA.  
 
-Aby uzyskać pełną kompatybilność i większe możliwości - cały kod został przygotowany w kolejnym folderze: MADS (czytaj niżej).
+To achieve full compatibility and greater capabilities – the entire code has been prepared in the next folder: MADS (read below).
 
 # PC - Assember dla MADS
 
-Folder [src/MADS](./src/MADS/) zawiera zestaw plików pozwalający skompilować grę przy użyciu [Mad-Assembler](https://github.com/tebe6502/Mad-Assembler) (MADS).
-
+The [src/MADS](./src/MADS/) folder contains a set of files that allow you to compile the game using [Mad-Assembler](https://github.com/tebe6502/Mad-Assembler) (MADS).
 
 
 # Some numbers
 - 24 x 14 tiles - each screen
-- Mapa zawiera 71 ekranów
+- The map contains 71 screens
+
+# References
+Meaning who talked about it, wrote about it, promoted it.  
+- [PTODT released game „Dangerous City”](https://ptodt.org.pl/wszyscy/ptodt-wydal-gre-dangerous-city/)
+- Buy: [Atari Fan: “Dangerous City” game](https://atarifan.pl/produkt/gra-dangerous-city/)
+- AtariOnline: [New game "Dangerous City"](https://www.atarionline.pl/v01/index.php?subaction=showfull&id=1679674438&archive=&start_from=0&ucat=1&ct=nowinki)
+- Atariki: [Dangerous City](http://atariki.krap.pl/index.php/Dangerous_City)
+- Video: [Atari XL/XE -=Dangerous City=- unboxing&gameplay](https://youtu.be/GSyYBSiwLzA)
+
