@@ -68,5 +68,6 @@ Czyli kto o tym mówił, pisał, promował.
 - Buy: [Atari Fan: Gra “Dangerous City”](https://atarifan.pl/produkt/gra-dangerous-city/)
 - AtariOnline: [Nowa gra "Dangerous City"](https://www.atarionline.pl/v01/index.php?subaction=showfull&id=1679674438&archive=&start_from=0&ucat=1&ct=nowinki)
 - Atariki: [Dangerous City](http://atariki.krap.pl/index.php/Dangerous_City)
-- Video: [Atari XL/XE -=Dangerous City=- unboxing&gameplay](https://youtu.be/GSyYBSiwLzA)
-
+- Video:
+  - [Atari XL/XE -=Dangerous City=- unboxing&gameplay](https://youtu.be/GSyYBSiwLzA)
+  - [Dangerous City on ATARI 65XE - how my programming journey began!](https://youtu.be/IjxdZB7bc2s)
