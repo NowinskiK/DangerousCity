@@ -67,5 +67,6 @@ Meaning who talked about it, wrote about it, promoted it.
 - Buy: [Atari Fan: “Dangerous City” game](https://atarifan.pl/produkt/gra-dangerous-city/)
 - AtariOnline: [New game "Dangerous City"](https://www.atarionline.pl/v01/index.php?subaction=showfull&id=1679674438&archive=&start_from=0&ucat=1&ct=nowinki)
 - Atariki: [Dangerous City](http://atariki.krap.pl/index.php/Dangerous_City)
-- Video: [Atari XL/XE -=Dangerous City=- unboxing&gameplay](https://youtu.be/GSyYBSiwLzA)
-
+- Video:
+  - [Atari XL/XE -=Dangerous City=- unboxing&gameplay](https://youtu.be/GSyYBSiwLzA)
+  - [Dangerous City on ATARI 65XE - how my programming journey began!](https://youtu.be/IjxdZB7bc2s)
